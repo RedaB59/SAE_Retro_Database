@@ -12,7 +12,16 @@ logger = logging.getLogger(__name__)
 
 
 class BaseModelDVFSingular(BaseModel):
-    pass
+    def key(self):
+        return None  # À modif dans les sous models pour renvoyer l'id
+
+    def items(self):
+        return self.model_dump().items()
+
+    def _merge(self, other: "BaseModel") -> None:
+        for k, v in other.items():
+            if self[k] is None:
+                self[k] = v
 
 
 class BaseModelDVFPlurial(BaseModel):
@@ -43,6 +52,15 @@ class BaseModelDVFPlurial(BaseModel):
             )
             for elm in self:
                 writer.writerow(elm.model_dump())
+
+    def append(self, bm: BaseModel) -> None:
+        if bm.key() not in self.keys():
+            self[bm.key()] = bm
+        else:
+            self[bm.key()]._merge(bm)
+
+    def keys(self):
+        return self._values.keys()
 
     def __getitem__(self, key: Id) -> BaseModelDVFSingular:
         return self._values.values[key]

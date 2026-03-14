@@ -3,7 +3,9 @@ from typing import Annotated
 
 from pydantic import PositiveFloat
 
-from .base_models import BaseModelDVFSingular
+from utils._types import Id
+
+from .base_models import BaseModelDVFPlurial, BaseModelDVFSingular
 
 
 class Mutation(BaseModelDVFSingular):
@@ -11,3 +13,7 @@ class Mutation(BaseModelDVFSingular):
     numero_mutation: int
     date: date
     valeur_fonciere: PositiveFloat
+
+
+class Mutations(BaseModelDVFPlurial):
+    _values: dict[Id, Mutation]

@@ -54,14 +54,11 @@ CREATE INDEX on locals(id_parcelle);
 
 CREATE TABLE IF NOT EXISTS lots (
 	id_lot INTEGER,
-	id_mutation VARCHAR(14) references mutations(id_mutation),
 	id_local VARCHAR(64) references locals(id_local),
 	lot_surface_carrez REAL,
 	PRIMARY KEY(id_lot, id_mutation, id_local)
 );
 
-CREATE INDEX ON lots(id_local);
-CREATE INDEX ON lots(id_mutation);
 
 CREATE TABLE IF NOT EXISTS sous_parcelles (
 	id_parcelle VARCHAR(255) references parcelles(id_parcelle),
