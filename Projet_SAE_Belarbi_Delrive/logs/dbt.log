@@ -1,0 +1,916 @@
+[0m14:52:28.614523 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765D468AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765E5B7ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765E5B7B10>]}
+
+
+============================== 14:52:28.617135 | 1e654fa1-3909-45f0-9249-8ddcf4dd00d2 ==============================
+[0m14:52:28.617135 [info ] [MainThread]: Running with dbt=1.11.4
+[0m14:52:28.617595 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'indirect_selection': 'eager', 'invocation_command': 'dbt test --select stg_mutations', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m14:52:28.739490 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1e654fa1-3909-45f0-9249-8ddcf4dd00d2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765D8D55B0>]}
+[0m14:52:28.785958 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1e654fa1-3909-45f0-9249-8ddcf4dd00d2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765E403460>]}
+[0m14:52:28.786686 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m14:52:28.909972 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m14:52:28.910541 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m14:52:28.910976 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '1e654fa1-3909-45f0-9249-8ddcf4dd00d2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765F615550>]}
+[0m14:52:28.913403 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Error reading Projet_SAE_Belarbi_Delrive: Data Stading Area\sources.yml - Runtime Error
+    Syntax error near line 5
+    ------------------------------
+    2  | 
+    3  | sources:
+    4  |   - name:projet_sae_dvf
+    5  |     description: "Data Staging Area — MLD foncier DVF"
+    6  |     schema: public   
+    7  | 
+    8  |     tables:
+    
+    Raw Error:
+    ------------------------------
+    mapping values are not allowed in this context
+      in "<unicode string>", line 5, column 16
+[0m14:52:28.914105 [debug] [MainThread]: Command `dbt test` failed at 14:52:28.914028 after 0.38 seconds
+[0m14:52:28.914314 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765F920D70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765F920E60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002765E44FE70>]}
+[0m14:52:28.914498 [debug] [MainThread]: Flushing usage events
+[0m14:52:29.468767 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:53:28.568363 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6AD18AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6BE67ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6BE67B10>]}
+
+
+============================== 14:53:28.570965 | 38652204-3a7e-4702-ac88-ab221d766b20 ==============================
+[0m14:53:28.570965 [info ] [MainThread]: Running with dbt=1.11.4
+[0m14:53:28.571491 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'indirect_selection': 'eager', 'invocation_command': 'dbt test --select stg_mutations', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m14:53:28.680556 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '38652204-3a7e-4702-ac88-ab221d766b20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6B1895B0>]}
+[0m14:53:28.722585 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '38652204-3a7e-4702-ac88-ab221d766b20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6BCB3460>]}
+[0m14:53:28.723291 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m14:53:28.831260 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m14:53:28.831840 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m14:53:28.832202 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '38652204-3a7e-4702-ac88-ab221d766b20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6BEF5550>]}
+[0m14:53:29.668964 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '38652204-3a7e-4702-ac88-ab221d766b20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6D420F50>]}
+[0m14:53:29.720066 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m14:53:29.722478 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m14:53:29.743600 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '38652204-3a7e-4702-ac88-ab221d766b20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6D4E49F0>]}
+[0m14:53:29.743915 [info ] [MainThread]: Found 3 models, 22 data tests, 9 sources, 464 macros
+[0m14:53:29.744265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '38652204-3a7e-4702-ac88-ab221d766b20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6D8F3D40>]}
+[0m14:53:29.745250 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m14:53:29.745758 [debug] [MainThread]: Command end result
+[0m14:53:29.759997 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m14:53:29.761976 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m14:53:29.764514 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\run_results.json
+[0m14:53:29.764970 [debug] [MainThread]: Command `dbt test` succeeded at 14:53:29.764900 after 1.30 seconds
+[0m14:53:29.765192 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6BE30710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6D9A89F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023A6D9A8890>]}
+[0m14:53:29.765401 [debug] [MainThread]: Flushing usage events
+[0m14:53:30.251281 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:55:02.347483 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000196916A8AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000196927F7ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000196927F7B10>]}
+
+
+============================== 14:55:02.350104 | 46354bba-0295-4715-8be9-5f3de18c883f ==============================
+[0m14:55:02.350104 [info ] [MainThread]: Running with dbt=1.11.4
+[0m14:55:02.350541 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt test --select stg_mutations', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m14:55:02.462603 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '46354bba-0295-4715-8be9-5f3de18c883f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019691B255B0>]}
+[0m14:55:02.503060 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '46354bba-0295-4715-8be9-5f3de18c883f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019692643460>]}
+[0m14:55:02.503811 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m14:55:02.610361 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m14:55:02.694727 [debug] [MainThread]: Partial parsing enabled: 2 files deleted, 2 files added, 0 files changed.
+[0m14:55:02.695115 [debug] [MainThread]: Partial parsing: added file: Projet_SAE_Belarbi_Delrive://models\staging\sources.yml
+[0m14:55:02.695299 [debug] [MainThread]: Partial parsing: added file: Projet_SAE_Belarbi_Delrive://models\staging\stg_mutations.sql
+[0m14:55:02.695527 [debug] [MainThread]: Partial parsing: deleted file: Projet_SAE_Belarbi_Delrive://models\Data Stading Area\stg_mutations.sql
+[0m14:55:03.051811 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '46354bba-0295-4715-8be9-5f3de18c883f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019692885950>]}
+[0m14:55:03.102739 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m14:55:03.105127 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m14:55:03.128913 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '46354bba-0295-4715-8be9-5f3de18c883f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019694156030>]}
+[0m14:55:03.129284 [info ] [MainThread]: Found 3 models, 22 data tests, 9 sources, 464 macros
+[0m14:55:03.129610 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '46354bba-0295-4715-8be9-5f3de18c883f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000196939DAC10>]}
+[0m14:55:03.130599 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m14:55:03.131012 [debug] [MainThread]: Command end result
+[0m14:55:03.158025 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m14:55:03.159483 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m14:55:03.161417 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\run_results.json
+[0m14:55:03.161837 [debug] [MainThread]: Command `dbt test` succeeded at 14:55:03.161771 after 0.91 seconds
+[0m14:55:03.162048 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000196940F1A50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000196927C0710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001969416D9D0>]}
+[0m14:55:03.162243 [debug] [MainThread]: Flushing usage events
+[0m14:55:03.656153 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:56:48.242949 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E751F58AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E7530A7ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E7530A7B10>]}
+
+
+============================== 14:56:48.245448 | e8bbfd3f-edd2-4c47-8e20-2caad695b735 ==============================
+[0m14:56:48.245448 [info ] [MainThread]: Running with dbt=1.11.4
+[0m14:56:48.245934 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'use_colors': 'True', 'invocation_command': 'dbt ls', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m14:56:48.343570 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e8bbfd3f-edd2-4c47-8e20-2caad695b735', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E7523C95B0>]}
+[0m14:56:48.380410 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'e8bbfd3f-edd2-4c47-8e20-2caad695b735', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E752EF39B0>]}
+[0m14:56:48.381013 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m14:56:48.475258 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m14:56:48.548913 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:56:48.549180 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m14:56:48.549337 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:56:48.574244 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'e8bbfd3f-edd2-4c47-8e20-2caad695b735', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E754105550>]}
+[0m14:56:48.620031 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m14:56:48.621468 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m14:56:48.631774 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'e8bbfd3f-edd2-4c47-8e20-2caad695b735', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E7543CF7A0>]}
+[0m14:56:48.632042 [info ] [MainThread]: Found 3 models, 22 data tests, 9 sources, 464 macros
+[0m14:56:48.632477 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e8bbfd3f-edd2-4c47-8e20-2caad695b735', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E7541020B0>]}
+[0m14:56:48.633137 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.example.my_first_dbt_model
+[0m14:56:48.633551 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.example.my_second_dbt_model
+[0m14:56:48.633921 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.stg_mutations
+[0m14:56:48.634284 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.locals
+[0m14:56:48.634619 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.lots
+[0m14:56:48.634839 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.mutations
+[0m14:56:48.635033 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.natures_culture
+[0m14:56:48.635214 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.natures_culture_speciales
+[0m14:56:48.635374 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.parcelles
+[0m14:56:48.635533 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.parcelles_mutations
+[0m14:56:48.635684 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.sous_parcelles
+[0m14:56:48.635837 [info ] [MainThread]: source:Projet_SAE_Belarbi_Delrive.projet_sae_dvf.types_local
+[0m14:56:48.635994 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.example.not_null_my_first_dbt_model_id
+[0m14:56:48.636147 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.example.not_null_my_second_dbt_model_id
+[0m14:56:48.636411 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_locals_id_local
+[0m14:56:48.636662 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_lots_id_lot
+[0m14:56:48.636891 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_mutations_id_mutation
+[0m14:56:48.637097 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_mutations_valeur_fonciere
+[0m14:56:48.637521 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_natures_culture_id_nat_cult
+[0m14:56:48.639372 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe
+[0m14:56:48.639723 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_parcelles_id_parcelle
+[0m14:56:48.640361 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_parcelles_mutations_id_mutation
+[0m14:56:48.641230 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_parcelles_mutations_id_parcelle
+[0m14:56:48.642902 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_sous_parcelles_id_parcelle
+[0m14:56:48.643162 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_not_null_projet_sae_dvf_types_local_id_type_loc
+[0m14:56:48.643582 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_unique_projet_sae_dvf_locals_id_local
+[0m14:56:48.643799 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_unique_projet_sae_dvf_lots_id_lot
+[0m14:56:48.644078 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_unique_projet_sae_dvf_mutations_id_mutation
+[0m14:56:48.645230 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_unique_projet_sae_dvf_natures_culture_id_nat_cult
+[0m14:56:48.645516 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_unique_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe
+[0m14:56:48.645777 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_unique_projet_sae_dvf_parcelles_id_parcelle
+[0m14:56:48.646015 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.staging.source_unique_projet_sae_dvf_types_local_id_type_loc
+[0m14:56:48.646240 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.example.unique_my_first_dbt_model_id
+[0m14:56:48.646452 [info ] [MainThread]: Projet_SAE_Belarbi_Delrive.example.unique_my_second_dbt_model_id
+[0m14:56:48.646921 [debug] [MainThread]: Command `dbt ls` succeeded at 14:56:48.646844 after 0.48 seconds
+[0m14:56:48.647144 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E75477FE10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E753070710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E75458DC10>]}
+[0m14:56:48.647347 [debug] [MainThread]: Flushing usage events
+[0m14:56:49.130801 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:00:54.610069 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001949D448AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001949E597ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001949E597B10>]}
+
+
+============================== 15:00:54.612746 | a1973a55-0037-4163-b245-772a995cfefb ==============================
+[0m15:00:54.612746 [info ] [MainThread]: Running with dbt=1.11.4
+[0m15:00:54.613168 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'indirect_selection': 'eager', 'invocation_command': 'dbt test --select stg_mutations', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m15:00:54.742312 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a1973a55-0037-4163-b245-772a995cfefb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001949D8B95B0>]}
+[0m15:00:54.779011 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'a1973a55-0037-4163-b245-772a995cfefb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001949E3E3460>]}
+[0m15:00:54.779586 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m15:00:54.874817 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m15:00:54.875267 [error] [MainThread]: Encountered an error:
+'charmap' codec can't decode byte 0x90 in position 1285: character maps to <undefined>
+[0m15:00:54.877282 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 407, in wrapper
+    setup_manifest(ctx, write=write, write_perf_info=write_perf_info)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 434, in setup_manifest
+    ctx.obj["manifest"] = parse_manifest(
+                          ~~~~~~~~~~~~~~^
+        runtime_config,
+        ^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        active_integrations,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 2257, in parse_manifest
+    manifest = ManifestLoader.get_full_manifest(
+        runtime_config,
+        write_perf_info=write_perf_info,
+    )
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 316, in get_full_manifest
+    loader = cls(
+        config,
+    ...<2 lines>...
+        file_diff=file_diff,
+    )
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 267, in __init__
+    self.manifest.state_check = self.build_manifest_state_check()
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 1078, in build_manifest_state_check
+    project_hashes[name] = FileHash.from_contents(fp.read())
+                                                  ~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 1285: character maps to <undefined>
+
+[0m15:00:54.878060 [debug] [MainThread]: Command `dbt test` failed at 15:00:54.877987 after 0.34 seconds
+[0m15:00:54.878265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001949F5F5850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001949F5F5350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001949F8E4B90>]}
+[0m15:00:54.878463 [debug] [MainThread]: Flushing usage events
+[0m15:00:55.361902 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:01:12.968331 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001780FF08AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017811057ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017811057B10>]}
+
+
+============================== 15:01:12.970893 | 39511516-cf66-4254-836c-7ce8a4679d9e ==============================
+[0m15:01:12.970893 [info ] [MainThread]: Running with dbt=1.11.4
+[0m15:01:12.971464 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'invocation_command': 'dbt run --select stg_mutations', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m15:01:13.084895 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '39511516-cf66-4254-836c-7ce8a4679d9e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000178103795B0>]}
+[0m15:01:13.124518 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '39511516-cf66-4254-836c-7ce8a4679d9e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017810EA3460>]}
+[0m15:01:13.125090 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m15:01:13.231158 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m15:01:13.231586 [error] [MainThread]: Encountered an error:
+'charmap' codec can't decode byte 0x90 in position 1285: character maps to <undefined>
+[0m15:01:13.233616 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 391, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 407, in wrapper
+    setup_manifest(ctx, write=write, write_perf_info=write_perf_info)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 434, in setup_manifest
+    ctx.obj["manifest"] = parse_manifest(
+                          ~~~~~~~~~~~~~~^
+        runtime_config,
+        ^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        active_integrations,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 2257, in parse_manifest
+    manifest = ManifestLoader.get_full_manifest(
+        runtime_config,
+        write_perf_info=write_perf_info,
+    )
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 316, in get_full_manifest
+    loader = cls(
+        config,
+    ...<2 lines>...
+        file_diff=file_diff,
+    )
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 267, in __init__
+    self.manifest.state_check = self.build_manifest_state_check()
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 1078, in build_manifest_state_check
+    project_hashes[name] = FileHash.from_contents(fp.read())
+                                                  ~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 1285: character maps to <undefined>
+
+[0m15:01:13.234413 [debug] [MainThread]: Command `dbt run` failed at 15:01:13.234336 after 0.38 seconds
+[0m15:01:13.234630 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000178110E1850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000178110E1350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000178123A0B90>]}
+[0m15:01:13.234825 [debug] [MainThread]: Flushing usage events
+[0m15:01:13.713753 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:01:58.964131 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015FF3E18AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015FF4F67ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015FF4F67B10>]}
+
+
+============================== 15:01:58.968913 | 195a93df-01a4-4391-bb3d-e19907cf3289 ==============================
+[0m15:01:58.968913 [info ] [MainThread]: Running with dbt=1.11.4
+[0m15:01:58.969404 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select stg_mutations', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m15:01:59.078798 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '195a93df-01a4-4391-bb3d-e19907cf3289', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015FF42855B0>]}
+[0m15:01:59.116014 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '195a93df-01a4-4391-bb3d-e19907cf3289', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015FF4DB3460>]}
+[0m15:01:59.116688 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m15:01:59.227402 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m15:01:59.227810 [error] [MainThread]: Encountered an error:
+'charmap' codec can't decode byte 0x90 in position 1285: character maps to <undefined>
+[0m15:01:59.229371 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 391, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 407, in wrapper
+    setup_manifest(ctx, write=write, write_perf_info=write_perf_info)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 434, in setup_manifest
+    ctx.obj["manifest"] = parse_manifest(
+                          ~~~~~~~~~~~~~~^
+        runtime_config,
+        ^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        active_integrations,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 2257, in parse_manifest
+    manifest = ManifestLoader.get_full_manifest(
+        runtime_config,
+        write_perf_info=write_perf_info,
+    )
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 316, in get_full_manifest
+    loader = cls(
+        config,
+    ...<2 lines>...
+        file_diff=file_diff,
+    )
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 267, in __init__
+    self.manifest.state_check = self.build_manifest_state_check()
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\parser\manifest.py", line 1078, in build_manifest_state_check
+    project_hashes[name] = FileHash.from_contents(fp.read())
+                                                  ~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 1285: character maps to <undefined>
+
+[0m15:01:59.230229 [debug] [MainThread]: Command `dbt run` failed at 15:01:59.230148 after 0.38 seconds
+[0m15:01:59.230449 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015FF5FC1850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015FF5FC1350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015FF6334B90>]}
+[0m15:01:59.230705 [debug] [MainThread]: Flushing usage events
+[0m15:01:59.742590 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:02:21.765469 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024939134980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493A267ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493A267B10>]}
+
+
+============================== 15:02:21.770077 | 5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc ==============================
+[0m15:02:21.770077 [info ] [MainThread]: Running with dbt=1.11.4
+[0m15:02:21.770555 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --select stg_mutations', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m15:02:21.872076 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000249395815B0>]}
+[0m15:02:21.911502 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493A0AF460>]}
+[0m15:02:21.912061 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m15:02:22.020296 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m15:02:22.082118 [info ] [MainThread]: Unable to do partial parsing because a project config has changed
+[0m15:02:22.082545 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493B91D250>]}
+[0m15:02:22.823616 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493B9A9C70>]}
+[0m15:02:22.867009 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m15:02:22.868416 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m15:02:22.879304 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493A0FEEB0>]}
+[0m15:02:22.879569 [info ] [MainThread]: Found 3 models, 22 data tests, 9 sources, 464 macros
+[0m15:02:22.879859 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493B88A820>]}
+[0m15:02:22.880898 [info ] [MainThread]: 
+[0m15:02:22.881366 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m15:02:22.881717 [info ] [MainThread]: 
+[0m15:02:22.882142 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m15:02:22.882738 [debug] [ThreadPool]: Acquiring new postgres connection 'list_projet_sae_dvf'
+[0m15:02:22.979209 [debug] [ThreadPool]: Using postgres connection "list_projet_sae_dvf"
+[0m15:02:22.979465 [debug] [ThreadPool]: On list_projet_sae_dvf: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "connection_name": "list_projet_sae_dvf"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m15:02:22.979621 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:02:23.087605 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.108 seconds
+[0m15:02:23.088448 [debug] [ThreadPool]: On list_projet_sae_dvf: Close
+[0m15:02:23.088978 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_projet_sae_dvf, now create_projet_sae_dvf_dbt)
+[0m15:02:23.089255 [debug] [ThreadPool]: Creating schema "database: "projet_sae_dvf"
+schema: "dbt"
+"
+[0m15:02:23.091974 [debug] [ThreadPool]: Using postgres connection "create_projet_sae_dvf_dbt"
+[0m15:02:23.092168 [debug] [ThreadPool]: On create_projet_sae_dvf_dbt: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "connection_name": "create_projet_sae_dvf_dbt"} */
+create schema if not exists "dbt"
+[0m15:02:23.092323 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m15:02:23.186751 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 0.094 seconds
+[0m15:02:23.187302 [debug] [ThreadPool]: On create_projet_sae_dvf_dbt: COMMIT
+[0m15:02:23.187469 [debug] [ThreadPool]: Using postgres connection "create_projet_sae_dvf_dbt"
+[0m15:02:23.187607 [debug] [ThreadPool]: On create_projet_sae_dvf_dbt: COMMIT
+[0m15:02:23.197228 [debug] [ThreadPool]: SQL status: COMMIT in 0.009 seconds
+[0m15:02:23.197417 [debug] [ThreadPool]: On create_projet_sae_dvf_dbt: Close
+[0m15:02:23.200113 [debug] [ThreadPool]: Acquiring new postgres connection 'list_projet_sae_dvf_dbt'
+[0m15:02:23.205746 [debug] [ThreadPool]: Using postgres connection "list_projet_sae_dvf_dbt"
+[0m15:02:23.205945 [debug] [ThreadPool]: On list_projet_sae_dvf_dbt: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "connection_name": "list_projet_sae_dvf_dbt"} */
+select
+      'projet_sae_dvf' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'dbt'
+    union all
+    select
+      'projet_sae_dvf' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'dbt'
+    union all
+    select
+      'projet_sae_dvf' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'dbt'
+  
+[0m15:02:23.206103 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:02:23.297970 [debug] [ThreadPool]: SQL status: SELECT 0 in 0.092 seconds
+[0m15:02:23.299072 [debug] [ThreadPool]: On list_projet_sae_dvf_dbt: ROLLBACK
+[0m15:02:23.308005 [debug] [ThreadPool]: On list_projet_sae_dvf_dbt: Close
+[0m15:02:23.310314 [debug] [MainThread]: Using postgres connection "master"
+[0m15:02:23.310545 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m15:02:23.310758 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m15:02:23.401420 [debug] [MainThread]: SQL status: SELECT 0 in 0.091 seconds
+[0m15:02:23.402065 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493BF28DD0>]}
+[0m15:02:23.402312 [debug] [MainThread]: On master: ROLLBACK
+[0m15:02:23.411215 [debug] [MainThread]: On master: COMMIT
+[0m15:02:23.411423 [debug] [MainThread]: Using postgres connection "master"
+[0m15:02:23.411570 [debug] [MainThread]: On master: COMMIT
+[0m15:02:23.429124 [debug] [MainThread]: SQL status: COMMIT in 0.017 seconds
+[0m15:02:23.429327 [debug] [MainThread]: On master: Close
+[0m15:02:23.432296 [debug] [Thread-1 (]: Began running node model.Projet_SAE_Belarbi_Delrive.stg_mutations
+[0m15:02:23.432607 [info ] [Thread-1 (]: 1 of 1 START sql view model dbt.stg_mutations .................................. [RUN]
+[0m15:02:23.433022 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.Projet_SAE_Belarbi_Delrive.stg_mutations'
+[0m15:02:23.433239 [debug] [Thread-1 (]: Began compiling node model.Projet_SAE_Belarbi_Delrive.stg_mutations
+[0m15:02:23.439109 [debug] [Thread-1 (]: Writing injected SQL for node "model.Projet_SAE_Belarbi_Delrive.stg_mutations"
+[0m15:02:23.442146 [debug] [Thread-1 (]: Began executing node model.Projet_SAE_Belarbi_Delrive.stg_mutations
+[0m15:02:23.462906 [debug] [Thread-1 (]: Writing runtime sql for node "model.Projet_SAE_Belarbi_Delrive.stg_mutations"
+[0m15:02:23.464100 [debug] [Thread-1 (]: Using postgres connection "model.Projet_SAE_Belarbi_Delrive.stg_mutations"
+[0m15:02:23.464333 [debug] [Thread-1 (]: On model.Projet_SAE_Belarbi_Delrive.stg_mutations: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "node_id": "model.Projet_SAE_Belarbi_Delrive.stg_mutations"} */
+
+  create view "projet_sae_dvf"."dbt"."stg_mutations__dbt_tmp"
+    
+    
+  as (
+    with source as (
+    select * from "projet_sae_dvf"."public"."mutations"
+),
+renamed as (
+    select
+        id_mutation,
+        numero_mutation,
+        cast(date_mutation as date)        as date_mutation,
+        id_nature_mutation,
+        cast(valeur_fonciere as numeric)   as valeur_fonciere
+    from source
+    where id_mutation is not null
+)
+select * from renamed
+  );
+[0m15:02:23.464523 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m15:02:23.573597 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.109 seconds
+[0m15:02:23.577420 [debug] [Thread-1 (]: Using postgres connection "model.Projet_SAE_Belarbi_Delrive.stg_mutations"
+[0m15:02:23.577639 [debug] [Thread-1 (]: On model.Projet_SAE_Belarbi_Delrive.stg_mutations: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "node_id": "model.Projet_SAE_Belarbi_Delrive.stg_mutations"} */
+alter table "projet_sae_dvf"."dbt"."stg_mutations__dbt_tmp" rename to "stg_mutations"
+[0m15:02:23.586877 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.009 seconds
+[0m15:02:23.594524 [debug] [Thread-1 (]: On model.Projet_SAE_Belarbi_Delrive.stg_mutations: COMMIT
+[0m15:02:23.594751 [debug] [Thread-1 (]: Using postgres connection "model.Projet_SAE_Belarbi_Delrive.stg_mutations"
+[0m15:02:23.594927 [debug] [Thread-1 (]: On model.Projet_SAE_Belarbi_Delrive.stg_mutations: COMMIT
+[0m15:02:23.604447 [debug] [Thread-1 (]: SQL status: COMMIT in 0.009 seconds
+[0m15:02:23.607673 [debug] [Thread-1 (]: Applying DROP to: "projet_sae_dvf"."dbt"."stg_mutations__dbt_backup"
+[0m15:02:23.610260 [debug] [Thread-1 (]: Using postgres connection "model.Projet_SAE_Belarbi_Delrive.stg_mutations"
+[0m15:02:23.610465 [debug] [Thread-1 (]: On model.Projet_SAE_Belarbi_Delrive.stg_mutations: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "node_id": "model.Projet_SAE_Belarbi_Delrive.stg_mutations"} */
+drop view if exists "projet_sae_dvf"."dbt"."stg_mutations__dbt_backup" cascade
+[0m15:02:23.619773 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.009 seconds
+[0m15:02:23.621111 [debug] [Thread-1 (]: On model.Projet_SAE_Belarbi_Delrive.stg_mutations: Close
+[0m15:02:23.622395 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5ece4f4c-08e9-4b49-aab6-b1ea5dc0d8fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493BD85390>]}
+[0m15:02:23.622770 [info ] [Thread-1 (]: 1 of 1 OK created sql view model dbt.stg_mutations ............................. [[32mCREATE VIEW[0m in 0.19s]
+[0m15:02:23.623214 [debug] [Thread-1 (]: Finished running node model.Projet_SAE_Belarbi_Delrive.stg_mutations
+[0m15:02:23.624154 [debug] [MainThread]: On master: COMMIT
+[0m15:02:23.624330 [debug] [MainThread]: Using postgres connection "master"
+[0m15:02:23.624469 [debug] [MainThread]: On master: COMMIT
+[0m15:02:23.624603 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m15:02:23.714622 [debug] [MainThread]: SQL status: COMMIT in 0.090 seconds
+[0m15:02:23.714948 [debug] [MainThread]: On master: Close
+[0m15:02:23.715277 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m15:02:23.715436 [debug] [MainThread]: Connection 'create_projet_sae_dvf_dbt' was properly closed.
+[0m15:02:23.715560 [debug] [MainThread]: Connection 'list_projet_sae_dvf_dbt' was properly closed.
+[0m15:02:23.715674 [debug] [MainThread]: Connection 'model.Projet_SAE_Belarbi_Delrive.stg_mutations' was properly closed.
+[0m15:02:23.715824 [info ] [MainThread]: 
+[0m15:02:23.716642 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 0.83 seconds (0.83s).
+[0m15:02:23.717255 [debug] [MainThread]: Command end result
+[0m15:02:23.733411 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m15:02:23.734877 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m15:02:23.744441 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\run_results.json
+[0m15:02:23.744640 [info ] [MainThread]: 
+[0m15:02:23.744969 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m15:02:23.745349 [info ] [MainThread]: 
+[0m15:02:23.745646 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m15:02:23.746273 [debug] [MainThread]: Command `dbt run` succeeded at 15:02:23.746202 after 2.09 seconds
+[0m15:02:23.746479 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493BCD6350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493BA65E20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002493951EFD0>]}
+[0m15:02:23.746675 [debug] [MainThread]: Flushing usage events
+[0m15:02:24.242132 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:03:41.891241 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDD824980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDE94FED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDE94FB10>]}
+
+
+============================== 15:03:41.893969 | 5b1a1bed-a1fa-4c11-8d44-b96c951d2586 ==============================
+[0m15:03:41.893969 [info ] [MainThread]: Running with dbt=1.11.4
+[0m15:03:41.894466 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt docs generate', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m15:03:41.991519 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5b1a1bed-a1fa-4c11-8d44-b96c951d2586', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDDC715B0>]}
+[0m15:03:42.034534 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5b1a1bed-a1fa-4c11-8d44-b96c951d2586', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDE79F460>]}
+[0m15:03:42.035128 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m15:03:42.142619 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m15:03:42.217403 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m15:03:42.217673 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m15:03:42.217819 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m15:03:42.243617 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5b1a1bed-a1fa-4c11-8d44-b96c951d2586', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDF9B3C50>]}
+[0m15:03:42.257570 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '5b1a1bed-a1fa-4c11-8d44-b96c951d2586', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDFFA96D0>]}
+[0m15:03:42.257848 [info ] [MainThread]: Found 3 models, 22 data tests, 9 sources, 464 macros
+[0m15:03:42.258169 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5b1a1bed-a1fa-4c11-8d44-b96c951d2586', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDFB28830>]}
+[0m15:03:42.259744 [info ] [MainThread]: 
+[0m15:03:42.260046 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m15:03:42.260311 [info ] [MainThread]: 
+[0m15:03:42.260674 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m15:03:42.262903 [debug] [ThreadPool]: Acquiring new postgres connection 'list_projet_sae_dvf_dbt'
+[0m15:03:42.305886 [debug] [ThreadPool]: Using postgres connection "list_projet_sae_dvf_dbt"
+[0m15:03:42.306181 [debug] [ThreadPool]: On list_projet_sae_dvf_dbt: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "connection_name": "list_projet_sae_dvf_dbt"} */
+select
+      'projet_sae_dvf' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'dbt'
+    union all
+    select
+      'projet_sae_dvf' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'dbt'
+    union all
+    select
+      'projet_sae_dvf' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'dbt'
+  
+[0m15:03:42.306392 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:03:42.432123 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.126 seconds
+[0m15:03:42.434597 [debug] [ThreadPool]: On list_projet_sae_dvf_dbt: ROLLBACK
+[0m15:03:42.443727 [debug] [ThreadPool]: On list_projet_sae_dvf_dbt: Close
+[0m15:03:42.446362 [debug] [MainThread]: Using postgres connection "master"
+[0m15:03:42.446606 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m15:03:42.446815 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m15:03:42.546747 [debug] [MainThread]: SQL status: SELECT 1 in 0.100 seconds
+[0m15:03:42.547488 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5b1a1bed-a1fa-4c11-8d44-b96c951d2586', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCE019A9C0>]}
+[0m15:03:42.547739 [debug] [MainThread]: On master: ROLLBACK
+[0m15:03:42.556686 [debug] [MainThread]: On master: Close
+[0m15:03:42.558536 [debug] [Thread-1 (]: Began running node model.Projet_SAE_Belarbi_Delrive.my_first_dbt_model
+[0m15:03:42.558852 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.Projet_SAE_Belarbi_Delrive.my_first_dbt_model'
+[0m15:03:42.559052 [debug] [Thread-1 (]: Began compiling node model.Projet_SAE_Belarbi_Delrive.my_first_dbt_model
+[0m15:03:42.563826 [debug] [Thread-1 (]: Writing injected SQL for node "model.Projet_SAE_Belarbi_Delrive.my_first_dbt_model"
+[0m15:03:42.564667 [debug] [Thread-1 (]: Began executing node model.Projet_SAE_Belarbi_Delrive.my_first_dbt_model
+[0m15:03:42.565147 [debug] [Thread-1 (]: Finished running node model.Projet_SAE_Belarbi_Delrive.my_first_dbt_model
+[0m15:03:42.565382 [debug] [Thread-1 (]: Began running node model.Projet_SAE_Belarbi_Delrive.stg_mutations
+[0m15:03:42.565635 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.Projet_SAE_Belarbi_Delrive.my_first_dbt_model, now model.Projet_SAE_Belarbi_Delrive.stg_mutations)
+[0m15:03:42.565858 [debug] [Thread-1 (]: Began compiling node model.Projet_SAE_Belarbi_Delrive.stg_mutations
+[0m15:03:42.567139 [debug] [Thread-1 (]: Writing injected SQL for node "model.Projet_SAE_Belarbi_Delrive.stg_mutations"
+[0m15:03:42.568695 [debug] [Thread-1 (]: Began executing node model.Projet_SAE_Belarbi_Delrive.stg_mutations
+[0m15:03:42.569098 [debug] [Thread-1 (]: Finished running node model.Projet_SAE_Belarbi_Delrive.stg_mutations
+[0m15:03:42.569303 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_locals_id_local.ee07695546
+[0m15:03:42.569495 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.Projet_SAE_Belarbi_Delrive.stg_mutations, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_locals_id_local.ee07695546)
+[0m15:03:42.569677 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_locals_id_local.ee07695546
+[0m15:03:42.577847 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_locals_id_local.ee07695546"
+[0m15:03:42.578529 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_locals_id_local.ee07695546
+[0m15:03:42.578922 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_locals_id_local.ee07695546
+[0m15:03:42.579125 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_lots_id_lot.210db57760
+[0m15:03:42.579316 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_locals_id_local.ee07695546, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_lots_id_lot.210db57760)
+[0m15:03:42.579506 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_lots_id_lot.210db57760
+[0m15:03:42.581317 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_lots_id_lot.210db57760"
+[0m15:03:42.581814 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_lots_id_lot.210db57760
+[0m15:03:42.582164 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_lots_id_lot.210db57760
+[0m15:03:42.582356 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_id_mutation.9358a5279a
+[0m15:03:42.582560 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_lots_id_lot.210db57760, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_id_mutation.9358a5279a)
+[0m15:03:42.582742 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_id_mutation.9358a5279a
+[0m15:03:42.586100 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_id_mutation.9358a5279a"
+[0m15:03:42.587690 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_id_mutation.9358a5279a
+[0m15:03:42.590037 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_id_mutation.9358a5279a
+[0m15:03:42.590257 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_valeur_fonciere.dccb770ea4
+[0m15:03:42.590480 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_id_mutation.9358a5279a, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_valeur_fonciere.dccb770ea4)
+[0m15:03:42.590667 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_valeur_fonciere.dccb770ea4
+[0m15:03:42.592765 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_valeur_fonciere.dccb770ea4"
+[0m15:03:42.593271 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_valeur_fonciere.dccb770ea4
+[0m15:03:42.593612 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_valeur_fonciere.dccb770ea4
+[0m15:03:42.593810 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_id_nat_cult.30b807c2ea
+[0m15:03:42.594095 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_mutations_valeur_fonciere.dccb770ea4, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_id_nat_cult.30b807c2ea)
+[0m15:03:42.594285 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_id_nat_cult.30b807c2ea
+[0m15:03:42.596110 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_id_nat_cult.30b807c2ea"
+[0m15:03:42.596635 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_id_nat_cult.30b807c2ea
+[0m15:03:42.597011 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_id_nat_cult.30b807c2ea
+[0m15:03:42.597219 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.cf3c8607d9
+[0m15:03:42.597428 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_id_nat_cult.30b807c2ea, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.cf3c8607d9)
+[0m15:03:42.597605 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.cf3c8607d9
+[0m15:03:42.602307 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.cf3c8607d9"
+[0m15:03:42.602872 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.cf3c8607d9
+[0m15:03:42.603661 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.cf3c8607d9
+[0m15:03:42.603863 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_id_parcelle.4c312f5d71
+[0m15:03:42.604071 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.cf3c8607d9, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_id_parcelle.4c312f5d71)
+[0m15:03:42.605815 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_id_parcelle.4c312f5d71
+[0m15:03:42.608039 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_id_parcelle.4c312f5d71"
+[0m15:03:42.608601 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_id_parcelle.4c312f5d71
+[0m15:03:42.609010 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_id_parcelle.4c312f5d71
+[0m15:03:42.609266 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_mutation.d60bb78c70
+[0m15:03:42.609476 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_id_parcelle.4c312f5d71, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_mutation.d60bb78c70)
+[0m15:03:42.609661 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_mutation.d60bb78c70
+[0m15:03:42.611472 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_mutation.d60bb78c70"
+[0m15:03:42.612065 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_mutation.d60bb78c70
+[0m15:03:42.612421 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_mutation.d60bb78c70
+[0m15:03:42.612612 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_parcelle.7680797585
+[0m15:03:42.612795 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_mutation.d60bb78c70, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_parcelle.7680797585)
+[0m15:03:42.612980 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_parcelle.7680797585
+[0m15:03:42.614955 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_parcelle.7680797585"
+[0m15:03:42.615524 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_parcelle.7680797585
+[0m15:03:42.615898 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_parcelle.7680797585
+[0m15:03:42.616098 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_sous_parcelles_id_parcelle.0122f2868d
+[0m15:03:42.616308 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_parcelles_mutations_id_parcelle.7680797585, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_sous_parcelles_id_parcelle.0122f2868d)
+[0m15:03:42.616485 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_sous_parcelles_id_parcelle.0122f2868d
+[0m15:03:42.618253 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_sous_parcelles_id_parcelle.0122f2868d"
+[0m15:03:42.618777 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_sous_parcelles_id_parcelle.0122f2868d
+[0m15:03:42.619122 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_sous_parcelles_id_parcelle.0122f2868d
+[0m15:03:42.619308 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_types_local_id_type_loc.4e1d32f77d
+[0m15:03:42.619504 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_sous_parcelles_id_parcelle.0122f2868d, now test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_types_local_id_type_loc.4e1d32f77d)
+[0m15:03:42.619690 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_types_local_id_type_loc.4e1d32f77d
+[0m15:03:42.621662 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_types_local_id_type_loc.4e1d32f77d"
+[0m15:03:42.622228 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_types_local_id_type_loc.4e1d32f77d
+[0m15:03:42.622577 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_types_local_id_type_loc.4e1d32f77d
+[0m15:03:42.622777 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_locals_id_local.296fc8ee32
+[0m15:03:42.622989 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_not_null_projet_sae_dvf_types_local_id_type_loc.4e1d32f77d, now test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_locals_id_local.296fc8ee32)
+[0m15:03:42.623159 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_locals_id_local.296fc8ee32
+[0m15:03:42.626148 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_locals_id_local.296fc8ee32"
+[0m15:03:42.626679 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_locals_id_local.296fc8ee32
+[0m15:03:42.627033 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_locals_id_local.296fc8ee32
+[0m15:03:42.627224 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_lots_id_lot.a3e5c21eba
+[0m15:03:42.627419 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_locals_id_local.296fc8ee32, now test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_lots_id_lot.a3e5c21eba)
+[0m15:03:42.627585 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_lots_id_lot.a3e5c21eba
+[0m15:03:42.629349 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_lots_id_lot.a3e5c21eba"
+[0m15:03:42.629944 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_lots_id_lot.a3e5c21eba
+[0m15:03:42.630294 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_lots_id_lot.a3e5c21eba
+[0m15:03:42.630486 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_mutations_id_mutation.2403e6809f
+[0m15:03:42.630695 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_lots_id_lot.a3e5c21eba, now test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_mutations_id_mutation.2403e6809f)
+[0m15:03:42.630866 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_mutations_id_mutation.2403e6809f
+[0m15:03:42.634590 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_mutations_id_mutation.2403e6809f"
+[0m15:03:42.635119 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_mutations_id_mutation.2403e6809f
+[0m15:03:42.635471 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_mutations_id_mutation.2403e6809f
+[0m15:03:42.635661 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_id_nat_cult.377c6e26a0
+[0m15:03:42.635849 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_mutations_id_mutation.2403e6809f, now test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_id_nat_cult.377c6e26a0)
+[0m15:03:42.636030 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_id_nat_cult.377c6e26a0
+[0m15:03:42.638165 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_id_nat_cult.377c6e26a0"
+[0m15:03:42.638745 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_id_nat_cult.377c6e26a0
+[0m15:03:42.639146 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_id_nat_cult.377c6e26a0
+[0m15:03:42.639356 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.aca3420a16
+[0m15:03:42.639544 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_id_nat_cult.377c6e26a0, now test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.aca3420a16)
+[0m15:03:42.639720 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.aca3420a16
+[0m15:03:42.676245 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.aca3420a16"
+[0m15:03:42.677095 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.aca3420a16
+[0m15:03:42.677553 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.aca3420a16
+[0m15:03:42.677769 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_parcelles_id_parcelle.0d83003342
+[0m15:03:42.677973 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_natures_culture_speciales_id_nat_cult_spe.aca3420a16, now test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_parcelles_id_parcelle.0d83003342)
+[0m15:03:42.678156 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_parcelles_id_parcelle.0d83003342
+[0m15:03:42.680091 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_parcelles_id_parcelle.0d83003342"
+[0m15:03:42.680742 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_parcelles_id_parcelle.0d83003342
+[0m15:03:42.681096 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_parcelles_id_parcelle.0d83003342
+[0m15:03:42.681303 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_types_local_id_type_loc.a058ee4d7a
+[0m15:03:42.681528 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_parcelles_id_parcelle.0d83003342, now test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_types_local_id_type_loc.a058ee4d7a)
+[0m15:03:42.681718 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_types_local_id_type_loc.a058ee4d7a
+[0m15:03:42.686393 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_types_local_id_type_loc.a058ee4d7a"
+[0m15:03:42.686908 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_types_local_id_type_loc.a058ee4d7a
+[0m15:03:42.687913 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_types_local_id_type_loc.a058ee4d7a
+[0m15:03:42.690174 [debug] [Thread-1 (]: Began running node model.Projet_SAE_Belarbi_Delrive.my_second_dbt_model
+[0m15:03:42.690406 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.source_unique_projet_sae_dvf_types_local_id_type_loc.a058ee4d7a, now model.Projet_SAE_Belarbi_Delrive.my_second_dbt_model)
+[0m15:03:42.690588 [debug] [Thread-1 (]: Began compiling node model.Projet_SAE_Belarbi_Delrive.my_second_dbt_model
+[0m15:03:42.691741 [debug] [Thread-1 (]: Writing injected SQL for node "model.Projet_SAE_Belarbi_Delrive.my_second_dbt_model"
+[0m15:03:42.692233 [debug] [Thread-1 (]: Began executing node model.Projet_SAE_Belarbi_Delrive.my_second_dbt_model
+[0m15:03:42.692602 [debug] [Thread-1 (]: Finished running node model.Projet_SAE_Belarbi_Delrive.my_second_dbt_model
+[0m15:03:42.692815 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.not_null_my_first_dbt_model_id.5fb22c2710
+[0m15:03:42.693158 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.Projet_SAE_Belarbi_Delrive.my_second_dbt_model, now test.Projet_SAE_Belarbi_Delrive.not_null_my_first_dbt_model_id.5fb22c2710)
+[0m15:03:42.693419 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.not_null_my_first_dbt_model_id.5fb22c2710
+[0m15:03:42.695346 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.not_null_my_first_dbt_model_id.5fb22c2710"
+[0m15:03:42.696149 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.not_null_my_first_dbt_model_id.5fb22c2710
+[0m15:03:42.696518 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.not_null_my_first_dbt_model_id.5fb22c2710
+[0m15:03:42.696720 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.unique_my_first_dbt_model_id.16e066b321
+[0m15:03:42.696919 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.not_null_my_first_dbt_model_id.5fb22c2710, now test.Projet_SAE_Belarbi_Delrive.unique_my_first_dbt_model_id.16e066b321)
+[0m15:03:42.697092 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.unique_my_first_dbt_model_id.16e066b321
+[0m15:03:42.699175 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.unique_my_first_dbt_model_id.16e066b321"
+[0m15:03:42.699666 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.unique_my_first_dbt_model_id.16e066b321
+[0m15:03:42.700123 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.unique_my_first_dbt_model_id.16e066b321
+[0m15:03:42.700322 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.not_null_my_second_dbt_model_id.151b76d778
+[0m15:03:42.700503 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.unique_my_first_dbt_model_id.16e066b321, now test.Projet_SAE_Belarbi_Delrive.not_null_my_second_dbt_model_id.151b76d778)
+[0m15:03:42.700673 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.not_null_my_second_dbt_model_id.151b76d778
+[0m15:03:42.702681 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.not_null_my_second_dbt_model_id.151b76d778"
+[0m15:03:42.704110 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.not_null_my_second_dbt_model_id.151b76d778
+[0m15:03:42.704462 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.not_null_my_second_dbt_model_id.151b76d778
+[0m15:03:42.704651 [debug] [Thread-1 (]: Began running node test.Projet_SAE_Belarbi_Delrive.unique_my_second_dbt_model_id.57a0f8c493
+[0m15:03:42.704832 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.Projet_SAE_Belarbi_Delrive.not_null_my_second_dbt_model_id.151b76d778, now test.Projet_SAE_Belarbi_Delrive.unique_my_second_dbt_model_id.57a0f8c493)
+[0m15:03:42.705010 [debug] [Thread-1 (]: Began compiling node test.Projet_SAE_Belarbi_Delrive.unique_my_second_dbt_model_id.57a0f8c493
+[0m15:03:42.706932 [debug] [Thread-1 (]: Writing injected SQL for node "test.Projet_SAE_Belarbi_Delrive.unique_my_second_dbt_model_id.57a0f8c493"
+[0m15:03:42.707441 [debug] [Thread-1 (]: Began executing node test.Projet_SAE_Belarbi_Delrive.unique_my_second_dbt_model_id.57a0f8c493
+[0m15:03:42.707788 [debug] [Thread-1 (]: Finished running node test.Projet_SAE_Belarbi_Delrive.unique_my_second_dbt_model_id.57a0f8c493
+[0m15:03:42.708375 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m15:03:42.708551 [debug] [MainThread]: Connection 'list_projet_sae_dvf_dbt' was properly closed.
+[0m15:03:42.708696 [debug] [MainThread]: Connection 'test.Projet_SAE_Belarbi_Delrive.unique_my_second_dbt_model_id.57a0f8c493' was properly closed.
+[0m15:03:42.710406 [debug] [MainThread]: Command end result
+[0m15:03:42.769598 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m15:03:42.773437 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m15:03:42.777619 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\run_results.json
+[0m15:03:42.793940 [debug] [MainThread]: Acquiring new postgres connection 'generate_catalog'
+[0m15:03:42.794136 [info ] [MainThread]: Building catalog
+[0m15:03:42.802068 [debug] [ThreadPool]: Acquiring new postgres connection 'projet_sae_dvf.information_schema'
+[0m15:03:42.807634 [debug] [ThreadPool]: Using postgres connection "projet_sae_dvf.information_schema"
+[0m15:03:42.807870 [debug] [ThreadPool]: On projet_sae_dvf.information_schema: /* {"app": "dbt", "dbt_version": "1.11.4", "profile_name": "Projet_SAE_Belarbi_Delrive", "target_name": "dev", "connection_name": "projet_sae_dvf.information_schema"} */
+
+    
+    
+
+    select
+        'projet_sae_dvf' as table_database,
+        sch.nspname as table_schema,
+        tbl.relname as table_name,
+        case tbl.relkind
+            when 'v' then 'VIEW'
+            when 'm' then 'MATERIALIZED VIEW'
+            else 'BASE TABLE'
+        end as table_type,
+        tbl_desc.description as table_comment,
+        col.attname as column_name,
+        col.attnum as column_index,
+        pg_catalog.format_type(col.atttypid, col.atttypmod) as column_type,
+        col_desc.description as column_comment,
+        pg_get_userbyid(tbl.relowner) as table_owner
+
+    from pg_catalog.pg_namespace sch
+    join pg_catalog.pg_class tbl on tbl.relnamespace = sch.oid
+    join pg_catalog.pg_attribute col on col.attrelid = tbl.oid
+    left outer join pg_catalog.pg_description tbl_desc on (tbl_desc.objoid = tbl.oid and tbl_desc.objsubid = 0)
+    left outer join pg_catalog.pg_description col_desc on (col_desc.objoid = tbl.oid and col_desc.objsubid = col.attnum)
+    where ((upper(sch.nspname) = upper('dbt') and
+           upper(tbl.relname) = upper('my_first_dbt_model')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('mutations')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('parcelles_mutations')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('natures_culture_speciales')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('natures_culture')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('types_local')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('parcelles')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('lots')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('locals')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('sous_parcelles')) or (upper(sch.nspname) = upper('dbt') and
+           upper(tbl.relname) = upper('my_second_dbt_model')) or (upper(sch.nspname) = upper('dbt') and
+           upper(tbl.relname) = upper('stg_mutations')))
+      and not pg_is_other_temp_schema(sch.oid) -- not a temporary schema belonging to another session
+      and tbl.relpersistence in ('p', 'u') -- [p]ermanent table or [u]nlogged table. Exclude [t]emporary tables
+      and tbl.relkind in ('r', 'v', 'f', 'p', 'm') -- o[r]dinary table, [v]iew, [f]oreign table, [p]artitioned table, [m]aterialized view. Other values are [i]ndex, [S]equence, [c]omposite type, [t]OAST table
+      and col.attnum > 0 -- negative numbers are used for system columns such as oid
+      and not col.attisdropped -- column as not been dropped
+
+    order by
+        sch.nspname,
+        tbl.relname,
+        col.attnum
+[0m15:03:42.808084 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:03:42.923591 [debug] [ThreadPool]: SQL status: SELECT 35 in 0.115 seconds
+[0m15:03:42.925243 [debug] [ThreadPool]: On projet_sae_dvf.information_schema: ROLLBACK
+[0m15:03:42.935195 [debug] [ThreadPool]: On projet_sae_dvf.information_schema: Close
+[0m15:03:42.943885 [debug] [MainThread]: Wrote artifact CatalogArtifact to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\catalog.json
+[0m15:03:42.960673 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m15:03:42.962030 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m15:03:42.962253 [info ] [MainThread]: Catalog written to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\catalog.json
+[0m15:03:42.962950 [debug] [MainThread]: Command `dbt docs generate` succeeded at 15:03:42.962872 after 1.17 seconds
+[0m15:03:42.963153 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m15:03:42.963301 [debug] [MainThread]: Connection 'projet_sae_dvf.information_schema' was properly closed.
+[0m15:03:42.963469 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCDE920710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCE020F6A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DCE020F540>]}
+[0m15:03:42.963657 [debug] [MainThread]: Flushing usage events
+[0m15:03:43.459500 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:03:44.789692 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E967E34980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E968F5BED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E968F5BB10>]}
+
+
+============================== 15:03:44.792329 | 4910bc85-64f3-4c87-8058-d42d82e96992 ==============================
+[0m15:03:44.792329 [info ] [MainThread]: Running with dbt=1.11.4
+[0m15:03:44.792753 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt docs serve', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m15:03:44.890646 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '4910bc85-64f3-4c87-8058-d42d82e96992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96826D5B0>]}
+[0m15:03:44.927454 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '4910bc85-64f3-4c87-8058-d42d82e96992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E968DAF9B0>]}
+[0m15:06:47.306804 [error] [MainThread]: Encountered an error:
+
+[0m15:06:47.310787 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\cli\main.py", line 307, in docs_serve
+    results = task.run()
+  File "C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\task\docs\serve.py", line 29, in run
+    httpd.serve_forever()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\socketserver.py", line 235, in serve_forever
+    ready = selector.select(poll_interval)
+  File "C:\Program Files\Python313\Lib\selectors.py", line 314, in select
+    r, w, _ = self._select(self._readers, self._writers, [], timeout)
+              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\selectors.py", line 305, in _select
+    r, w, x = select.select(r, w, w, timeout)
+              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+[0m15:06:47.311567 [debug] [MainThread]: Command `dbt docs serve` failed at 15:06:47.311477 after 182.60 seconds
+[0m15:06:47.311839 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96A34C650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96A34C550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96A27FC50>]}
+[0m15:06:47.312061 [debug] [MainThread]: Flushing usage events
+[0m15:06:47.806762 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:07:04.395713 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024821D24980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024822E57ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024822E57B10>]}
+
+
+============================== 15:07:04.398328 | 6d7fcd25-9556-4ee4-b17f-fbb5a6ae175b ==============================
+[0m15:07:04.398328 [info ] [MainThread]: Running with dbt=1.11.4
+[0m15:07:04.398858 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt test --select stg_mutations', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\149331\\SAE_Retro_Database\\Projet_SAE_Belarbi_Delrive\\logs'}
+[0m15:07:04.521245 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '6d7fcd25-9556-4ee4-b17f-fbb5a6ae175b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000248221715B0>]}
+[0m15:07:04.567104 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '6d7fcd25-9556-4ee4-b17f-fbb5a6ae175b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024822C9F460>]}
+[0m15:07:04.567719 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m15:07:04.672627 [debug] [MainThread]: checksum: 092b177ba87eb6bb3c55954c38aa57900eebac336561eb9ee32218428aa81d43, vars: {}, profile: , target: , version: 1.11.4
+[0m15:07:04.769447 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m15:07:04.769691 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m15:07:04.769845 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m15:07:04.794890 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '6d7fcd25-9556-4ee4-b17f-fbb5a6ae175b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024823EB3C50>]}
+[0m15:07:04.850847 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m15:07:04.853558 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m15:07:04.873443 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '6d7fcd25-9556-4ee4-b17f-fbb5a6ae175b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000248245918B0>]}
+[0m15:07:04.875058 [info ] [MainThread]: Found 3 models, 22 data tests, 9 sources, 464 macros
+[0m15:07:04.875457 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6d7fcd25-9556-4ee4-b17f-fbb5a6ae175b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000248245F0F30>]}
+[0m15:07:04.876361 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m15:07:04.877580 [debug] [MainThread]: Command end result
+[0m15:07:04.892805 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\manifest.json
+[0m15:07:04.894146 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\semantic_manifest.json
+[0m15:07:04.896083 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\149331\SAE_Retro_Database\Projet_SAE_Belarbi_Delrive\target\run_results.json
+[0m15:07:04.896475 [debug] [MainThread]: Command `dbt test` succeeded at 15:07:04.896411 after 0.58 seconds
+[0m15:07:04.896668 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002482459BC70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024822E20710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024824554AD0>]}
+[0m15:07:04.896880 [debug] [MainThread]: Flushing usage events
+[0m15:07:05.385946 [debug] [MainThread]: An error was encountered while trying to flush usage events
