@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: DSA
+    schema: DSA
+    description: "Data Staging Area - données brutes immobilières"
+    tables:
+      - name: parcelles
+      - name: locals
+      - name: localisations
+      - name: communes
+      - name: departements
+      - name: mutations
+      - name: parcelles_mutations
+      - name: lots
+      - name: sous_parcelles
+      - name: types_local
+      - name: natures_culture
+      - name: natures_culture_speciales
+      - name: nature_mutation
+
+  - name: ods
+    schema: ODS
+    description: "Operational Data Store"
+    tables:
+      - name: ods_parcelle
+      - name: ods_local
+      - name: ods_bien_immobilier
+      - name: ods_localisation
+      - name: ods_commune
+      - name: ods_departement
+      - name: ods_transaction
+      - name: ods_ref_type_local
+      - name: ods_ref_nature_mutation

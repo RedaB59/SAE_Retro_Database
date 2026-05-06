@@ -1,0 +1,29 @@
+[0m10:46:13.051718 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DE45338AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DE4647FED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DE4647FB10>]}
+
+
+============================== 10:46:13.055287 | 454e4646-492f-4778-95fc-6a3414b13d82 ==============================
+[0m10:46:13.055287 [info ] [MainThread]: Running with dbt=1.11.4
+[0m10:46:13.055674 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\149331\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt init Data_Retro_Belarbi_Delrive', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m10:46:13.068559 [debug] [MainThread]: Starter project path: C:\Users\149331\SAE_Retro_Database\.venv\Lib\site-packages\dbt\include\starter_project
+[0m10:46:13.075861 [info ] [MainThread]: 
+Your new dbt project "Data_Retro_Belarbi_Delrive" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m10:46:13.076610 [info ] [MainThread]: Setting up your profile.
+[0m10:50:25.977407 [info ] [MainThread]: Profile Data_Retro_Belarbi_Delrive written to C:\Users\149331\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m10:50:25.978251 [debug] [MainThread]: Command `dbt init` succeeded at 10:50:25.978161 after 253.00 seconds
+[0m10:50:25.978537 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DE476256E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DE47658710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DE462D7AC0>]}
+[0m10:50:25.978783 [debug] [MainThread]: Flushing usage events
+[0m10:50:26.556708 [debug] [MainThread]: An error was encountered while trying to flush usage events

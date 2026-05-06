@@ -1,0 +1,12 @@
+Data_Retro_Belarbi_Delrive:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: vps-c63213e3.vps.ovh.net
+      port: 5432
+      user: reda_belarbi
+      password: eB3JGPbhmtkhmrTytcsBwHNsurkgdUWT
+      dbname: projet_sae_dvf
+      schema: DSA
+      threads: 4

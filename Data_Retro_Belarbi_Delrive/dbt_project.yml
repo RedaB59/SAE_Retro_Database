@@ -1,0 +1,33 @@
+name: Data_Retro_Belarbi_Delrive
+version: '1.0.0'
+config-version: 2
+
+profile: Data_Retro_Belarbi_Delrive
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  Data_Retro_Belarbi_Delrive:
+    staging:
+      +materialized: view
+      +schema: DSA
+    intermediate:
+      +materialized: view
+      +schema: DSA
+    ods:
+      +materialized: incremental
+      +schema: ODS
+    marts:
+      dimensions:
+        +materialized: table
+        +schema: DWH
+      facts:
+        +materialized: incremental
+        +schema: DWH
