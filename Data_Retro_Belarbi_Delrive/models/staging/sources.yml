@@ -19,9 +19,9 @@ sources:
       - name: natures_culture_speciales
       - name: nature_mutation
 
-  - name: ods
-    schema: ODS
-    description: "Operational Data Store"
+  - name: Intermediate
+    schema: Intermediate
+    description: "Intermediate Data Store"
     tables:
       - name: ods_parcelle
       - name: ods_local

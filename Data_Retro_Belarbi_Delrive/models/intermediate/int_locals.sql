@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized = 'incremental',
+    unique_key   = 'id_local'
+  )
+}}
+
 with locals_avec_lots as (
     select
         l.id_local,
@@ -7,7 +14,7 @@ with locals_avec_lots as (
         l.nombre_piece_principal,
         count(lo.id_lot)            as nb_lots
     from {{ ref('stg_locals') }}    l
-    left join {{ ref('stg_lots') }} lo 
+    left join {{ ref('stg_lots') }} lo
         on lo.id_local = l.id_local
     group by
         l.id_local,
@@ -31,3 +38,10 @@ select
         nb_lots::text
     ))                              as hash_contenu
 from locals_avec_lots
+
+{% if is_incremental() %}
+where not exists (
+    select 1 from {{ this }} t
+    where t.id_local = id_local
+)
+{% endif %}

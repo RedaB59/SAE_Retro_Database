@@ -19,15 +19,15 @@ models:
       +materialized: view
       +schema: DSA
     intermediate:
-      +materialized: view
+      +materialized: table
       +schema: DSA
     ods:
       +materialized: incremental
-      +schema: ODS
+      +schema: Intermediate
     marts:
       dimensions:
         +materialized: table
-        +schema: DWH
+        +schema: Datawarehouse
       facts:
         +materialized: incremental
-        +schema: DWH
+        +schema: Datawarehouse

@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: localisation
+    description: "Dimension localisation avec historique SCD2"
+    columns:
+      - name: sk_localisation
+        description: "Clé de substitution (surrogate key)"
+        tests:
+          - unique
+          - not_null
+      - name: id_localisation
+        tests:
+          - not_null
+      - name: est_courant
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+      - name: date_debut
+        tests:
+          - not_null
+      - name: date_fin
+        tests:
+          - not_null
+
+  - name: type_mutation
+    description: "Dimension type de mutation avec historique SCD2"
+    columns:
+      - name: sk_type_mutation
+        description: "Clé de substitution (surrogate key)"
+        tests:
+          - unique
+          - not_null
+      - name: id_type_mutation
+        tests:
+          - not_null
+      - name: est_courant
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+      - name: date_debut
+        tests:
+          - not_null
+      - name: date_fin
+        tests:
+          - not_null
+
+  - name: fact_mutation
+    description: "Table de faits des mutations immobilières avec historique complet SCD2"
+    columns:
+      - name: sk_mutation
+        description: "Clé de substitution (surrogate key = ods_sk de ods_transaction)"
+        tests:
+          - unique
+          - not_null
+      - name: id_mutation
+        tests:
+          - not_null
+      - name: valeur_fonciere
+        tests:
+          - not_null
+      - name: id_type_mutation
+        tests:
+          - not_null
+      - name: id_date
+        tests:
+          - not_null
+      - name: est_courant
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+      - name: date_debut
+        tests:
+          - not_null
+      - name: date_fin
+        tests:
+          - not_null
