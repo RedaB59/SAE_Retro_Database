@@ -1,91 +1,68 @@
 \documentclass[12pt,a4paper]{article}
 
-% ─── Encodage et langue ───────────────────────────────────────────────────────
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
-
-% ─── Mise en page ─────────────────────────────────────────────────────────────
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.8cm, right=2.8cm]{geometry}
 \usepackage{setspace}
 \onehalfspacing
 
-% ─── Typographie ──────────────────────────────────────────────────────────────
 \usepackage{lmodern}
 \usepackage{microtype}
 
-% ─── Couleurs et graphiques ───────────────────────────────────────────────────
 \usepackage[dvipsnames,table]{xcolor}
 \definecolor{dbtgreen}{HTML}{00855A}
-\definecolor{lightgray}{HTML}{F5F5F5}
 \definecolor{codebg}{HTML}{F0F0F0}
 \definecolor{headercolor}{HTML}{2C3E50}
 \definecolor{accentblue}{HTML}{2980B9}
 \definecolor{warncolor}{HTML}{E67E22}
 
-% ─── Code source ──────────────────────────────────────────────────────────────
+% ── Code ──────────────────────────────────────────────────────────────────────
 \usepackage{listings}
 \lstdefinelanguage{SQL}{
-  keywords={SELECT, FROM, WHERE, JOIN, LEFT, RIGHT, INNER, ON, AS,
-            WITH, GROUP, BY, ORDER, HAVING, DISTINCT, COUNT, SUM, AVG,
-            MIN, MAX, CASE, WHEN, THEN, ELSE, END, INSERT, UPDATE, SET,
-            CREATE, TABLE, INDEX, AND, OR, NOT, IN, EXISTS, IS, NULL,
-            COALESCE, ROUND, EXTRACT, CURRENT_TIMESTAMP, CURRENT_DATE,
-            TRUE, FALSE, INTO, VALUES, DROP, ALTER, ADD, PARTITION,
-            OVER, ROW_NUMBER, MD5, CONCAT_WS, PERCENTILE_CONT, WITHIN,
-            ANALYZE, TRUNCATE, BETWEEN, ANY},
+  keywords={SELECT,FROM,WHERE,JOIN,LEFT,ON,AS,WITH,GROUP,BY,ORDER,HAVING,
+            DISTINCT,COUNT,SUM,AVG,MIN,MAX,CASE,WHEN,THEN,ELSE,END,INSERT,
+            UPDATE,SET,CREATE,TABLE,AND,OR,NOT,IN,NULL,COALESCE,ROUND,
+            EXTRACT,TRUE,FALSE,INTO,VALUES,OVER,ROW_NUMBER,MD5,CONCAT_WS,
+            PERCENTILE_CONT,WITHIN,ANALYZE,BETWEEN,ANY,NULLIF},
   keywordstyle=\color{accentblue}\bfseries,
-  morestring=[b]',
-  stringstyle=\color{Mahogany},
-  morecomment=[l]{--},
-  commentstyle=\color{gray}\itshape,
-  sensitive=false
+  morestring=[b]', stringstyle=\color{Mahogany},
+  morecomment=[l]{--}, commentstyle=\color{gray}\itshape, sensitive=false
+}
+\lstdefinelanguage{Python}{
+  keywords={import,from,def,class,return,if,else,for,try,except,finally,
+            with,as,in,not,and,or,True,False,None,print,len,str,int,float},
+  keywordstyle=\color{accentblue}\bfseries,
+  morestring=[b]', morestring=[b]", stringstyle=\color{Mahogany},
+  morecomment=[l]{\#}, commentstyle=\color{gray}\itshape, sensitive=true
 }
 \lstdefinelanguage{Jinja}{
-  keywords={config, ref, source, is_incremental, if, endif, macro,
-            endmacro, materialized, unique_key, post_hook, on_schema_change},
+  keywords={config,ref,source,is_incremental,if,endif,macro,endmacro,
+            materialized,unique_key,post_hook,on_schema_change},
   keywordstyle=\color{dbtgreen}\bfseries,
-  morestring=[b]',
-  stringstyle=\color{Mahogany},
-  morecomment=[l]{--},
-  commentstyle=\color{gray}\itshape,
-  sensitive=false
+  morestring=[b]', stringstyle=\color{Mahogany},
+  morecomment=[l]{--}, commentstyle=\color{gray}\itshape, sensitive=false
 }
 \lstset{
-  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\footnotesize,
   backgroundcolor=\color{codebg},
-  frame=single,
-  rulecolor=\color{gray!40},
-  breaklines=true,
-  breakatwhitespace=true,
-  showstringspaces=false,
-  numbers=left,
-  numberstyle=\tiny\color{gray},
-  numbersep=6pt,
-  tabsize=4,
-  captionpos=b,
-  xleftmargin=1em,
-  xrightmargin=0.5em
+  frame=single, rulecolor=\color{gray!40},
+  breaklines=true, showstringspaces=false,
+  numbers=left, numberstyle=\tiny\color{gray}, numbersep=5pt,
+  tabsize=2, captionpos=b, xleftmargin=1em
 }
 
-% ─── Tableaux ─────────────────────────────────────────────────────────────────
+% ── Tableaux ──────────────────────────────────────────────────────────────────
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{multirow}
 \usepackage{longtable}
 
-% ─── Liens et méta-données ────────────────────────────────────────────────────
+% ── Liens ─────────────────────────────────────────────────────────────────────
 \usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=headercolor,
-  urlcolor=accentblue,
-  citecolor=dbtgreen,
-  pdftitle={Rapport SAE -- Pipeline DVF avec historisation SCD2},
-  pdfauthor={Belarbi -- Delrive}
-}
+\hypersetup{colorlinks=true, linkcolor=headercolor, urlcolor=accentblue,
+  pdftitle={Rapport SAE -- Pipeline DVF}, pdfauthor={Belarbi -- Delrive}}
 
-% ─── En-têtes et pieds de page ────────────────────────────────────────────────
+% ── En-têtes ──────────────────────────────────────────────────────────────────
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
@@ -94,7 +71,7 @@
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
-% ─── Divers ───────────────────────────────────────────────────────────────────
+% ── Divers ────────────────────────────────────────────────────────────────────
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{tcolorbox}
@@ -103,63 +80,58 @@
 \usepackage{caption}
 \usepackage{float}
 
-\titleformat{\section}{\Large\bfseries\color{headercolor}}{}{0em}
-  {\colorbox{headercolor!10}{\parbox{\dimexpr\linewidth-2\fboxsep}{\thesection\quad #1}}}
-\titleformat{\subsection}{\large\bfseries\color{headercolor}}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries\color{dbtgreen}}{\thesubsubsection}{1em}{}
+% Titres simples sans colorbox
+\titleformat{\section}
+  {\Large\bfseries\color{headercolor}}{\thesection}{0.8em}{}[\vspace{-0.3em}\rule{\linewidth}{0.6pt}]
+\titleformat{\subsection}
+  {\large\bfseries\color{headercolor}}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{dbtgreen}}{\thesubsubsection}{0.8em}{}
 
-\newtcolorbox{infobox}[1][]{
-  colback=accentblue!5, colframe=accentblue!50,
-  title=#1, fonttitle=\bfseries\small, breakable
-}
-\newtcolorbox{successbox}[1][]{
-  colback=dbtgreen!5, colframe=dbtgreen!50,
-  title=#1, fonttitle=\bfseries\small, breakable
-}
-\newtcolorbox{warnbox}[1][]{
-  colback=warncolor!5, colframe=warncolor!50,
-  title=#1, fonttitle=\bfseries\small, breakable
+\newtcolorbox{infobox}[1][]{colback=accentblue!5, colframe=accentblue!50,
+  title=#1, fonttitle=\bfseries\small, breakable}
+\newtcolorbox{successbox}[1][]{colback=dbtgreen!5, colframe=dbtgreen!50,
+  title=#1, fonttitle=\bfseries\small, breakable}
+\newtcolorbox{warnbox}[1][]{colback=warncolor!5, colframe=warncolor!50,
+  title=#1, fonttitle=\bfseries\small, breakable}
+
+% Commande placeholder image
+\newcommand{\imageph}[2]{%
+  \begin{tcolorbox}[colback=gray!8, colframe=gray!40,
+    title={\small\textit{Image à insérer : #1}}, fonttitle=\bfseries\small]
+    \centering\textcolor{gray}{\texttt{#2}}\\[0.3em]
+    \textcolor{gray!60}{\small (exporter depuis l'outil de modélisation / capture d'écran)}
+  \end{tcolorbox}
 }
 
 \newcommand{\dbt}{\textbf{\textcolor{dbtgreen}{dbt}}}
 \newcommand{\sql}[1]{\texttt{\small #1}}
-\newcommand{\schema}[1]{\textbf{\texttt{#1}}}
 
 % ══════════════════════════════════════════════════════════════════════════════
 \begin{document}
 
-% ─── Page de titre ────────────────────────────────────────────────────────────
 \begin{titlepage}
-  \centering
-  \vspace*{1cm}
-  {\Huge\bfseries\color{headercolor} Rapport de Projet SAE\par}
-  \vspace{0.5cm}
-  {\large\color{gray}\rule{0.6\linewidth}{1pt}\par}
-  \vspace{1cm}
-  {\LARGE\bfseries Pipeline de données immobilières\par}
-  \vspace{0.3cm}
-  {\Large\textcolor{dbtgreen}{Demandes de Valeurs Foncières (DVF)}\par}
-  \vspace{0.3cm}
-  {\large Entrepôt de données avec historisation complète SCD2\par}
-  {\large via \dbt{} et PostgreSQL\par}
-  \vspace{1.5cm}
-  {\large\color{gray}\rule{0.6\linewidth}{0.5pt}\par}
-  \vspace{1cm}
+  \centering\vspace*{1.5cm}
+  {\Huge\bfseries\color{headercolor} Rapport de Projet SAE\par}\vspace{0.4cm}
+  {\color{gray}\rule{0.6\linewidth}{1pt}\par}\vspace{0.8cm}
+  {\LARGE\bfseries Pipeline de données immobilières\par}\vspace{0.2cm}
+  {\Large\textcolor{dbtgreen}{Demandes de Valeurs Foncières (DVF)}\par}\vspace{0.2cm}
+  {\large Entrepôt de données -- Historisation SCD2 -- Dashboard interactif\par}
+  \vspace{1.2cm}
+  {\color{gray}\rule{0.5\linewidth}{0.4pt}\par}\vspace{0.8cm}
   \begin{tabular}{rl}
-    \textbf{Auteurs :}  & Reda Belarbi \& Delrive \\[0.4em]
-    \textbf{Projet :}   & \texttt{Data\_Retro\_Belarbi\_Delrive} \\[0.4em]
-    \textbf{Stack :}    & dbt 1.11.4 · PostgreSQL · Python/Streamlit \\[0.4em]
-    \textbf{Date :}     & Mai 2026 \\
+    \textbf{Auteurs :}  & Reda Belarbi \& Delrive \\[0.3em]
+    \textbf{Projet :}   & \texttt{Data\_Retro\_Belarbi\_Delrive} \\[0.3em]
+    \textbf{Stack :}    & dbt 1.11 · PostgreSQL · Python · Streamlit \\[0.3em]
+    \textbf{Date :}     & Juin 2026 \\
   \end{tabular}
   \vspace{1.5cm}
 
   \begin{tcolorbox}[colback=dbtgreen!8, colframe=dbtgreen!40, width=0.85\linewidth]
     \centering\small
-    Ce rapport décrit l'architecture et l'implémentation complète du pipeline
-    ETL/ELT réalisé dans le cadre du projet SAE. Il couvre les quatre couches
-    de transformation des données brutes DVF jusqu'à l'entrepôt de données
-    analytiques avec historisation SCD2 intégrale, ainsi que le tableau de bord
-    interactif de visualisation.
+    Ce rapport présente le pipeline complet DVF : injection Python des données
+    brutes, quatre couches de transformation dbt avec historisation SCD2,
+    et tableau de bord Streamlit interactif.
   \end{tcolorbox}
   \vfill
 \end{titlepage}
@@ -168,350 +140,267 @@
 \newpage
 
 % ══════════════════════════════════════════════════════════════════════════════
-\section{Introduction et contexte}
+\section{Introduction et architecture générale}
 % ══════════════════════════════════════════════════════════════════════════════
 
-\subsection{Présentation du sujet}
+\subsection{Contexte et objectif}
 
 Ce projet porte sur la construction d'un \textbf{pipeline de données complet}
-pour l'analyse des mutations immobilières en France, à partir des données
-publiques \textbf{DVF} (\textit{Demandes de Valeurs Foncières}). Ces données,
-publiées par la Direction Générale des Finances Publiques (DGFiP), recensent
-l'ensemble des transactions immobilières (ventes, échanges, adjudications,
-expropriations, etc.) réalisées sur le territoire français depuis 2014.
+pour analyser les mutations immobilières françaises à partir des données
+publiques \textbf{DVF} (\textit{Demandes de Valeurs Foncières}), publiées
+par la DGFiP. L'objectif est de transformer un fichier CSV brut en un
+\textbf{entrepôt analytique} avec historisation SCD2 intégrale.
 
-L'objectif est de transformer ces données brutes en un \textbf{entrepôt de
-données analytiques} permettant d'effectuer des analyses sur les prix de
-l'immobilier, les surfaces, les types de biens et leur localisation
-géographique, \textit{tout en conservant l'historique complet des
-modifications} grâce à une implémentation rigoureuse du SCD de type 2.
-
-\subsection{Technologies utilisées}
-
-\begin{table}[H]
-  \centering
-  \begin{tabularx}{\linewidth}{lX}
-    \toprule
-    \textbf{Technologie} & \textbf{Rôle} \\
-    \midrule
-    \textbf{PostgreSQL} (OVH VPS) & Base de données relationnelle hébergeant tous les schémas \\
-    \dbt{} v1.11.4              & Outil de transformation SQL (Data Build Tool) \\
-    \texttt{dbt-postgres} v1.10.0 & Adaptateur PostgreSQL pour dbt \\
-    \texttt{dbt\_utils} $\geq$1.0 & Package de macros utilitaires \\
-    \textbf{Python 3.13}        & Scripts de visualisation et connexion BDD \\
-    \textbf{Streamlit 1.57}     & Framework de tableau de bord interactif \\
-    \textbf{Plotly 6.x}         & Bibliothèque de graphiques interactifs \\
-    \textbf{Git}                & Versionnement du code \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Technologies employées dans le projet}
-\end{table}
-
-\subsection{Architecture globale en couches}
-
-Le pipeline suit une architecture en \textbf{quatre couches successives}, chacune
-matérialisée dans un schéma PostgreSQL dédié :
-
-\begin{figure}[H]
-  \centering
-  \begin{tcolorbox}[colback=gray!5, colframe=gray!30, width=0.9\linewidth]
-    \centering\ttfamily\small
-    \textbf{[Tables sources DVF brutes]}\\
-    $\downarrow$ Lecture par vues\\
-    \textcolor{accentblue}{\textbf{Staging}} (schéma \texttt{DSA} -- vues)
-    \quad\textit{typage, renommage}\\
-    $\downarrow$\\
-    \textcolor{accentblue}{\textbf{Intermédiaire}} (schéma \texttt{DSA} -- tables)
-    \quad\textit{jointures, agrégations, hash MD5}\\
-    $\downarrow$\\
-    \textcolor{dbtgreen}{\textbf{ODS}} (schéma \texttt{Intermediate} -- incrémental + SCD2)
-    \quad\textit{persistance historisée}\\
-    $\downarrow$\\
-    \textcolor{Mahogany}{\textbf{DWH Marts}} (schéma \texttt{Datawarehouse} -- étoile + SCD2)
-    \quad\textit{analytique}\\
-    $\downarrow$\\
-    \textbf{Tableau de bord Streamlit/Plotly}
-    \quad\textit{visualisation interactive}
-  \end{tcolorbox}
-  \caption{Architecture en couches du pipeline de données}
-\end{figure}
+\subsection{Architecture en couches}
 
 \begin{table}[H]
   \centering
   \rowcolors{2}{gray!10}{white}
   \begin{tabularx}{\linewidth}{llXl}
     \toprule
-    \textbf{Couche}       & \textbf{Schéma PG}    & \textbf{Rôle}                          & \textbf{Mat.} \\
+    \textbf{Étape} & \textbf{Schéma PG} & \textbf{Rôle} & \textbf{Outil} \\
     \midrule
-    Staging               & \texttt{DSA}          & Typage, renommage, nettoyage           & Vue \\
-    Intermédiaire         & \texttt{DSA}          & Jointures, agrégations, hash MD5       & Table \\
-    ODS                   & \texttt{Intermediate} & Stockage incrémental + SCD2            & Incrémental \\
-    DWH Marts             & \texttt{Datawarehouse}& Dimensions + faits + SCD2 complet     & Incr./Table \\
+    Injection DSA    & \texttt{DSA}           & Normalisation CSV $\to$ 13 tables    & Python \\
+    Staging          & \texttt{DSA}           & Typage, renommage, vues              & dbt \\
+    Intermédiaire    & \texttt{DSA}           & Jointures, agrégations, hash MD5     & dbt \\
+    ODS              & \texttt{Intermediate}  & Stockage incrémental + SCD2          & dbt \\
+    DWH Marts        & \texttt{Datawarehouse} & Schéma en étoile + SCD2              & dbt \\
+    Dashboard        & ---                    & Visualisation interactive            & Streamlit \\
     \bottomrule
   \end{tabularx}
-  \caption{Résumé des couches, schémas PostgreSQL et matérialisations}
+  \caption{Architecture complète du pipeline}
 \end{table}
 
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Configuration du projet dbt}
-% ══════════════════════════════════════════════════════════════════════════════
-
-\subsection{Fichier \texttt{dbt\_project.yml}}
-
-\begin{lstlisting}[language=Jinja, caption={dbt\_project.yml -- Configuration principale}]
-name: Data_Retro_Belarbi_Delrive
-version: '1.0.0'
-profile: Data_Retro_Belarbi_Delrive
-
-model-paths: ["models"]
-macro-paths:  ["macros"]
-
-models:
-  Data_Retro_Belarbi_Delrive:
-    staging:
-      +materialized: view
-      +schema: DSA
-    intermediate:
-      +materialized: table
-      +schema: DSA
-    ods:
-      +materialized: incremental
-      +schema: Intermediate
-    marts:
-      dimensions:
-        +materialized: table
-        +schema: Datawarehouse
-      facts:
-        +materialized: incremental
-        +schema: Datawarehouse
-\end{lstlisting}
-
-\begin{infobox}[Choix de matérialisation par couche]
-\begin{itemize}[noitemsep]
-  \item \textbf{Staging $\to$ Vue} : pas de duplication des données sources.
-  \item \textbf{Intermédiaire $\to$ Table} : les jointures et agrégations coûteuses sont persistées. Important : ces tables doivent être incluses dans chaque \texttt{dbt run} upstream.
-  \item \textbf{ODS $\to$ Incrémental} : seules les nouvelles versions sont insérées, le SCD2 gère l'historique.
-  \item \textbf{Marts/faits $\to$ Incrémental} : la table de faits grandit sans retraiter l'historique.
-\end{itemize}
-\end{infobox}
-
-\subsection{Macro \texttt{generate\_schema\_name} -- Isolation des schémas}
-
-\begin{lstlisting}[language=Jinja, caption={macros/generate\_schema\_name.sql}]
-{% macro generate_schema_name(custom_schema_name, node) -%}
-    {%- if custom_schema_name is none -%}
-        {{ target.schema }}
-    {%- else -%}
-        {{ custom_schema_name | trim }}
-    {%- endif -%}
-{%- endmacro %}
-\end{lstlisting}
-
-Sans cette surcharge, dbt préfixerait le schéma cible devant le nom de schéma
-personnalisé (\texttt{DSA\_DSA} au lieu de \texttt{DSA}). La macro garantit que
-les modèles atterrissent exactement dans \texttt{DSA}, \texttt{Intermediate}
-et \texttt{Datawarehouse}.
-
-\subsection{Déclaration des sources (\texttt{sources.yml})}
-
-\begin{lstlisting}[language=Jinja, caption={models/staging/sources.yml -- extrait}]
-sources:
-  - name: DSA
-    schema: DSA
-    tables:
-      - name: mutations
-      - name: parcelles
-      - name: sous_parcelles
-      - name: locals
-      - name: lots
-      - name: localisations
-      - name: communes
-      - name: departements
-      - name: parcelles_mutations
-      - name: nature_mutation
-      ...
-
-  - name: Intermediate
-    schema: Intermediate
-    tables:
-      - name: ods_transaction
-      - name: ods_bien_immobilier
-      ...
-\end{lstlisting}
-
-\begin{infobox}[Important : \texttt{source()} vs \texttt{ref()}]
-La macro \texttt{source()} ne crée \textbf{pas de dépendance DAG} dans dbt.
-Tous les modèles ODS référencés depuis les marts utilisent \texttt{ref()} et
-non \texttt{source()} pour garantir l'ordre d'exécution correct. Sans cette
-précaution, les marts pourraient s'exécuter avant les tables ODS.
-\end{infobox}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Couche Staging -- Typage et nettoyage}
-% ══════════════════════════════════════════════════════════════════════════════
-
-\subsection{Rôle et principes}
-
-La couche Staging a des responsabilités limitées et précises :
-\begin{itemize}[noitemsep]
-  \item Caster les types (\sql{::int}, \sql{::date}, \sql{::decimal}, etc.)
-  \item Renommer les colonnes si nécessaire
-  \item Ajouter un horodatage de chargement (\sql{\_loaded\_at})
-  \item \textbf{Aucune logique métier}
-\end{itemize}
-
-Tous les modèles staging sont matérialisés en \textbf{vues} pour éviter
-la duplication des données sources.
-
-\subsection{Modèle clé : \texttt{stg\_mutations}}
-
-\begin{lstlisting}[language=SQL, caption={models/staging/stg\_mutations.sql}]
-select
-    id_mutation,
-    numero_mutation::int          as numero_mutation,
-    date_mutation::date           as date_mutation,
-    id_nature_mutation::int       as id_nature_mutation,
-    valeur_fonciere::bigint       as valeur_fonciere,
-    date_chargement,
-    current_timestamp             as _loaded_at
-from {{ source('DSA', 'mutations') }}
-\end{lstlisting}
-
-La colonne \sql{date\_chargement} est essentielle : elle permet de gérer le
-pattern \textbf{append-only} décrit en section~\ref{sec:appendonly}.
-
-\subsection{Récapitulatif des modèles staging}
+\subsection{Justification des outils}
 
 \begin{table}[H]
   \centering
   \rowcolors{2}{gray!10}{white}
   \begin{tabularx}{\linewidth}{lX}
     \toprule
-    \textbf{Modèle} & \textbf{Transformations principales} \\
+    \textbf{Outil} & \textbf{Justification} \\
     \midrule
-    \texttt{stg\_mutations}           & Cast types, ajout \sql{date\_chargement} \\
-    \texttt{stg\_locals}              & Cast \sql{surface\_batiment::int}, \sql{nombre\_piece\_principal::int} \\
-    \texttt{stg\_localisations}       & Cast \sql{latitude/longitude::decimal(10,7)} \\
-    \texttt{stg\_lots}                & Cast \sql{lot\_surface\_carrez::decimal(10,2)} \\
-    \texttt{stg\_parcelles}           & Renommage \sql{code\_nature\_culture\_speciale} \\
-    \texttt{stg\_communes}            & Sélection colonnes, \sql{\_loaded\_at} \\
-    \texttt{stg\_departements}        & Sélection colonnes, \sql{\_loaded\_at} \\
-    \texttt{stg\_sous\_parcelles}     & Cast \sql{surface\_terrain::decimal(12,2)} \\
-    \texttt{stg\_parcelles\_mutations}& Table de liaison mutation $\leftrightarrow$ parcelle \\
-    \texttt{stg\_nature\_mutation}    & Cast \sql{id\_nat\_mut::int} \\
-    \texttt{stg\_types\_local}        & Cast \sql{id\_type\_loc::int} \\
+    \textbf{PostgreSQL} (OVH VPS)
+      & Support natif de \sql{PERCENTILE\_CONT}, \sql{width\_bucket},
+        \sql{generate\_series}, index partiels, transactions ACID.
+        Hébergement partagé sur VPS pour le travail collaboratif. \\
+    \dbt{} v1.11
+      & Transformation SQL-first avec gestion automatique du DAG,
+        matérialisation (vue/table/incrémental), tests de qualité
+        intégrés et documentation. Évite les scripts ETL Python complexes. \\
+    \textbf{Python + pandas}
+      & Lecture du CSV brut, dédoublonnage, génération des clés
+        composites, insertion en lot via \sql{execute\_values}. \\
+    \textbf{Streamlit + Plotly}
+      & Dashboard interactif en pur Python sans frontend JS.
+        Plotly supporte choroplèthes, treemaps, timelines Gantt
+        et heatmaps. Cache \sql{@st.cache\_data} pour les performances. \\
     \bottomrule
   \end{tabularx}
-  \caption{Récapitulatif des modèles staging}
+  \caption{Technologies utilisées et justification}
 \end{table}
 
 % ══════════════════════════════════════════════════════════════════════════════
-\section{Couche Intermédiaire -- Logique métier}
+\section{Source de données DVF}
 % ══════════════════════════════════════════════════════════════════════════════
 
-\subsection{Rôle}
+\subsection{Format du fichier CSV}
 
-La couche Intermédiaire applique la logique métier : jointures multi-entités,
-agrégations, calcul du hash MD5 pour la détection de changements. Elle produit
-des \textbf{tables persistées} servant de base à la couche ODS.
+Les données DVF sont publiées en open data sur \texttt{data.gouv.fr}.
+Le fichier CSV est \textbf{dénormalisé} : une ligne contient simultanément
+les informations de mutation, parcelle, local, lots et adresse.
 
-\subsection{\texttt{int\_transactions} -- Gestion du pattern append-only}
-\label{sec:appendonly}
+\begin{table}[H]
+  \centering
+  \rowcolors{2}{gray!10}{white}
+  \begin{tabularx}{\linewidth}{llX}
+    \toprule
+    \textbf{Groupe} & \textbf{Colonnes principales} & \textbf{Description} \\
+    \midrule
+    Transaction  & \texttt{id\_mutation}, \texttt{date\_mutation},
+                   \texttt{valeur\_fonciere}, \texttt{nature\_mutation}
+                 & Identifiant, date notariée, prix €, type \\
+    Parcelle     & \texttt{id\_parcelle}, \texttt{code\_nature\_culture},
+                   \texttt{surface\_terrain}
+                 & Référence cadastrale, nature sol, surface m² \\
+    Bâtiment     & \texttt{code\_type\_local}, \texttt{surface\_reelle\_bati},
+                   \texttt{nombre\_pieces\_principales}, \texttt{nombre\_lots}
+                 & Type bâtiment, surface, pièces, lots \\
+    Lots         & \texttt{lot1\_numero} \ldots \texttt{lot5\_numero},
+                   \texttt{lot1\_surface\_carrez} \ldots \texttt{lot5\_surface\_carrez}
+                 & Jusqu'à 5 lots en colonnes larges (\textit{wide format}) \\
+    Adresse      & \texttt{adresse\_code\_voie}, \texttt{adresse\_nom\_voie},
+                   \texttt{latitude}, \texttt{longitude}
+                 & Code FANTOIR, coordonnées WGS84 \\
+    Commune      & \texttt{code\_commune}, \texttt{nom\_commune},
+                   \texttt{code\_departement}, \texttt{code\_postal}
+                 & Référentiels géographiques INSEE \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Groupes de colonnes du fichier CSV DVF}
+\end{table}
 
-La table source \sql{DSA.mutations} est en mode \textbf{append-only} : au lieu
-de mettre à jour les lignes existantes, chaque version d'une mutation est
-ajoutée comme une nouvelle ligne avec un horodatage \sql{date\_chargement}. Ce
-choix architectural permet de conserver toutes les versions successives d'une
-mutation dans la source.
+\begin{warnbox}[Problèmes du format dénormalisé]
+\begin{itemize}[noitemsep]
+  \item \textbf{Redondance} : commune et département répétés pour chaque ligne d'une même mutation.
+  \item \textbf{Lots en colonnes larges} : 5 lots encodés en \texttt{lot1\_*} à \texttt{lot5\_*} au lieu d'une relation one-to-many.
+  \item \textbf{Clés manquantes} : \texttt{id\_adresse} et \texttt{id\_local} n'existent pas dans le CSV -- à générer.
+\end{itemize}
+\end{warnbox}
 
-\begin{lstlisting}[language=SQL, caption={models/intermediate/int\_transactions.sql}]
-with mutations_brutes as (
-    select
-        m.id_mutation,
-        m.numero_mutation,
-        m.date_mutation,
-        m.id_nature_mutation,
-        m.valeur_fonciere,
-        pm.id_parcelle,
-        row_number() over (
-            partition by m.id_mutation
-            order by m.date_chargement desc   -- derniere version en premier
-        ) as rn
-    from {{ ref('stg_mutations') }}           m
-    join {{ ref('stg_parcelles_mutations') }} pm
-        on pm.id_mutation = m.id_mutation
-),
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Injection des données dans la DSA (Python ETL)}
+% ══════════════════════════════════════════════════════════════════════════════
 
-mutations_latest as (
-    select * from mutations_brutes where rn = 1   -- une seule ligne par mutation
-),
+\subsection{Modèle logique de données (MLD)}
 
-mutations_aggregees as (
-    select
-        id_mutation, numero_mutation, date_mutation, id_nature_mutation,
-        valeur_fonciere,
-        count(distinct id_parcelle)   as nb_parcelle,
-        min(id_parcelle)              as id_parcelle_principale
-    from mutations_latest
-    group by id_mutation, numero_mutation, date_mutation,
-             id_nature_mutation, valeur_fonciere
-)
+Le MLD cible comporte 13 tables relationnelles organisées autour de la
+table \texttt{mutations}.
 
-select
-    ma.id_mutation, ma.numero_mutation, ma.date_mutation,
-    ma.id_nature_mutation, ma.valeur_fonciere,
-    ma.nb_parcelle, ma.id_parcelle_principale,
-    sp.id_adresse,
-    md5(concat_ws('|',
-        ma.id_mutation, ma.date_mutation::text,
-        ma.valeur_fonciere::text, ma.id_parcelle_principale
-    )) as hash_contenu
-from mutations_aggregees             ma
-left join {{ ref('stg_sous_parcelles') }} sp
-    on sp.id_parcelle = ma.id_parcelle_principale
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{DSA.png}
+  \caption{Modèle Logique de Données -- schéma relationnel DSA}
+\end{figure}
+
+\subsection{Lecture du CSV et nettoyage}
+
+\begin{lstlisting}[language=Python, caption={Lecture du fichier CSV DVF}]
+df = pd.read_csv("dvf.csv", dtype=str, sep=",")
+df = df.where(pd.notnull(df), None)  # NaN -> None (NULL SQL)
 \end{lstlisting}
 
-\begin{infobox}[Déduplication par \texttt{ROW\_NUMBER}]
-La fonction \sql{ROW\_NUMBER() OVER (PARTITION BY id\_mutation ORDER BY
-date\_chargement DESC)} sélectionne uniquement la \textbf{version la plus
-récente} de chaque mutation depuis la source. Sans cette déduplication,
-une mutation ayant deux versions dans \sql{DSA.mutations} produirait des
-doublons dans toutes les couches aval.
+\begin{infobox}[\texttt{dtype=str} : pourquoi ?]
+Lire tout comme chaîne évite l'inférence incorrecte de types (ex.\ code postal
+\texttt{"01000"} converti en entier \texttt{1000}). Les casts sont délégués à
+la couche Staging dbt.
 \end{infobox}
 
-\subsection{\texttt{int\_parcelles} -- Parcelles enrichies}
+\subsection{Normalisation en 13 tables}
 
-\begin{lstlisting}[language=SQL, caption={models/intermediate/int\_parcelles.sql (extrait)}]
-select
-    p.id_parcelle, p.ancien_id_parcelle,
-    p.code_nature_culture, p.code_nature_culture_spe,
-    sp.surface_terrain,   -- vient de sous_parcelles
-    sp.id_adresse,
-    md5(concat_ws('|', p.id_parcelle, p.code_nature_culture,
-        p.code_nature_culture_spe, sp.surface_terrain::text)) as hash_contenu
-from {{ ref('stg_parcelles') }}       p
-left join {{ ref('stg_sous_parcelles') }} sp
-    on sp.id_parcelle = p.id_parcelle
-\end{lstlisting}
+\begin{lstlisting}[language=Python, caption={Exemples de normalisation}]
+# Departements : dedoublonnage simple
+df_departements = df[["code_departement"]].drop_duplicates().dropna()
 
-\subsection{\texttt{int\_locals} -- Locaux avec comptage des lots}
+# nature_mutation : generation d'un id sequentiel
+df_nm = df[["nature_mutation"]].drop_duplicates().dropna().reset_index(drop=True)
+df_nm["id_nat_mut"] = df_nm.index + 1
+nat_mut_map = dict(zip(df_nm["nature_mutation"], df_nm["id_nat_mut"]))
 
-\begin{lstlisting}[language=SQL, caption={models/intermediate/int\_locals.sql (extrait)}]
-with locals_avec_lots as (
-    select
-        l.id_local, l.id_parcelle, l.code_type_local,
-        l.surface_batiment, l.nombre_piece_principal,
-        count(lo.id_lot) as nb_lots
-    from {{ ref('stg_locals') }}  l
-    left join {{ ref('stg_lots') }} lo on lo.id_local = l.id_local
-    group by l.id_local, l.id_parcelle, l.code_type_local,
-             l.surface_batiment, l.nombre_piece_principal
+# id_adresse : cle generee par concatenation (reproductible)
+df_loc_raw["id_adresse"] = (
+    df_loc_raw["code_commune"] + "_" +
+    df_loc_raw["adresse_code_voie"] + "_" +
+    df_loc_raw["adresse_numero"].fillna("0")
 )
-select *,
-    md5(concat_ws('|', id_local, code_type_local::text,
-        surface_batiment::text, nb_lots::text)) as hash_contenu
-from locals_avec_lots
+
+# Lots : pivot wide -> tall (lot1_* a lot5_* -> une ligne par lot)
+lots_frames = []
+for i in range(1, 6):
+    tmp = df[["id_mutation","id_parcelle",
+              f"lot{i}_numero", f"lot{i}_surface_carrez"]].dropna(subset=[f"lot{i}_numero"])
+    tmp = tmp.rename(columns={f"lot{i}_numero": "id_lot",
+                               f"lot{i}_surface_carrez": "lot_surface_carrez"})
+    lots_frames.append(tmp[["id_lot","id_local","lot_surface_carrez"]])
+df_lots = pd.concat(lots_frames).drop_duplicates(subset=["id_lot"])
 \end{lstlisting}
+
+\subsection{Insertion en base PostgreSQL}
+
+\begin{lstlisting}[language=Python, caption={Insertion batch avec ON CONFLICT DO NOTHING}]
+def inserer(cursor, table, df, colonnes):
+    donnees = [tuple(r) for r in df[colonnes].itertuples(index=False)]
+    execute_values(cursor,
+        f"INSERT INTO {table} ({', '.join(colonnes)}) VALUES %s ON CONFLICT DO NOTHING",
+        donnees)
+    return len(donnees)
+
+# Ordre respectant les cles etrangeres
+etapes = [
+    ("departements", df_dep, ["code_dep","lib_dep"]),
+    ("communes",     df_com, ["code_com","code_postal","lib_com","code_dep"]),
+    ("nature_mutation", df_nm, ["id_nat_mut","lib_nat_mut"]),
+    # ... 10 autres tables dans l'ordre FK
+    ("parcelles_mutations", df_pm, ["id_mutation","id_parcelle"]),
+]
+conn.autocommit = False
+for table, df_t, cols in etapes:
+    n = inserer(cur, table, df_t, cols)
+    print(f"  {table:<28} -> {n} lignes")
+conn.commit()
+\end{lstlisting}
+
+\begin{successbox}[Transaction globale + idempotence]
+Les 13 insertions sont dans une seule transaction (\texttt{autocommit = False}).
+\texttt{ON CONFLICT DO NOTHING} rend le script idempotent : rejouable sans erreur.
+\texttt{execute\_values} est ~100x plus rapide qu'un INSERT par ligne.
+\end{successbox}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Transformations dbt -- Staging et Intermédiaire}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Configuration \texttt{dbt\_project.yml}}
+
+\begin{lstlisting}[language=Jinja]
+models:
+  Data_Retro_Belarbi_Delrive:
+    staging:      {+materialized: view,        +schema: DSA}
+    intermediate: {+materialized: table,       +schema: DSA}
+    ods:          {+materialized: incremental, +schema: Intermediate}
+    marts:
+      dimensions: {+materialized: table,       +schema: Datawarehouse}
+      facts:      {+materialized: incremental, +schema: Datawarehouse}
+\end{lstlisting}
+
+La macro \texttt{generate\_schema\_name} est surchargée pour que dbt écrive
+dans \texttt{DSA}, \texttt{Intermediate} et \texttt{Datawarehouse} sans
+préfixe automatique.
+
+\subsection{Staging -- typage et renommage (vues)}
+
+Chaque modèle staging effectue uniquement : cast de types, renommage et
+horodatage \sql{\_loaded\_at}. Matérialisé en \textbf{vue} pour éviter la
+duplication de données.
+
+\begin{lstlisting}[language=SQL, caption={stg\_mutations.sql}]
+select id_mutation,
+       numero_mutation::int       as numero_mutation,
+       date_mutation::date        as date_mutation,
+       valeur_fonciere::bigint    as valeur_fonciere,
+       id_nature_mutation::int    as id_nature_mutation,
+       date_chargement,
+       current_timestamp          as _loaded_at
+from {{ source('DSA', 'mutations') }}
+\end{lstlisting}
+
+\subsection{Intermédiaire -- logique métier (tables)}
+
+\begin{lstlisting}[language=SQL, caption={int\_transactions.sql -- déduplication append-only}]
+with mutations_brutes as (
+    select m.*, pm.id_parcelle,
+           row_number() over (
+               partition by m.id_mutation
+               order by m.date_chargement desc  -- derniere version
+           ) as rn
+    from {{ ref('stg_mutations') }} m
+    join {{ ref('stg_parcelles_mutations') }} pm on pm.id_mutation = m.id_mutation
+),
+mutations_latest as (select * from mutations_brutes where rn = 1)
+
+select id_mutation, date_mutation, valeur_fonciere,
+       count(distinct id_parcelle) as nb_parcelle,
+       md5(concat_ws('|', id_mutation, date_mutation::text,
+                     valeur_fonciere::text)) as hash_contenu
+from mutations_latest
+group by id_mutation, date_mutation, id_nature_mutation, valeur_fonciere
+\end{lstlisting}
+
+\begin{infobox}[Pattern append-only + déduplication]
+La source \texttt{DSA.mutations} accumule les versions sans mise à jour.
+\texttt{ROW\_NUMBER() PARTITION BY id\_mutation ORDER BY date\_chargement DESC}
+isole la version la plus récente avant agrégation.
+\end{infobox}
 
 % ══════════════════════════════════════════════════════════════════════════════
 \section{Couche ODS -- Historisation SCD2}
@@ -519,675 +408,128 @@ from locals_avec_lots
 
 \subsection{Principe du SCD Type 2}
 
-Le \textbf{Slowly Changing Dimension de Type 2} (SCD2) conserve
-\textit{toutes les versions historiques} d'un enregistrement. Lorsqu'une donnée
-change, on n'écrase pas l'ancienne valeur : on \textbf{ferme l'ancienne version}
-et on \textbf{insère une nouvelle}.
-
 \begin{table}[H]
   \centering
   \rowcolors{2}{gray!10}{white}
   \begin{tabularx}{\linewidth}{lX}
     \toprule
-    \textbf{Colonne SCD2} & \textbf{Signification} \\
+    \textbf{Colonne} & \textbf{Signification} \\
     \midrule
-    \sql{ods\_sk}         & Clé de substitution = \sql{md5(id || '|' || hash\_contenu)} \\
-    \sql{hash\_contenu}   & MD5 des colonnes métier, sert à détecter les changements \\
-    \sql{date\_debut}     & Horodatage d'entrée en vigueur de la version \\
-    \sql{date\_fin}       & \sql{'9999-12-31'} si courant, sinon date de fermeture \\
-    \sql{est\_courant}    & \sql{true} pour la version active, \sql{false} pour les archives \\
-    \sql{statut\_*}       & \sql{'VALIDE'} ou \sql{'EXPIRE'} selon le cycle de vie \\
+    \sql{ods\_sk}       & \sql{md5(id || '|' || hash\_contenu)} -- clé de substitution par version \\
+    \sql{hash\_contenu} & MD5 des colonnes métier -- détecte les changements \\
+    \sql{date\_debut}   & Horodatage d'entrée en vigueur \\
+    \sql{date\_fin}     & \sql{'9999-12-31'} si courant, sinon date de fermeture \\
+    \sql{est\_courant}  & \sql{true} = version active \\
+    \sql{statut\_*}     & \sql{'VALIDE'} ou \sql{'EXPIRE'} \\
     \bottomrule
   \end{tabularx}
-  \caption{Colonnes de gestion SCD2 dans les tables ODS}
+  \caption{Colonnes SCD2 dans les tables ODS}
 \end{table}
 
-\subsection{Macro \texttt{scd2\_close\_records}}
+\subsection{Schéma de la couche ODS}
 
-\begin{lstlisting}[language=Jinja, caption={macros/scd2\_close\_records.sql}]
-{% macro scd2_close_records(target_table, id_col, hash_col,
-                             statut_col='statut') %}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{ODS.png}
+  \caption{Couche ODS (schéma \texttt{Intermediate}) -- tables et relations SCD2}
+\end{figure}
+
+\subsection{Macro \texttt{scd2\_close\_records} et modèle \texttt{ods\_transaction}}
+
+\begin{lstlisting}[language=Jinja, caption={Macro de fermeture SCD2 (post\_hook)}]
+{% macro scd2_close_records(target_table, id_col, hash_col, statut_col) %}
 UPDATE {{ target_table }} AS cible
-SET
-    date_fin         = current_timestamp,
-    est_courant      = false,
-    {{ statut_col }} = 'EXPIRE'
+SET date_fin = current_timestamp, est_courant = false, {{ statut_col }} = 'EXPIRE'
 WHERE cible.est_courant = true
 AND EXISTS (
-    SELECT 1 FROM {{ target_table }} nouvelle
-    WHERE nouvelle.{{ id_col }}   = cible.{{ id_col }}
-    AND   nouvelle.{{ hash_col }} != cible.{{ hash_col }}
-    AND   nouvelle.est_courant    = true
-    AND   nouvelle.date_debut     > cible.date_debut
+    SELECT 1 FROM {{ target_table }} n
+    WHERE n.{{ id_col }} = cible.{{ id_col }}
+      AND n.{{ hash_col }} != cible.{{ hash_col }}
+      AND n.est_courant = true AND n.date_debut > cible.date_debut
 );
 {% endmacro %}
 \end{lstlisting}
 
-\begin{successbox}[Fonctionnement en deux temps]
-\begin{enumerate}[noitemsep]
-  \item \textbf{INSERT} : la nouvelle version est insérée avec
-  \sql{est\_courant = true} et \sql{date\_fin = '9999-12-31'}.
-  \item \textbf{UPDATE} (post\_hook) : \sql{scd2\_close\_records} ferme
-  l'ancienne version en positionnant \sql{est\_courant = false},
-  \sql{date\_fin = now()} et \sql{statut = 'EXPIRE'}.
-\end{enumerate}
-La macro n'agit que si deux versions coexistent avec des hash différents
-(\sql{hash\_contenu != ...}), évitant les fermetures parasites.
-\end{successbox}
+\begin{lstlisting}[language=Jinja, caption={ods\_transaction.sql -- modèle incrémental SCD2}]
+{{ config(materialized='incremental', unique_key='ods_sk',
+  post_hook=["{{ scd2_close_records(this,'id_mutation','hash_contenu',
+                                    'statut_transaction') }}",
+             "CREATE INDEX IF NOT EXISTS idx_ods_trx_courant ON {{ this }}(est_courant)",
+             "ANALYZE {{ this }}"]) }}
 
-\subsection{\texttt{ods\_transaction} -- Transactions avec SCD2 complet}
-
-\begin{lstlisting}[language=Jinja, caption={models/ods/ods\_transaction.sql}]
-{{
-  config(
-    materialized = 'incremental',
-    unique_key   = 'ods_sk',
-    post_hook    = [
-      "{{ scd2_close_records(this, 'id_mutation', 'hash_contenu',
-                             'statut_transaction') }}",
-      "CREATE INDEX IF NOT EXISTS idx_ods_transaction_est_courant
-           ON {{ this }} (est_courant)",
-      "CREATE INDEX IF NOT EXISTS idx_ods_transaction_hash
-           ON {{ this }} (hash_contenu) WHERE est_courant = true",
-      "ANALYZE {{ this }}"
-    ]
-  )
-}}
-
-with source as (select * from {{ ref('int_transactions') }}),
-
-nouveaux as (
-    select
-        md5(concat_ws('|', s.id_mutation, s.hash_contenu)) as ods_sk,
-        gen_random_uuid()                   as id_transaction,
-        s.id_mutation,
-        s.id_parcelle_principale            as id_parcelle,
-        s.id_nature_mutation,
-        s.numero_mutation, s.date_mutation, s.valeur_fonciere,
-        s.nb_parcelle, s.id_adresse, s.hash_contenu,
-        current_timestamp                   as date_debut,
-        '9999-12-31 00:00:00'::timestamp    as date_fin,
-        true                                as est_courant,
-        'VALIDE'                            as statut_transaction,
-        current_timestamp                   as date_creation_ods,
-        1                                   as version
-    from source s
-    {% if is_incremental() %}
-    where not exists (
-        select 1 from {{ this }} t
-        where t.hash_contenu = s.hash_contenu and t.est_courant = true
-    )
-    {% endif %}
+select md5(concat_ws('|', s.id_mutation, s.hash_contenu)) as ods_sk,
+       gen_random_uuid()        as id_transaction,
+       s.id_mutation, s.valeur_fonciere, s.nb_parcelle, s.hash_contenu,
+       current_timestamp        as date_debut,
+       '9999-12-31'::timestamp  as date_fin,
+       true                     as est_courant,
+       'VALIDE'                 as statut_transaction
+from {{ ref('int_transactions') }} s
+{% if is_incremental() %}
+where not exists (
+    select 1 from {{ this }} t
+    where t.hash_contenu = s.hash_contenu and t.est_courant = true
 )
-select * from nouveaux
+{% endif %}
 \end{lstlisting}
 
-\begin{infobox}[Clé de substitution \sql{ods\_sk}]
-\sql{ods\_sk = md5(id\_mutation || '|' || hash\_contenu)} garantit l'unicité
-par \textbf{version} : deux versions d'une même mutation ont le même
-\sql{id\_mutation} mais des \sql{ods\_sk} différents. C'est cette clé qui est
-utilisée comme \sql{unique\_key} pour le chargement incrémental dbt.
-\end{infobox}
-
-\subsection{\texttt{ods\_parcelle} et \texttt{ods\_bien\_immobilier}}
-
-Ces modèles suivent le même pattern SCD2 : calcul d'un \sql{ods\_sk},
-filtre incrémental sur \sql{hash\_contenu}, et fermeture des anciens
-enregistrements via \sql{scd2\_close\_records} en post\_hook.
-
-\texttt{ods\_bien\_immobilier} est le modèle le plus complexe de la couche
-ODS : il consolide les informations de parcelle et de local en une entité
-unique de bien immobilier, permettant ainsi d'agréger les surfaces et le
-nombre de lots au niveau de la mutation dans le DWH.
-
-\subsection{Récapitulatif des modèles ODS}
-
-\begin{table}[H]
-  \centering
-  \rowcolors{2}{gray!10}{white}
-  \begin{tabularx}{\linewidth}{llX}
-    \toprule
-    \textbf{Modèle} & \textbf{SCD2} & \textbf{Particularité} \\
-    \midrule
-    \texttt{ods\_transaction}      & Oui & Hash sur id\_mutation + valeur\_fonciere + date \\
-    \texttt{ods\_parcelle}         & Oui & Hash sur nature culture + surface terrain \\
-    \texttt{ods\_local}            & Oui & Hash sur surface batiment + type + nb lots \\
-    \texttt{ods\_bien\_immobilier} & Oui & Consolidation parcelle + local \\
-    \texttt{ods\_localisation}     & Oui & Hash sur adresse + code commune \\
-    \texttt{ods\_commune}          & Oui & Hash sur code département + code postal \\
-    \texttt{ods\_departement}      & Oui & Hash sur libellé département \\
-    \texttt{ods\_ref\_nature\_mutation} & Oui & Référentiel des types de mutation \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Modèles ODS et implémentation SCD2}
-\end{table}
+\begin{successbox}[Fonctionnement en deux temps]
+\textbf{1. INSERT} -- nouvelle version insérée avec \sql{est\_courant=true} et \sql{date\_fin='9999-12-31'}.\\
+\textbf{2. UPDATE} (post\_hook) -- \texttt{scd2\_close\_records} ferme l'ancienne version
+dès que deux versions avec des hash différents coexistent.
+\end{successbox}
 
 % ══════════════════════════════════════════════════════════════════════════════
-\section{Couche DWH Marts -- Entrepôt analytique avec SCD2 intégral}
+\section{Couche DWH -- Entrepôt analytique}
 % ══════════════════════════════════════════════════════════════════════════════
 
-\subsection{Architecture en étoile avec historisation complète}
-
-Le DWH implémente un \textbf{schéma en étoile} autour de la table de faits
-\sql{fact\_mutation}. L'originalité de ce projet est que \textbf{toutes les
-versions historiques} des faits sont conservées, pas seulement la version
-courante -- ce qui va au-delà d'un DWH classique.
+\subsection{Schéma en étoile}
 
 \begin{figure}[H]
   \centering
-  \begin{tcolorbox}[colback=gray!5, colframe=gray!30, width=0.85\linewidth]
-    \centering\ttfamily\small
-    \textbf{dim\_temps} (id\_date)\\
-    \quad $\searrow$\\
-    \quad\quad \textbf{fact\_mutation} $\longleftarrow$ \textbf{localisation} (id\_location)\\
-    \quad $\nearrow$\\
-    \textbf{type\_mutation} (id\_type\_mutation)\\[0.3em]
-    \textit{Les trois tables portent des colonnes SCD2 :\\
-    sk (surrogate key), date\_debut, date\_fin, est\_courant}
-  \end{tcolorbox}
-  \caption{Schéma en étoile du DWH avec SCD2 intégral}
+  \includegraphics[width=\linewidth]{schema_dwh.png}
+  \caption{Schéma en étoile du \texttt{Datawarehouse} -- \texttt{fact\_mutation} + 3 dimensions}
 \end{figure}
 
-\subsection{\texttt{dim\_temps} -- Dimension temporelle}
+\subsection{Modèles du DWH}
 
-\begin{lstlisting}[language=SQL, caption={models/marts/dimensions/dim\_temps.sql}]
-{{ config(materialized='table') }}
+\textbf{\texttt{dim\_temps}} génère toutes les dates via \sql{generate\_series}
+avec année, mois, trimestre et libellés. Matérialisé en table statique.
 
-with spine as (
-    select generate_series(
-        '2000-01-01'::date, current_date, '1 day'::interval
-    )::date as date_
-)
-select
-    date_,
-    extract(year    from date_)::int        as annee,
-    extract(month   from date_)::int        as mois,
-    to_char(date_, 'TMMonth')               as lib_mois,
-    extract(quarter from date_)::int        as trimestre,
-    'T' || extract(quarter from date_)::int as lib_trimestre,
-    extract(dow from date_)::int            as jour_semaine
-from spine
-\end{lstlisting}
+\textbf{\texttt{type\_mutation}} et \textbf{\texttt{localisation}} propagent
+les colonnes SCD2 depuis l'ODS, permettant d'interroger l'état d'une
+dimension à n'importe quelle date (\sql{WHERE est\_courant=true} = état actuel).
 
-La fonction \sql{generate\_series} PostgreSQL génère automatiquement toutes
-les dates depuis le 1\textsuperscript{er} janvier 2000 jusqu'à aujourd'hui.
+\begin{lstlisting}[language=Jinja, caption={fact\_mutation.sql -- post\_hook de synchronisation SCD2}]
+{{ config(materialized='incremental', unique_key='sk_mutation',
+  post_hook=["""
+    UPDATE {{ this }} fm
+    SET est_courant = ot.est_courant, date_fin = ot.date_fin
+    FROM {{ ref('ods_transaction') }} ot
+    WHERE fm.id_mutation = ot.id_mutation
+      AND fm.sk_mutation = ot.ods_sk
+      AND fm.est_courant != ot.est_courant
+  """]) }}
 
-\subsection{\texttt{type\_mutation} -- Dimension avec SCD2}
-
-\begin{lstlisting}[language=Jinja, caption={models/marts/dimensions/type\_mutation.sql}]
-{{
-  config(
-    materialized = 'incremental',
-    unique_key   = 'sk_type_mutation'
-  )
-}}
-
-select
-    ref.ods_sk                  as sk_type_mutation,
-    ref.id_nat_mut::varchar     as id_type_mutation,
-    ref.lib_nat_mut             as libelle_type_mutation,
-    ref.date_debut,
-    ref.date_fin,
-    ref.est_courant
-from {{ ref('ods_ref_nature_mutation') }} ref
-
+select t.ods_sk            as sk_mutation,
+       t.id_mutation,
+       t.id_nature_mutation::varchar as id_type_mutation,
+       t.date_mutation      as id_date,
+       t.valeur_fonciere,
+       avg(b.surface_batiment)   as avg_surface_bat,
+       avg(b.surface_terrain)    as avg_surface_terrain,
+       t.nb_parcelle, t.date_debut, t.date_fin, t.est_courant
+from {{ ref('ods_transaction') }} t
+left join {{ ref('ods_bien_immobilier') }} b on b.id_parcelle=t.id_parcelle
+join {{ ref('dim_temps') }} dt on dt.date_=t.date_mutation
+join {{ ref('type_mutation') }} tm on tm.id_type_mutation=t.id_nature_mutation::varchar
 {% if is_incremental() %}
-where not exists (
-    select 1 from {{ this }} t
-    where t.sk_type_mutation = ref.ods_sk
-)
+where not exists (select 1 from {{ this }} fm where fm.sk_mutation=t.ods_sk)
 {% endif %}
+group by t.ods_sk, t.id_mutation, t.id_nature_mutation,
+         t.date_mutation, t.valeur_fonciere, t.nb_parcelle,
+         t.date_debut, t.date_fin, t.est_courant
 \end{lstlisting}
-
-\subsection{\texttt{localisation} -- Dimension géographique avec SCD2}
-
-\begin{lstlisting}[language=Jinja, caption={models/marts/dimensions/localisation.sql}]
-{{
-  config(
-    materialized = 'incremental',
-    unique_key   = 'sk_localisation'
-  )
-}}
-
-select
-    loc.ods_sk                  as sk_localisation,
-    loc.id_adresse::varchar     as id_localisation,
-    d.code_dep,
-    d.lib_dep                   as lib_departement,
-    left(d.code_dep, 2)         as reg,
-    d.lib_dep                   as lib_reg,
-    c.code_com,
-    c.lib_com,
-    c.code_postal,
-    loc.date_debut,
-    loc.date_fin,
-    loc.est_courant
-from {{ ref('ods_localisation') }}  loc
-join {{ ref('ods_commune') }}        c
-    on  c.code_com    = loc.code_com
-    and c.est_courant = true
-join {{ ref('ods_departement') }}    d
-    on  d.code_dep    = c.code_dep
-    and d.est_courant = true
-
-{% if is_incremental() %}
-where not exists (
-    select 1 from {{ this }} t
-    where t.sk_localisation = loc.ods_sk
-)
-{% endif %}
-\end{lstlisting}
-
-\begin{infobox}[Propagation du SCD2 dans les dimensions]
-Les dimensions \sql{localisation} et \sql{type\_mutation} propagent les
-colonnes SCD2 (\sql{date\_debut}, \sql{date\_fin}, \sql{est\_courant}) depuis
-l'ODS. Cela permet d'interroger l'état d'une dimension \textbf{à une date
-précise} : \sql{WHERE est\_courant = true} donne l'état actuel ;
-une condition sur \sql{date\_debut}/\sql{date\_fin} donne l'état historique.
-\end{infobox}
-
-\subsection{\texttt{fact\_mutation} -- Table de faits avec historisation complète}
-
-C'est la pièce centrale du DWH. Sa particularité est de conserver
-\textbf{toutes les versions historiques} d'une mutation (pas seulement la
-version courante), et de synchroniser son état avec l'ODS via un
-\sql{post\_hook}.
-
-\begin{lstlisting}[language=Jinja, caption={models/marts/facts/fact\_mutation.sql}]
-{{
-  config(
-    materialized     = 'incremental',
-    unique_key       = 'sk_mutation',
-    on_schema_change = 'sync_all_columns',
-    post_hook        = ["""
-      UPDATE {{ this }} fm
-      SET   est_courant = ot.est_courant,
-            date_fin    = ot.date_fin
-      FROM  {{ ref('ods_transaction') }} ot
-      WHERE fm.id_mutation  = ot.id_mutation
-        AND fm.sk_mutation  = ot.ods_sk
-        AND fm.est_courant != ot.est_courant
-    """]
-  )
-}}
-
-with transactions as (
-    select t.*
-    from {{ ref('ods_transaction') }} t
-    where t.statut_transaction in ('VALIDE', 'EXPIRE')  -- toutes les versions
-
-    {% if is_incremental() %}
-    and not exists (  -- n'insere pas ce qui est deja dans fact_mutation
-        select 1 from {{ this }} fm
-        where fm.sk_mutation = t.ods_sk
-    )
-    {% endif %}
-),
-
-biens_par_mutation as (
-    select
-        t.id_mutation,
-        avg(b.surface_batiment)   as avg_surface_bat,
-        avg(b.surface_terrain)    as avg_surface_terrain,
-        avg(b.nb_lots)            as avg_nb_local
-    from transactions t
-    left join {{ ref('ods_bien_immobilier') }} b
-        on  b.id_parcelle = t.id_parcelle
-        and b.est_courant = true
-    group by t.id_mutation
-)
-
-select
-    t.ods_sk                                    as sk_mutation,
-    t.id_mutation,
-    t.id_nature_mutation::varchar               as id_type_mutation,
-    t.date_mutation                             as id_date,
-    t.id_adresse::varchar                       as id_location,
-    t.valeur_fonciere,
-    round(bm.avg_surface_bat::numeric, 2)       as avg_surface_bat,
-    round(bm.avg_surface_terrain::numeric, 2)   as avg_surface_terrain,
-    t.nb_parcelle,
-    round(bm.avg_nb_local::numeric, 2)          as avg_nb_local,
-    t.date_debut,
-    t.date_fin,
-    t.est_courant,
-    t.date_creation_ods
-from transactions     t
-join biens_par_mutation bm
-    on  bm.id_mutation      = t.id_mutation
-join {{ ref('dim_temps') }}     dt
-    on  dt.date_            = t.date_mutation
-join {{ ref('type_mutation') }} tm
-    on  tm.id_type_mutation = t.id_nature_mutation::varchar
-    and tm.est_courant      = true
-\end{lstlisting}
-
-\begin{table}[H]
-  \centering
-  \rowcolors{2}{gray!10}{white}
-  \begin{tabularx}{\linewidth}{llX}
-    \toprule
-    \textbf{Colonne} & \textbf{Type} & \textbf{Description} \\
-    \midrule
-    \sql{sk\_mutation}         & varchar & Clé de substitution = \sql{ods\_sk} de l'ODS \\
-    \sql{id\_mutation}         & varchar & Identifiant métier de la mutation \\
-    \sql{id\_type\_mutation}   & varchar & FK $\to$ \sql{type\_mutation} \\
-    \sql{id\_date}             & date    & FK $\to$ \sql{dim\_temps} \\
-    \sql{id\_location}         & varchar & FK $\to$ \sql{localisation} \\
-    \sql{valeur\_fonciere}     & bigint  & Prix de vente en euros \\
-    \sql{avg\_surface\_bat}    & numeric & Surface bâtie moyenne (m\textsuperscript{2}) \\
-    \sql{avg\_surface\_terrain}& numeric & Surface du terrain moyen (m\textsuperscript{2}) \\
-    \sql{nb\_parcelle}         & int     & Nombre de parcelles dans la mutation \\
-    \sql{avg\_nb\_local}       & numeric & Nombre moyen de lots \\
-    \sql{date\_debut}          & timestamp & Début de validité de la version \\
-    \sql{date\_fin}            & timestamp & Fin de validité (\sql{'9999-12-31'} si courant) \\
-    \sql{est\_courant}         & bool    & \sql{true} = version active \\
-    \sql{date\_creation\_ods}  & timestamp & Horodatage de chargement ODS \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Colonnes de \texttt{fact\_mutation}}
-\end{table}
-
-\begin{successbox}[Synchronisation SCD2 via post\_hook]
-Le \sql{post\_hook} de \sql{fact\_mutation} est un \sql{UPDATE} qui propage
-les changements d'état depuis l'ODS. Quand \sql{scd2\_close\_records} ferme
-une version dans \sql{ods\_transaction} (\sql{est\_courant} passe à
-\sql{false}), le post\_hook détecte le décalage (\sql{fm.est\_courant !=
-ot.est\_courant}) et met à jour \sql{fact\_mutation} en conséquence.
-Ainsi la table de faits reste toujours cohérente avec l'ODS sans retraitement
-complet.
-\end{successbox}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Tests de qualité des données}
-% ══════════════════════════════════════════════════════════════════════════════
-
-\subsection{Tests génériques dbt (\texttt{schema.yml})}
-
-\begin{lstlisting}[language=Jinja, caption={models/marts/schema.yml -- extrait}]
-models:
-  - name: localisation
-    columns:
-      - name: sk_localisation
-        tests: [unique, not_null]
-      - name: est_courant
-        tests:
-          - accepted_values:
-              values: [true, false]
-      - name: date_debut
-        tests: [not_null]
-
-  - name: fact_mutation
-    columns:
-      - name: sk_mutation
-        tests: [unique, not_null]
-      - name: valeur_fonciere
-        tests: [not_null]
-      - name: est_courant
-        tests:
-          - accepted_values:
-              values: [true, false]
-\end{lstlisting}
-
-\subsection{Tests SCD2 personnalisés}
-
-Trois tests SQL personnalisés vérifient la cohérence de l'historisation.
-Ils retournent des lignes en cas d'échec (convention dbt).
-
-\subsubsection{Test 1 -- Unicité de la version courante (\texttt{scd2\_courant\_unique.sql})}
-
-\begin{lstlisting}[language=SQL, caption={tests/scd2\_courant\_unique.sql}]
--- Echec si une cle naturelle a plus d'un enregistrement courant
-select 'localisation' as modele,
-       id_localisation as cle_naturelle,
-       count(*) as nb_courants
-from {{ ref('localisation') }}
-where est_courant = true
-group by id_localisation
-having count(*) > 1
-
-union all
-
-select 'type_mutation', id_type_mutation, count(*)
-from {{ ref('type_mutation') }}
-where est_courant = true
-group by id_type_mutation
-having count(*) > 1
-\end{lstlisting}
-
-\subsubsection{Test 2 -- Cohérence des dates (\texttt{scd2\_dates\_coherentes.sql})}
-
-\begin{lstlisting}[language=SQL, caption={tests/scd2\_dates\_coherentes.sql}]
--- Echec si : courant avec date_fin != 9999-12-31,
---            ou clos avec date_fin = 9999-12-31,
---            ou date_debut >= date_fin
-select 'localisation', sk_localisation::text,
-       est_courant, date_debut, date_fin
-from {{ ref('localisation') }}
-where (est_courant = true  and date_fin::date != '9999-12-31')
-   or (est_courant = false and date_fin::date  = '9999-12-31')
-   or date_debut >= date_fin
-\end{lstlisting}
-
-\subsubsection{Test 3 -- Absence de chevauchement (\texttt{scd2\_pas\_chevauchement.sql})}
-
-\begin{lstlisting}[language=SQL, caption={tests/scd2\_pas\_chevauchement.sql}]
--- Echec si deux versions d'une meme cle naturelle se chevauchent
-select 'localisation', a.id_localisation,
-       a.sk_localisation::text, b.sk_localisation::text
-from {{ ref('localisation') }} a
-join {{ ref('localisation') }} b
-    on  a.id_localisation  = b.id_localisation
-    and a.sk_localisation != b.sk_localisation
-    and a.date_debut        < b.date_fin
-    and a.date_fin          > b.date_debut
-
-union all
-
-select 'type_mutation', a.id_type_mutation,
-       a.sk_type_mutation::text, b.sk_type_mutation::text
-from {{ ref('type_mutation') }} a
-join {{ ref('type_mutation') }} b
-    on  a.id_type_mutation  = b.id_type_mutation
-    and a.sk_type_mutation != b.sk_type_mutation
-    and a.date_debut         < b.date_fin
-    and a.date_fin           > b.date_debut
-\end{lstlisting}
-
-\begin{table}[H]
-  \centering
-  \rowcolors{2}{gray!10}{white}
-  \begin{tabularx}{\linewidth}{lX}
-    \toprule
-    \textbf{Test} & \textbf{Invariant vérifié} \\
-    \midrule
-    \texttt{scd2\_courant\_unique}      & Au plus 1 version \sql{est\_courant=true} par clé naturelle \\
-    \texttt{scd2\_dates\_coherentes}    & Cohérence \sql{date\_debut}/\sql{date\_fin}/\sql{est\_courant} \\
-    \texttt{scd2\_pas\_chevauchement}   & Pas de chevauchement de périodes de validité \\
-    Generic \sql{unique}                & Unicité des surrogate keys (\sql{sk\_*}) \\
-    Generic \sql{not\_null}             & Colonnes obligatoires non nulles \\
-    Generic \sql{accepted\_values}      & \sql{est\_courant} $\in \{true, false\}$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Récapitulatif des tests de qualité}
-\end{table}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Flux de données complet}
-% ══════════════════════════════════════════════════════════════════════════════
-
-\begin{longtable}{lllll}
-  \toprule
-  \textbf{Modèle} & \textbf{Couche} & \textbf{Schéma} & \textbf{Mat.} & \textbf{SCD2} \\
-  \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Modèle} & \textbf{Couche} & \textbf{Schéma} & \textbf{Mat.} & \textbf{SCD2} \\
-  \midrule
-  \endhead
-  \midrule\multicolumn{5}{r}{\small (suite...)}\\
-  \endfoot
-  \bottomrule
-  \endlastfoot
-  stg\_mutations            & Staging & DSA           & Vue    & Non \\
-  stg\_parcelles            & Staging & DSA           & Vue    & Non \\
-  stg\_sous\_parcelles      & Staging & DSA           & Vue    & Non \\
-  stg\_locals               & Staging & DSA           & Vue    & Non \\
-  stg\_lots                 & Staging & DSA           & Vue    & Non \\
-  stg\_localisations        & Staging & DSA           & Vue    & Non \\
-  stg\_communes             & Staging & DSA           & Vue    & Non \\
-  stg\_departements         & Staging & DSA           & Vue    & Non \\
-  stg\_parcelles\_mutations & Staging & DSA           & Vue    & Non \\
-  stg\_nature\_mutation     & Staging & DSA           & Vue    & Non \\
-  \midrule
-  int\_transactions         & Interm. & DSA           & Table  & Non \\
-  int\_parcelles            & Interm. & DSA           & Table  & Non \\
-  int\_locals               & Interm. & DSA           & Table  & Non \\
-  int\_localisations        & Interm. & DSA           & Table  & Non \\
-  \midrule
-  ods\_transaction          & ODS & Intermediate & Incr. & \textbf{Oui} \\
-  ods\_parcelle             & ODS & Intermediate & Incr. & \textbf{Oui} \\
-  ods\_local                & ODS & Intermediate & Incr. & \textbf{Oui} \\
-  ods\_bien\_immobilier     & ODS & Intermediate & Incr. & \textbf{Oui} \\
-  ods\_localisation         & ODS & Intermediate & Incr. & \textbf{Oui} \\
-  ods\_commune              & ODS & Intermediate & Incr. & \textbf{Oui} \\
-  ods\_departement          & ODS & Intermediate & Incr. & \textbf{Oui} \\
-  ods\_ref\_nature\_mutation& ODS & Intermediate & Incr. & \textbf{Oui} \\
-  \midrule
-  dim\_temps                & DWH & Datawarehouse & Table  & Non \\
-  type\_mutation            & DWH & Datawarehouse & Incr.  & \textbf{Oui} \\
-  localisation              & DWH & Datawarehouse & Incr.  & \textbf{Oui} \\
-  fact\_mutation            & DWH & Datawarehouse & Incr.  & \textbf{Oui} \\
-\end{longtable}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Tableau de bord interactif}
-% ══════════════════════════════════════════════════════════════════════════════
-
-\subsection{Architecture technique}
-
-Un tableau de bord interactif a été développé en Python avec
-\textbf{Streamlit} et \textbf{Plotly}, connecté directement au schéma
-\sql{Datawarehouse} via \textbf{psycopg2}.
-
-\begin{infobox}[Optimisation des performances]
-Toutes les requêtes SQL \textbf{agrègent les données côté serveur PostgreSQL}.
-On ne rapatrie jamais les 7 millions de lignes brutes de \sql{fact\_mutation}
-en Python -- seulement les résultats agrégés (quelques centaines de lignes).
-Des techniques spécifiques sont utilisées :
-\begin{itemize}[noitemsep]
-  \item \sql{width\_bucket()} pour l'histogramme (60 buckets calculés en SQL)
-  \item \sql{PERCENTILE\_CONT()} pour les quartiles (Q1/médiane/Q3 en SQL)
-  \item \sql{DATE\_TRUNC()} pour les agrégations temporelles
-  \item \sql{@st.cache\_data(ttl=120)} pour mettre en cache les résultats
-\end{itemize}
-\end{infobox}
-
-\subsection{Fonctionnalités}
-
-\textbf{Filtres globaux (sidebar) :}
-\begin{itemize}[noitemsep]
-  \item Plage de dates (date\_input avec bornes min/max depuis la BDD)
-  \item Type de mutation (multiselect)
-  \item Département (multiselect)
-  \item Tranche de valeur foncière (slider)
-\end{itemize}
-
-\textbf{KPIs dynamiques :} nombre de mutations, volume total (Md€),
-valeur moyenne (k€), valeur médiane (k€), nombre de communes.
-
-\textbf{5 onglets d'analyse :}
-
-\begin{table}[H]
-  \centering
-  \rowcolors{2}{gray!10}{white}
-  \begin{tabularx}{\linewidth}{lX}
-    \toprule
-    \textbf{Onglet} & \textbf{Visualisations} \\
-    \midrule
-    Temporel      & Barres (nb mutations), courbe (valeur moy.), area (volume), heatmap mois$\times$année \\
-    Géographique  & Top N départements/communes, treemap département$\to$commune \\
-    Par type      & Donut (répartition), barres (valeur moy.), area empilée temporelle \\
-    Distributions & Histogramme (buckets SQL), box plot quartiles, scatter surface/valeur, barres nb parcelles \\
-    SCD2          & Timeline Gantt des versions, courbe d'évolution de valeur, tableau détaillé \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Onglets et visualisations du tableau de bord}
-\end{table}
-
-\begin{lstlisting}[language=SQL, caption={Exemple : histogramme via width\_bucket PostgreSQL}]
-SELECT width_bucket(fm.valeur_fonciere, v_min, v_max, 60) AS bucket,
-       COUNT(*)           AS nb,
-       MIN(fm.valeur_fonciere) AS val_min,
-       MAX(fm.valeur_fonciere) AS val_max
-FROM "Datawarehouse"."fact_mutation" fm
-JOIN "Datawarehouse"."type_mutation" tm ...
-WHERE fm.est_courant = true AND ...
-GROUP BY bucket ORDER BY bucket
-\end{lstlisting}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Difficultés rencontrées et solutions}
-% ══════════════════════════════════════════════════════════════════════════════
-
-\begin{table}[H]
-  \centering
-  \rowcolors{2}{gray!10}{white}
-  \begin{tabularx}{\linewidth}{lX}
-    \toprule
-    \textbf{Problème} & \textbf{Solution apportée} \\
-    \midrule
-    \sql{UnicodeDecodeError 'charmap' 0x90} & Suppression d'un caractère \texttt{UTF-8} invalide (\texttt{$\leftarrow$}) dans \texttt{dbt\_project.yml} \\
-    Marts s'exécutent avant l'ODS & Remplacement de \sql{source()} par \sql{ref()} dans les marts pour créer les dépendances DAG \\
-    Disque plein sur le VPS & Suppression des anciens schémas (\texttt{DROP SCHEMA "ODS" CASCADE}) \\
-    Contrainte PK sur \texttt{DSA.mutations} & \texttt{ALTER TABLE ... DROP CONSTRAINT mutations\_pkey} pour le mode append-only \\
-    Colonne \texttt{date\_chargement} manquante & \texttt{ALTER TABLE ... ADD COLUMN IF NOT EXISTS date\_chargement} \\
-    \texttt{fact\_mutation} ne capturait que 1 version & Filtre \sql{statut\_transaction = 'VALIDE'} excluait les versions expirées (\texttt{'EXPIRE'}) -- corrigé en \sql{IN ('VALIDE', 'EXPIRE')} \\
-    Tables intermédiaires non rafraîchies & \texttt{dbt run --select int\_transactions+} pour inclure tous les upstream \\
-    \texttt{Decimal} PostgreSQL incompatible pandas & Conversion avec \sql{try: pd.to\_numeric(col) except: pass} dans \texttt{run\_query} \\
-    \texttt{errors=''ignore''} supprimé en pandas 3.x & Migration vers \sql{try/except} autour de \sql{pd.to\_numeric} \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Difficultés rencontrées et solutions}
-\end{table}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Conclusion}
-% ══════════════════════════════════════════════════════════════════════════════
-
-\subsection{Bilan technique}
-
-Ce projet implémente un pipeline de données complet, robuste et historisé
-pour les données DVF françaises. Les principales réalisations sont :
-
-\begin{enumerate}
-  \item \textbf{Architecture 4 couches} avec séparation stricte des
-  responsabilités : Staging (typage), Intermédiaire (logique métier),
-  ODS (historisation), DWH (analytique).
-
-  \item \textbf{SCD Type 2 généralisé} : implémenté sur 8 tables ODS
-  et propagé jusqu'au DWH (dimensions et table de faits), permettant
-  d'analyser l'état du marché immobilier à \textit{n'importe quelle date}.
-
-  \item \textbf{Pattern append-only} : la source DVF peut recevoir plusieurs
-  versions d'une même mutation ; la déduplication par \sql{ROW\_NUMBER()
-  OVER (PARTITION BY id\_mutation ORDER BY date\_chargement DESC)} isole
-  la version la plus récente.
-
-  \item \textbf{Synchronisation post\_hook} : \sql{fact\_mutation} se
-  synchronise automatiquement avec l'ODS sans retraitement complet grâce
-  à un \sql{UPDATE} ciblé en post\_hook.
-
-  \item \textbf{Tests SCD2 personnalisés} : trois tests SQL garantissent
-  l'intégrité de l'historique (unicité du courant, cohérence des dates,
-  absence de chevauchement).
-
-  \item \textbf{Tableau de bord interactif} : 5 axes d'analyse, filtres
-  dynamiques, toutes les requêtes agrégées côté PostgreSQL pour des
-  performances optimales sur 7+ millions de lignes.
-\end{enumerate}
-
-\subsection{Volumes de données}
 
 \begin{table}[H]
   \centering
@@ -1196,26 +538,225 @@ pour les données DVF françaises. Les principales réalisations sont :
     \toprule
     \textbf{Table} & \textbf{Lignes} & \textbf{Remarque} \\
     \midrule
-    \texttt{fact\_mutation}   & $\sim$7,2 M & Toutes versions SCD2 \\
-    \texttt{localisation}     & $\sim$5,3 M & Toutes versions SCD2 \\
-    \texttt{type\_mutation}   & 8            & Référentiel compact \\
-    \texttt{dim\_temps}       & $\sim$9 000  & 2000 $\to$ aujourd'hui \\
+    \texttt{fact\_mutation} & $\sim$7,2 M & Toutes versions SCD2 \\
+    \texttt{localisation}   & $\sim$5,3 M & Toutes versions SCD2 \\
+    \texttt{type\_mutation} & 8           & Référentiel \\
+    \texttt{dim\_temps}     & $\sim$9 000 & 2000 $\to$ aujourd'hui \\
     \bottomrule
   \end{tabularx}
-  \caption{Volumes de données dans le schéma Datawarehouse}
+  \caption{Volumes de données dans le Datawarehouse}
 \end{table}
 
-\subsection{Perspectives}
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Tests de qualité des données}
+% ══════════════════════════════════════════════════════════════════════════════
 
+\begin{table}[H]
+  \centering
+  \rowcolors{2}{gray!10}{white}
+  \begin{tabularx}{\linewidth}{lX}
+    \toprule
+    \textbf{Test} & \textbf{Invariant vérifié} \\
+    \midrule
+    \texttt{unique} + \texttt{not\_null} & Unicité et non-nullité des surrogate keys (\sql{sk\_*}) \\
+    \texttt{accepted\_values}            & \sql{est\_courant} $\in \{true, false\}$ \\
+    \texttt{scd2\_courant\_unique}       & Au plus 1 version \sql{est\_courant=true} par clé naturelle \\
+    \texttt{scd2\_dates\_coherentes}     & Cohérence \sql{date\_debut/date\_fin/est\_courant} \\
+    \texttt{scd2\_pas\_chevauchement}    & Pas de chevauchement de périodes de validité \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Tests de qualité dbt -- génériques et SCD2 personnalisés}
+\end{table}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Tableau de bord interactif}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Vue d'ensemble et filtres}
+
+Le dashboard est développé avec \textbf{Streamlit} et \textbf{Plotly},
+connecté directement au schéma \texttt{Datawarehouse} via psycopg2.
+Toutes les agrégations sont effectuées \textbf{côté PostgreSQL} -- on ne
+rapatrie jamais les 7M de lignes brutes, seulement les résultats agrégés.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dashboard_overview.png}
+  \caption{Vue générale du dashboard -- KPIs et sidebar de filtres}
+\end{figure}
+
+La sidebar propose cinq filtres appliqués à toutes les visualisations :
+\textbf{période} (date\_input avec bornes BDD),
+\textbf{type de mutation} (multiselect),
+\textbf{département} (multiselect),
+\textbf{commune} (multiselect \textit{dynamique} -- liste rechargée selon
+les départements sélectionnés via \texttt{@st.cache\_data(ttl=300)}),
+et \textbf{valeur foncière} (slider P0--P99 calculés en SQL).
+Six KPIs sont recalculés en temps réel : nb mutations, volume (Md€),
+valeur moyenne, médiane, nb communes, prix moyen/m².
+
+% ── Onglet 1 ──────────────────────────────────────────────────────────────────
+\subsection{Onglet 1 -- Temporel}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dashboard_temporel.png}
+  \caption{Onglet Temporel -- évolution des mutations dans le temps}
+\end{figure}
+
+L'onglet Temporel permet d'analyser l'évolution du marché immobilier avec
+une granularité sélectionnable : \textbf{mois}, \textbf{trimestre} ou
+\textbf{année} via \sql{DATE\_TRUNC}. Il contient :
 \begin{itemize}[noitemsep]
-  \item Intégration d'un orchestrateur (Airflow, Dagster) pour automatiser
-  les runs dbt quotidiens en réponse à de nouveaux fichiers DVF.
-  \item Enrichissement avec des données INSEE (revenus par commune,
-  démographie) pour des analyses socio-économiques.
-  \item Ajout d'une couche de géolocalisation (PostGIS) pour des
-  visualisations cartographiques.
-  \item Extension du tableau de bord avec une carte choroplèthe par
-  département.
+  \item Barres -- nombre de mutations par période
+  \item Courbe -- valeur foncière moyenne (€)
+  \item Area -- volume total transactionnel (€)
+  \item Heatmap mois $\times$ année -- densité des mutations (\sql{px.imshow})
 \end{itemize}
+
+% ── Onglet 2 ──────────────────────────────────────────────────────────────────
+\subsection{Onglet 2 -- Carte choroplèthe}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dashboard_carte.png}
+  \caption{Onglet Carte -- choroplèthe de France par département}
+\end{figure}
+
+La carte de France est générée via \sql{px.choropleth} en chargeant un
+GeoJSON public des départements français. Quatre métriques sont
+sélectionnables : nombre de mutations, valeur moyenne, volume total,
+prix moyen au m². Le survol affiche le détail par département.
+
+% ── Onglet 3 ──────────────────────────────────────────────────────────────────
+\subsection{Onglet 3 -- Géographique}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dashboard_geo.png}
+  \caption{Onglet Géographique -- top départements, communes et treemap}
+\end{figure}
+
+Cet onglet propose un classement géographique avec un slider \textit{Top N}
+(5 à 30 résultats) et trois métriques (nb mutations, valeur moy., volume) :
+\begin{itemize}[noitemsep]
+  \item Barres horizontales -- top N départements
+  \item Barres horizontales -- top N communes
+  \item Treemap département $\to$ commune (couleur = valeur moyenne)
+\end{itemize}
+
+% ── Onglet 4 ──────────────────────────────────────────────────────────────────
+\subsection{Onglet 4 -- Prix au m²}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dashboard_prix_m2.png}
+  \caption{Onglet Prix au m² -- analyse du prix/m² par type et département}
+\end{figure}
+
+Cet onglet est dédié à l'analyse du prix au m² (\sql{valeur\_fonciere /
+NULLIF(avg\_surface\_bat, 0)}) :
+\begin{itemize}[noitemsep]
+  \item Courbe -- évolution temporelle du prix/m² par type de mutation
+  \item Barres -- top 15 départements les plus chers (rouge)
+  \item Barres -- top 15 départements les plus abordables (vert)
+  \item Scatter -- surface bâtiment vs valeur foncière (échantillon 5 000 mutations)
+\end{itemize}
+
+% ── Onglet 5 ──────────────────────────────────────────────────────────────────
+\subsection{Onglet 5 -- Par type}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dashboard_type.png}
+  \caption{Onglet Par type -- répartition et évolution par nature de mutation}
+\end{figure}
+
+L'onglet Par type décompose les données selon la nature de la mutation
+(Vente, Adjudication, Échange, etc.) :
+\begin{itemize}[noitemsep]
+  \item Donut (\sql{hole=0.4}) -- répartition en nombre
+  \item Barres -- valeur foncière moyenne par type
+  \item Area empilée -- évolution mensuelle du nombre de mutations par type
+\end{itemize}
+
+% ── Onglet 6 ──────────────────────────────────────────────────────────────────
+\subsection{Onglet 6 -- Distributions}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dashboard_distrib.png}
+  \caption{Onglet Distributions -- histogramme, quartiles et surfaces}
+\end{figure}
+
+Cet onglet analyse la distribution statistique des valeurs :
+\begin{itemize}[noitemsep]
+  \item Histogramme -- 60 buckets calculés en SQL via \sql{width\_bucket()}
+        (aucun rapatriement de données brutes)
+  \item Barres groupées -- quartiles Q1/médiane/Q3 par type de mutation
+  \item Barres groupées -- surfaces moyennes bâtiment vs terrain par type
+  \item Barres + courbe -- mutations et valeur moyenne par nombre de parcelles
+\end{itemize}
+
+% ── Onglet 7 ──────────────────────────────────────────────────────────────────
+\subsection{Onglet 7 -- Historique SCD2}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dashboard_scd2.png}
+  \caption{Onglet SCD2 -- timeline des versions historiques des mutations}
+\end{figure}
+
+L'onglet SCD2 expose les mutations ayant plusieurs versions historiques,
+ce qui illustre concrètement l'historisation implémentée dans le pipeline :
+\begin{itemize}[noitemsep]
+  \item Timeline Gantt (\sql{px.timeline}) -- durée de chaque version par mutation,
+        colorée selon le statut (\textit{Courant} / \textit{Historique})
+  \item Courbe -- évolution de la valeur foncière entre versions
+  \item Tableau détaillé -- toutes les versions avec \sql{date\_debut},
+        \sql{date\_fin} et \sql{est\_courant}
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Difficultés et solutions}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{table}[H]
+  \centering
+  \rowcolors{2}{gray!10}{white}
+  \begin{tabularx}{\linewidth}{lX}
+    \toprule
+    \textbf{Problème} & \textbf{Solution} \\
+    \midrule
+    Marts s'exécutent avant l'ODS & \sql{source()} $\to$ \sql{ref()} pour créer les dépendances DAG \\
+    Disque plein VPS & \texttt{DROP SCHEMA "ODS" CASCADE} + nettoyage \\
+    PK sur \texttt{DSA.mutations} (append-only) & \texttt{ALTER TABLE ... DROP CONSTRAINT mutations\_pkey} \\
+    \texttt{fact\_mutation} ne capturait qu'une version & Filtre \sql{'VALIDE'} $\to$ \sql{IN ('VALIDE', 'EXPIRE')} \\
+    \texttt{Decimal} PostgreSQL incompatible pandas & \texttt{try: pd.to\_numeric(col) except: pass} dans \texttt{run\_query} \\
+    Filtre commune non invalidé & Passage de \texttt{dep\_filter} en paramètre de la fonction cachée \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Principales difficultés et solutions}
+\end{table}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Conclusion}
+% ══════════════════════════════════════════════════════════════════════════════
+
+Ce projet implémente un pipeline industriel complet en quatre grandes étapes :
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{Injection Python} -- normalisation du CSV dénormalisé en 13 tables,
+        génération des clés manquantes, insertion idempotente en lot.
+  \item \textbf{Pipeline dbt 4 couches} -- Staging (typage), Intermédiaire (logique
+        métier + hash), ODS (SCD2 incrémental), DWH Marts (étoile analytique).
+  \item \textbf{SCD2 généralisé} -- 8 tables ODS + table de faits historisée via
+        macro \texttt{scd2\_close\_records} et post\_hook de synchronisation.
+  \item \textbf{Dashboard interactif} -- 7 onglets, carte choroplèthe, filtre
+        commune dynamique, prix/m², toutes les requêtes agrégées côté PostgreSQL.
+\end{enumerate}
+
+\textbf{Perspectives :} orchestrateur (Airflow/Dagster) pour automatisation,
+enrichissement INSEE (revenus/démographie), géolocalisation PostGIS.
 
 \end{document}
