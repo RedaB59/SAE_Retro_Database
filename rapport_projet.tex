@@ -17,6 +17,14 @@
 \definecolor{accentblue}{HTML}{2980B9}
 \definecolor{warncolor}{HTML}{E67E22}
 
+% Couleurs page de garde
+\definecolor{bandeau1}{HTML}{C9BD93}
+\definecolor{bandeau2}{HTML}{7ED6CB}
+\definecolor{bandeau3}{HTML}{E8744A}
+\definecolor{bandeau4}{HTML}{6B5D45}
+\definecolor{titlecolor}{HTML}{5F5B3C}
+\definecolor{namecolor}{HTML}{2EB8AC}
+
 % ── Code ──────────────────────────────────────────────────────────────────────
 \usepackage{listings}
 \lstdefinelanguage{SQL}{
@@ -66,7 +74,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\textcolor{gray}{Pipeline DVF -- dbt + SCD2}}
+\fancyhead[L]{\small\textcolor{gray}{Intégration des données immobilières dans un DataWareHouse}}
 \fancyhead[R]{\small\textcolor{gray}{Belarbi \& Delrive}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -88,6 +96,10 @@
 \titleformat{\subsubsection}
   {\normalsize\bfseries\color{dbtgreen}}{\thesubsubsection}{0.8em}{}
 
+% Chaque \section commence sur une nouvelle page
+\let\oldsection\section
+\renewcommand{\section}{\clearpage\oldsection}
+
 \newtcolorbox{infobox}[1][]{colback=accentblue!5, colframe=accentblue!50,
   title=#1, fonttitle=\bfseries\small, breakable}
 \newtcolorbox{successbox}[1][]{colback=dbtgreen!5, colframe=dbtgreen!50,
@@ -104,40 +116,100 @@
   \end{tcolorbox}
 }
 
-\newcommand{\dbt}{\textbf{\textcolor{dbtgreen}{dbt}}}
+\newcommand{\dbt}{dbt}
 \newcommand{\sql}[1]{\texttt{\small #1}}
 
 % ══════════════════════════════════════════════════════════════════════════════
 \begin{document}
 
 \begin{titlepage}
-  \centering\vspace*{1.5cm}
-  {\Huge\bfseries\color{headercolor} Rapport de Projet SAE\par}\vspace{0.4cm}
-  {\color{gray}\rule{0.6\linewidth}{1pt}\par}\vspace{0.8cm}
-  {\LARGE\bfseries Pipeline de données immobilières\par}\vspace{0.2cm}
-  {\Large\textcolor{dbtgreen}{Demandes de Valeurs Foncières (DVF)}\par}\vspace{0.2cm}
-  {\large Entrepôt de données -- Historisation SCD2 -- Dashboard interactif\par}
-  \vspace{1.2cm}
-  {\color{gray}\rule{0.5\linewidth}{0.4pt}\par}\vspace{0.8cm}
-  \begin{tabular}{rl}
-    \textbf{Auteurs :}  & Reda Belarbi \& Delrive \\[0.3em]
-    \textbf{Projet :}   & \texttt{Data\_Retro\_Belarbi\_Delrive} \\[0.3em]
-    \textbf{Stack :}    & dbt 1.11 · PostgreSQL · Python · Streamlit \\[0.3em]
-    \textbf{Date :}     & Juin 2026 \\
-  \end{tabular}
-  \vspace{1.5cm}
+\noindent
+{\color{bandeau1}\rule{0.25\linewidth}{4pt}}%
+{\color{bandeau2}\rule{0.25\linewidth}{4pt}}%
+{\color{bandeau3}\rule{0.25\linewidth}{4pt}}%
+{\color{bandeau4}\rule{0.25\linewidth}{4pt}}
 
-  \begin{tcolorbox}[colback=dbtgreen!8, colframe=dbtgreen!40, width=0.85\linewidth]
-    \centering\small
-    Ce rapport présente le pipeline complet DVF : injection Python des données
-    brutes, quatre couches de transformation dbt avec historisation SCD2,
-    et tableau de bord Streamlit interactif.
-  \end{tcolorbox}
-  \vfill
+\vspace{2em}
+\begin{center}
+  \includegraphics[width=\linewidth, height=11cm, keepaspectratio]{image.jpg}
+\end{center}
+
+\vspace{2.5em}
+\noindent
+{\Huge\bfseries\color{titlecolor}
+  Intégration des données immobilières\\
+  dans un DataWareHouse\par}
+
+\vspace{0.6em}
+\noindent{\small\color{gray} Rapport de projet -- Juin 2026\\
+Année universitaire 2025 -- 2026\par}
+
+\vfill
+\noindent
+\begin{minipage}[b]{0.6\linewidth}
+  {\color{gray} Présenté par :}\\[0.6em]
+  {\color{namecolor}\bfseries Reda Belarbi\\[0.2em]
+   Delrive}
+\end{minipage}%
+\hfill
+\begin{minipage}[b]{0.35\linewidth}
+  \raggedleft
+  \includegraphics[width=\linewidth, height=2.5cm, keepaspectratio]{logo.png}
+\end{minipage}
+\vspace{1em}
 \end{titlepage}
 
 \tableofcontents
-\newpage
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Gestion de projet}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Organisation et méthodologie}
+
+Le projet a été mené en binôme (Belarbi \& Delrive) sur la période du
+22 février au 11 juin 2026, sans répartition stricte des tâches~:
+chaque grande étape (modélisation, injection, transformations \dbt{},
+dashboard, rédaction) a été réalisée conjointement, avec des points
+d'avancement réguliers pour synchroniser le travail.
+
+\subsection{Outils collaboratifs}
+
+\begin{table}[H]
+  \centering
+  \rowcolors{2}{gray!10}{white}
+  \begin{tabularx}{\linewidth}{lX}
+    \toprule
+    \textbf{Outil} & \textbf{Usage} \\
+    \midrule
+    \textbf{Git / GitHub}    & Versionning du code (scripts Python, modèles \dbt{},
+                                dashboard), historique des commits, sauvegarde collaborative. \\
+    \textbf{Trello / Notion} & Suivi des tâches, organisation du backlog
+                                et planification de l'avancement. \\
+    \textbf{Overleaf}        & Rédaction collaborative du présent rapport en \LaTeX{}. \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Outils collaboratifs utilisés}
+\end{table}
+
+\subsection{Planning du projet}
+
+\begin{table}[H]
+  \centering
+  \rowcolors{2}{gray!10}{white}
+  \begin{tabularx}{\linewidth}{lX}
+    \toprule
+    \textbf{Période} & \textbf{Étape} \\
+    \midrule
+    22 fév -- 14 mars   & Analyse du sujet, modélisation MCD/MLD, choix des outils \\
+    15 mars -- 11 avril & Développement du script Python d'injection (DSA) \\
+    12 avril -- 16 mai  & Modèles \dbt{} (staging, intermédiaire, ODS, DWH) et historisation SCD2 \\
+    17 mai -- 6 juin    & Conception et développement du dashboard Streamlit \\
+    7 -- 11 juin        & Rédaction, relecture et finalisation du rapport \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Planning prévisionnel du projet}
+\end{table}
 
 % ══════════════════════════════════════════════════════════════════════════════
 \section{Introduction et architecture générale}
@@ -145,11 +217,11 @@
 
 \subsection{Contexte et objectif}
 
-Ce projet porte sur la construction d'un \textbf{pipeline de données complet}
+Ce projet porte sur la construction d'un pipeline de données complet
 pour analyser les mutations immobilières françaises à partir des données
-publiques \textbf{DVF} (\textit{Demandes de Valeurs Foncières}), publiées
+publiques DVF (\textit{Demandes de Valeurs Foncières}), publiées
 par la DGFiP. L'objectif est de transformer un fichier CSV brut en un
-\textbf{entrepôt analytique} avec historisation SCD2 intégrale.
+entrepôt analytique avec historisation SCD2 intégrale.
 
 \subsection{Architecture en couches}
 
@@ -207,33 +279,32 @@ par la DGFiP. L'objectif est de transformer un fichier CSV brut en un
 \subsection{Format du fichier CSV}
 
 Les données DVF sont publiées en open data sur \texttt{data.gouv.fr}.
-Le fichier CSV est \textbf{dénormalisé} : une ligne contient simultanément
+Le fichier CSV est dénormalisé : une ligne contient simultanément
 les informations de mutation, parcelle, local, lots et adresse.
 
 \begin{table}[H]
   \centering
   \rowcolors{2}{gray!10}{white}
-  \begin{tabularx}{\linewidth}{llX}
+  \begin{tabularx}{\linewidth}{l X X} % Modifié ici : deux colonnes X au lieu de l
     \toprule
     \textbf{Groupe} & \textbf{Colonnes principales} & \textbf{Description} \\
     \midrule
-    Transaction  & \texttt{id\_mutation}, \texttt{date\_mutation},
-                   \texttt{valeur\_fonciere}, \texttt{nature\_mutation}
+    Transaction  & \texttt{id\_mutation}, \texttt{date\_mutation}, \texttt{valeur\_fonciere}, \texttt{nature\_mutation}
                  & Identifiant, date notariée, prix €, type \\
-    Parcelle     & \texttt{id\_parcelle}, \texttt{code\_nature\_culture},
-                   \texttt{surface\_terrain}
+    \addlinespace % Ajoute un léger espace respirable entre les lignes
+    Parcelle     & \texttt{id\_parcelle}, \texttt{code\_nature\_culture}, \texttt{surface\_terrain}
                  & Référence cadastrale, nature sol, surface m² \\
-    Bâtiment     & \texttt{code\_type\_local}, \texttt{surface\_reelle\_bati},
-                   \texttt{nombre\_pieces\_principales}, \texttt{nombre\_lots}
+    \addlinespace
+    Bâtiment     & \texttt{code\_type\_local}, \texttt{surface\_reelle\_bati}, \texttt{nombre\_pieces\_principales}, \texttt{nombre\_lots}
                  & Type bâtiment, surface, pièces, lots \\
-    Lots         & \texttt{lot1\_numero} \ldots \texttt{lot5\_numero},
-                   \texttt{lot1\_surface\_carrez} \ldots \texttt{lot5\_surface\_carrez}
+    \addlinespace
+    Lots         & \texttt{lot1\_numero} \dots{} \texttt{lot5\_numero}, \texttt{lot1\_surface\_carrez} \dots{} \texttt{lot5\_surface\_carrez}
                  & Jusqu'à 5 lots en colonnes larges (\textit{wide format}) \\
-    Adresse      & \texttt{adresse\_code\_voie}, \texttt{adresse\_nom\_voie},
-                   \texttt{latitude}, \texttt{longitude}
+    \addlinespace
+    Adresse      & \texttt{adresse\_code\_voie}, \texttt{adresse\_nom\_voie}, \texttt{latitude}, \texttt{longitude}
                  & Code FANTOIR, coordonnées WGS84 \\
-    Commune      & \texttt{code\_commune}, \texttt{nom\_commune},
-                   \texttt{code\_departement}, \texttt{code\_postal}
+    \addlinespace
+    Commune      & \texttt{code\_commune}, \texttt{nom\_commune}, \texttt{code\_departement}, \texttt{code\_postal}
                  & Référentiels géographiques INSEE \\
     \bottomrule
   \end{tabularx}
@@ -242,15 +313,22 @@ les informations de mutation, parcelle, local, lots et adresse.
 
 \begin{warnbox}[Problèmes du format dénormalisé]
 \begin{itemize}[noitemsep]
-  \item \textbf{Redondance} : commune et département répétés pour chaque ligne d'une même mutation.
-  \item \textbf{Lots en colonnes larges} : 5 lots encodés en \texttt{lot1\_*} à \texttt{lot5\_*} au lieu d'une relation one-to-many.
-  \item \textbf{Clés manquantes} : \texttt{id\_adresse} et \texttt{id\_local} n'existent pas dans le CSV -- à générer.
+  \item Redondance : commune et département répétés pour chaque ligne d'une même mutation.
+  \item Lots en colonnes larges : 5 lots encodés en \texttt{lot1\_*} à \texttt{lot5\_*} au lieu d'une relation one-to-many.
+  \item Clés manquantes : \texttt{id\_adresse} et \texttt{id\_local} n'existent pas dans le CSV -- à générer.
 \end{itemize}
 \end{warnbox}
 
 % ══════════════════════════════════════════════════════════════════════════════
-\section{Injection des données dans la DSA (Python ETL)}
+\section{Injection des données dans la DSA (Python)}
 % ══════════════════════════════════════════════════════════════════════════════
+
+Cette section décrit la première étape du pipeline : un script Python qui lit
+le fichier CSV brut DVF et le transforme en 13 tables relationnelles
+normalisées, insérées dans le schéma DSA de PostgreSQL. Cette étape couvre la
+lecture du fichier, le nettoyage des types, le découpage en tables selon le
+MLD ci-dessous, la génération des clés manquantes et l'insertion idempotente
+en base.
 
 \subsection{Modèle logique de données (MLD)}
 
@@ -265,6 +343,11 @@ table \texttt{mutations}.
 
 \subsection{Lecture du CSV et nettoyage}
 
+La première étape consiste à charger l'intégralité du fichier CSV en mémoire
+avec pandas, en forçant le typage de toutes les colonnes en chaînes de
+caractères. Les valeurs manquantes du CSV sont également converties en
+\texttt{None} afin d'être correctement insérées comme \texttt{NULL} en base.
+
 \begin{lstlisting}[language=Python, caption={Lecture du fichier CSV DVF}]
 df = pd.read_csv("dvf.csv", dtype=str, sep=",")
 df = df.where(pd.notnull(df), None)  # NaN -> None (NULL SQL)
@@ -277,6 +360,16 @@ la couche Staging dbt.
 \end{infobox}
 
 \subsection{Normalisation en 13 tables}
+
+Le DataFrame brut, qui contient une ligne par lot avec de nombreuses colonnes
+répétées, est ensuite découpé en 13 sous-tables conformes au MLD. Chaque
+sous-table est obtenue par sélection des colonnes utiles, dédoublonnage et
+renommage. Lorsqu'une clé primaire n'existe pas dans le CSV d'origine
+(par exemple \texttt{id\_adresse} ou \texttt{id\_lot}), elle est générée par
+concaténation de colonnes ou par numérotation séquentielle, comme illustré
+ci-dessous.
+
+\vspace{2.5em}
 
 \begin{lstlisting}[language=Python, caption={Exemples de normalisation}]
 # Departements : dedoublonnage simple
@@ -306,6 +399,14 @@ df_lots = pd.concat(lots_frames).drop_duplicates(subset=["id_lot"])
 \end{lstlisting}
 
 \subsection{Insertion en base PostgreSQL}
+
+Une fois les 13 tables construites, elles sont insérées dans PostgreSQL en
+respectant l'ordre imposé par les contraintes de clé étrangère (départements
+avant communes, mutations avant locals, etc.). Une fonction d'insertion
+générique est utilisée pour chaque table, au sein d'une transaction unique.
+
+\vspace{2.5em}
+
 
 \begin{lstlisting}[language=Python, caption={Insertion batch avec ON CONFLICT DO NOTHING}]
 def inserer(cursor, table, df, colonnes):
@@ -340,7 +441,22 @@ Les 13 insertions sont dans une seule transaction (\texttt{autocommit = False}).
 \section{Transformations dbt -- Staging et Intermédiaire}
 % ══════════════════════════════════════════════════════════════════════════════
 
+Une fois les données chargées dans la DSA, le pipeline dbt prend le relais
+pour les transformer progressivement, couche par couche. La couche Staging
+effectue un nettoyage léger des tables brutes (typage, renommage), tandis que
+la couche Intermédiaire applique la logique métier (déduplication des
+versions, agrégations, calcul de hash de contenu) qui servira de base aux
+couches suivantes (ODS et DWH).
+
 \subsection{Configuration \texttt{dbt\_project.yml}}
+
+La configuration du projet définit, pour chaque dossier de modèles, le
+schéma PostgreSQL cible ainsi que le mode de matérialisation (vue, table ou
+incrémental). Cette organisation reflète directement l'architecture en
+couches du pipeline.
+
+\vspace{2.5em}
+
 
 \begin{lstlisting}[language=Jinja]
 models:
@@ -360,8 +476,10 @@ préfixe automatique.
 \subsection{Staging -- typage et renommage (vues)}
 
 Chaque modèle staging effectue uniquement : cast de types, renommage et
-horodatage \sql{\_loaded\_at}. Matérialisé en \textbf{vue} pour éviter la
+horodatage \sql{\_loaded\_at}. Matérialisé en vue pour éviter la
 duplication de données.
+
+\vspace{2.5em}
 
 \begin{lstlisting}[language=SQL, caption={stg\_mutations.sql}]
 select id_mutation,
@@ -375,6 +493,15 @@ from {{ source('DSA', 'mutations') }}
 \end{lstlisting}
 
 \subsection{Intermédiaire -- logique métier (tables)}
+
+La couche Intermédiaire matérialise les modèles en tables et y applique la
+première vraie logique métier du pipeline : déduplication des versions
+successives d'une mutation, agrégation des parcelles associées et calcul
+d'un hash de contenu qui servira de référence pour détecter les changements
+dans la couche ODS.
+
+\vspace{2.5em}
+
 
 \begin{lstlisting}[language=SQL, caption={int\_transactions.sql -- déduplication append-only}]
 with mutations_brutes as (
@@ -406,7 +533,19 @@ isole la version la plus récente avant agrégation.
 \section{Couche ODS -- Historisation SCD2}
 % ══════════════════════════════════════════════════════════════════════════════
 
+L'Operational Data Store (ODS) constitue la mémoire historique du pipeline.
+Contrairement aux couches Staging et Intermédiaire, qui ne reflètent que
+l'état courant des données, l'ODS applique le pattern SCD Type 2 (Slowly
+Changing Dimension) afin de conserver toutes les versions successives de
+chaque enregistrement, avec leurs périodes de validité respectives. Cela
+permet de répondre à des questions du type \og quelle était la valeur de
+cette mutation au 1er janvier 2024 ? \fg{}.
+
 \subsection{Principe du SCD Type 2}
+
+Pour cela, chaque table ODS ajoute aux colonnes métier héritées de la couche
+Intermédiaire un ensemble de colonnes techniques permettant de tracer
+l'historique des versions :
 
 \begin{table}[H]
   \centering
@@ -436,6 +575,15 @@ isole la version la plus récente avant agrégation.
 
 \subsection{Macro \texttt{scd2\_close\_records} et modèle \texttt{ods\_transaction}}
 
+L'historisation SCD2 repose sur deux mécanismes complémentaires exécutés à
+chaque run incrémental : l'insertion d'une nouvelle version dès qu'un
+changement de hash est détecté, et la fermeture de l'ancienne version
+correspondante. Cette fermeture est centralisée dans une macro dbt générique,
+réutilisable pour les 8 tables ODS, et déclenchée via un \texttt{post\_hook}.
+
+\vspace{2.5em}
+
+
 \begin{lstlisting}[language=Jinja, caption={Macro de fermeture SCD2 (post\_hook)}]
 {% macro scd2_close_records(target_table, id_col, hash_col, statut_col) %}
 UPDATE {{ target_table }} AS cible
@@ -449,6 +597,13 @@ AND EXISTS (
 );
 {% endmacro %}
 \end{lstlisting}
+
+Le modèle \texttt{ods\_transaction} utilise cette macro en \texttt{post\_hook}
+et n'insère une nouvelle ligne que si aucune version courante avec le même
+hash de contenu n'existe déjà, ce qui évite de dupliquer une mutation
+inchangée d'un run à l'autre.
+
+\vspace{2.5em}
 
 \begin{lstlisting}[language=Jinja, caption={ods\_transaction.sql -- modèle incrémental SCD2}]
 {{ config(materialized='incremental', unique_key='ods_sk',
@@ -474,8 +629,8 @@ where not exists (
 \end{lstlisting}
 
 \begin{successbox}[Fonctionnement en deux temps]
-\textbf{1. INSERT} -- nouvelle version insérée avec \sql{est\_courant=true} et \sql{date\_fin='9999-12-31'}.\\
-\textbf{2. UPDATE} (post\_hook) -- \texttt{scd2\_close\_records} ferme l'ancienne version
+1. INSERT -- nouvelle version insérée avec \sql{est\_courant=true} et \sql{date\_fin='9999-12-31'}.\\
+2. UPDATE (post\_hook) -- \texttt{scd2\_close\_records} ferme l'ancienne version
 dès que deux versions avec des hash différents coexistent.
 \end{successbox}
 
@@ -483,22 +638,31 @@ dès que deux versions avec des hash différents coexistent.
 \section{Couche DWH -- Entrepôt analytique}
 % ══════════════════════════════════════════════════════════════════════════════
 
+La couche Datawarehouse constitue la finalité analytique du pipeline. Les
+données historisées de l'ODS y sont réorganisées selon un schéma en étoile,
+optimisé pour les requêtes d'agrégation et de filtrage multidimensionnel
+utilisées par le dashboard : une table de faits centrale,
+\texttt{fact\_mutation}, reliée à trois dimensions.
+
 \subsection{Schéma en étoile}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{schema_dwh.png}
+  \includegraphics[width=\linewidth]{DWH.png}
   \caption{Schéma en étoile du \texttt{Datawarehouse} -- \texttt{fact\_mutation} + 3 dimensions}
 \end{figure}
 
 \subsection{Modèles du DWH}
 
-\textbf{\texttt{dim\_temps}} génère toutes les dates via \sql{generate\_series}
+\texttt{dim\_temps} génère toutes les dates via \sql{generate\_series}
 avec année, mois, trimestre et libellés. Matérialisé en table statique.
 
-\textbf{\texttt{type\_mutation}} et \textbf{\texttt{localisation}} propagent
+\texttt{type\_mutation} et \texttt{localisation} propagent
 les colonnes SCD2 depuis l'ODS, permettant d'interroger l'état d'une
 dimension à n'importe quelle date (\sql{WHERE est\_courant=true} = état actuel).
+
+\vspace{2.5em}
+
 
 \begin{lstlisting}[language=Jinja, caption={fact\_mutation.sql -- post\_hook de synchronisation SCD2}]
 {{ config(materialized='incremental', unique_key='sk_mutation',
@@ -551,6 +715,14 @@ group by t.ods_sk, t.id_mutation, t.id_nature_mutation,
 \section{Tests de qualité des données}
 % ══════════════════════════════════════════════════════════════════════════════
 
+Pour garantir la fiabilité du pipeline, et en particulier la cohérence de
+l'historisation SCD2, une série de tests dbt est exécutée automatiquement à
+chaque run via la commande \texttt{dbt test}. Ces tests combinent des tests
+génériques fournis nativement par dbt et des tests personnalisés écrits en
+SQL pour vérifier les invariants spécifiques au pattern SCD2 (une seule
+version courante par clé naturelle, dates de validité cohérentes, absence de
+chevauchement de périodes).
+
 \begin{table}[H]
   \centering
   \rowcolors{2}{gray!10}{white}
@@ -574,39 +746,43 @@ group by t.ods_sk, t.id_mutation, t.id_nature_mutation,
 
 \subsection{Vue d'ensemble et filtres}
 
-Le dashboard est développé avec \textbf{Streamlit} et \textbf{Plotly},
+Le dashboard est développé avec Streamlit et Plotly,
 connecté directement au schéma \texttt{Datawarehouse} via psycopg2.
-Toutes les agrégations sont effectuées \textbf{côté PostgreSQL} -- on ne
+Toutes les agrégations sont effectuées côté PostgreSQL -- on ne
 rapatrie jamais les 7M de lignes brutes, seulement les résultats agrégés.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{dashboard_overview.png}
+  \includegraphics[width=\linewidth]{overview.png}
   \caption{Vue générale du dashboard -- KPIs et sidebar de filtres}
 \end{figure}
 
 La sidebar propose cinq filtres appliqués à toutes les visualisations :
-\textbf{période} (date\_input avec bornes BDD),
-\textbf{type de mutation} (multiselect),
-\textbf{département} (multiselect),
-\textbf{commune} (multiselect \textit{dynamique} -- liste rechargée selon
+période (date\_input avec bornes BDD),
+type de mutation (multiselect),
+département (multiselect),
+commune (multiselect \textit{dynamique} -- liste rechargée selon
 les départements sélectionnés via \texttt{@st.cache\_data(ttl=300)}),
-et \textbf{valeur foncière} (slider P0--P99 calculés en SQL).
+et valeur foncière (slider P0--P99 calculés en SQL).
 Six KPIs sont recalculés en temps réel : nb mutations, volume (Md€),
 valeur moyenne, médiane, nb communes, prix moyen/m².
+Ces filtres permettent de recentrer l'analyse sur un sous-marché précis
+(une période donnée, un type de bien, un territoire), et les KPIs offrent
+immédiatement une vue chiffrée de l'activité et des prix sur ce périmètre,
+avant même de consulter les graphiques détaillés des onglets suivants.
 
 % ── Onglet 1 ──────────────────────────────────────────────────────────────────
 \subsection{Onglet 1 -- Temporel}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{dashboard_temporel.png}
+  \includegraphics[width=\linewidth]{overview.png}
   \caption{Onglet Temporel -- évolution des mutations dans le temps}
 \end{figure}
 
 L'onglet Temporel permet d'analyser l'évolution du marché immobilier avec
-une granularité sélectionnable : \textbf{mois}, \textbf{trimestre} ou
-\textbf{année} via \sql{DATE\_TRUNC}. Il contient :
+une granularité sélectionnable : mois, trimestre ou
+année via \sql{DATE\_TRUNC}. Il contient :
 \begin{itemize}[noitemsep]
   \item Barres -- nombre de mutations par période
   \item Courbe -- valeur foncière moyenne (€)
@@ -614,12 +790,16 @@ une granularité sélectionnable : \textbf{mois}, \textbf{trimestre} ou
   \item Heatmap mois $\times$ année -- densité des mutations (\sql{px.imshow})
 \end{itemize}
 
+Cet onglet sert avant tout à repérer les tendances de fond du marché
+(croissance, ralentissement, saisonnalité) et à situer une période donnée
+par rapport au reste de l'historique disponible.
+
 % ── Onglet 2 ──────────────────────────────────────────────────────────────────
 \subsection{Onglet 2 -- Carte choroplèthe}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{dashboard_carte.png}
+  \includegraphics[width=\linewidth]{carte.png}
   \caption{Onglet Carte -- choroplèthe de France par département}
 \end{figure}
 
@@ -627,13 +807,16 @@ La carte de France est générée via \sql{px.choropleth} en chargeant un
 GeoJSON public des départements français. Quatre métriques sont
 sélectionnables : nombre de mutations, valeur moyenne, volume total,
 prix moyen au m². Le survol affiche le détail par département.
+Cette carte permet d'identifier en un coup d'œil les disparités
+géographiques du marché immobilier français et de repérer les départements
+les plus actifs ou les plus chers.
 
 % ── Onglet 3 ──────────────────────────────────────────────────────────────────
 \subsection{Onglet 3 -- Géographique}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{dashboard_geo.png}
+  \includegraphics[width=\linewidth]{geo.png}
   \caption{Onglet Géographique -- top départements, communes et treemap}
 \end{figure}
 
@@ -645,12 +828,16 @@ Cet onglet propose un classement géographique avec un slider \textit{Top N}
   \item Treemap département $\to$ commune (couleur = valeur moyenne)
 \end{itemize}
 
+Ce classement permet d'identifier rapidement les zones les plus actives ou
+les plus valorisées, et de comparer le poids relatif des communes au sein
+d'un même département grâce au treemap.
+
 % ── Onglet 4 ──────────────────────────────────────────────────────────────────
 \subsection{Onglet 4 -- Prix au m²}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{dashboard_prix_m2.png}
+  \includegraphics[width=\linewidth]{prix.png}
   \caption{Onglet Prix au m² -- analyse du prix/m² par type et département}
 \end{figure}
 
@@ -663,12 +850,16 @@ NULLIF(avg\_surface\_bat, 0)}) :
   \item Scatter -- surface bâtiment vs valeur foncière (échantillon 5 000 mutations)
 \end{itemize}
 
+Cet onglet aide à évaluer l'attractivité relative des territoires d'un
+point de vue investissement, en comparant le prix au m² entre départements
+et en visualisant la relation entre surface et valeur foncière.
+
 % ── Onglet 5 ──────────────────────────────────────────────────────────────────
 \subsection{Onglet 5 -- Par type}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{dashboard_type.png}
+  \includegraphics[width=\linewidth]{type.png}
   \caption{Onglet Par type -- répartition et évolution par nature de mutation}
 \end{figure}
 
@@ -680,12 +871,16 @@ L'onglet Par type décompose les données selon la nature de la mutation
   \item Area empilée -- évolution mensuelle du nombre de mutations par type
 \end{itemize}
 
+Cette décomposition permet de comprendre la structure du marché (part des
+ventes classiques par rapport aux adjudications, échanges, etc.) et de
+suivre l'évolution de cette répartition dans le temps.
+
 % ── Onglet 6 ──────────────────────────────────────────────────────────────────
 \subsection{Onglet 6 -- Distributions}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{dashboard_distrib.png}
+  \includegraphics[width=\linewidth]{distrib.png}
   \caption{Onglet Distributions -- histogramme, quartiles et surfaces}
 \end{figure}
 
@@ -698,28 +893,19 @@ Cet onglet analyse la distribution statistique des valeurs :
   \item Barres + courbe -- mutations et valeur moyenne par nombre de parcelles
 \end{itemize}
 
-% ── Onglet 7 ──────────────────────────────────────────────────────────────────
-\subsection{Onglet 7 -- Historique SCD2}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{dashboard_scd2.png}
-  \caption{Onglet SCD2 -- timeline des versions historiques des mutations}
-\end{figure}
-
-L'onglet SCD2 expose les mutations ayant plusieurs versions historiques,
-ce qui illustre concrètement l'historisation implémentée dans le pipeline :
-\begin{itemize}[noitemsep]
-  \item Timeline Gantt (\sql{px.timeline}) -- durée de chaque version par mutation,
-        colorée selon le statut (\textit{Courant} / \textit{Historique})
-  \item Courbe -- évolution de la valeur foncière entre versions
-  \item Tableau détaillé -- toutes les versions avec \sql{date\_debut},
-        \sql{date\_fin} et \sql{est\_courant}
-\end{itemize}
+Ces visualisations permettent de comprendre la dispersion des valeurs et des
+surfaces au-delà de la simple moyenne, de repérer d'éventuelles valeurs
+atypiques et de comparer les profils de biens selon le nombre de parcelles
+concernées par la mutation.
 
 % ══════════════════════════════════════════════════════════════════════════════
 \section{Difficultés et solutions}
 % ══════════════════════════════════════════════════════════════════════════════
+
+Au cours du développement, plusieurs difficultés techniques ont été
+rencontrées et ont nécessité des ajustements du pipeline, parfois en cours
+de route. Le tableau ci-dessous résume les principaux problèmes rencontrés,
+ainsi que les solutions mises en place pour les résoudre.
 
 \begin{table}[H]
   \centering
@@ -734,6 +920,8 @@ ce qui illustre concrètement l'historisation implémentée dans le pipeline :
     \texttt{fact\_mutation} ne capturait qu'une version & Filtre \sql{'VALIDE'} $\to$ \sql{IN ('VALIDE', 'EXPIRE')} \\
     \texttt{Decimal} PostgreSQL incompatible pandas & \texttt{try: pd.to\_numeric(col) except: pass} dans \texttt{run\_query} \\
     Filtre commune non invalidé & Passage de \texttt{dep\_filter} en paramètre de la fonction cachée \\
+    Équipe non familière avec \dbt{} & Phase de veille technique (documentation officielle, tutoriels) avant le développement des modèles \\
+    Temps d'injection des données très long (CSV de plusieurs millions de lignes) & Insertion par lots via \texttt{execute\_values}, traitement encore perfectible sur le volume complet \\
     \bottomrule
   \end{tabularx}
   \caption{Principales difficultés et solutions}
@@ -746,17 +934,21 @@ ce qui illustre concrètement l'historisation implémentée dans le pipeline :
 Ce projet implémente un pipeline industriel complet en quatre grandes étapes :
 
 \begin{enumerate}[noitemsep]
-  \item \textbf{Injection Python} -- normalisation du CSV dénormalisé en 13 tables,
+  \item Injection Python -- normalisation du CSV dénormalisé en 13 tables,
         génération des clés manquantes, insertion idempotente en lot.
-  \item \textbf{Pipeline dbt 4 couches} -- Staging (typage), Intermédiaire (logique
+  \item Pipeline dbt 4 couches -- Staging (typage), Intermédiaire (logique
         métier + hash), ODS (SCD2 incrémental), DWH Marts (étoile analytique).
-  \item \textbf{SCD2 généralisé} -- 8 tables ODS + table de faits historisée via
+  \item SCD2 généralisé -- 8 tables ODS + table de faits historisée via
         macro \texttt{scd2\_close\_records} et post\_hook de synchronisation.
-  \item \textbf{Dashboard interactif} -- 7 onglets, carte choroplèthe, filtre
+  \item Dashboard interactif -- 7 onglets, carte choroplèthe, filtre
         commune dynamique, prix/m², toutes les requêtes agrégées côté PostgreSQL.
 \end{enumerate}
 
-\textbf{Perspectives :} orchestrateur (Airflow/Dagster) pour automatisation,
-enrichissement INSEE (revenus/démographie), géolocalisation PostGIS.
+Perspectives : mise en place d'un orchestrateur tel que Kestra pour
+automatiser et planifier l'exécution complète du pipeline (injection,
+transformations \dbt{}, tests), optimisation des requêtes (index
+supplémentaires, vues matérialisées) afin de réduire les temps de
+traitement, enrichissement INSEE (revenus/démographie), géolocalisation
+PostGIS.
 
 \end{document}

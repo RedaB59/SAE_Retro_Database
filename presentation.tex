@@ -1,0 +1,693 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[12pt,aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+
+% ── Thème ─────────────────────────────────────────────────────────────────────
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\definecolor{dbtgreen}{HTML}{00855A}
+\definecolor{headercolor}{HTML}{2C3E50}
+\definecolor{accentblue}{HTML}{2980B9}
+\definecolor{codebg}{HTML}{F0F0F0}
+\definecolor{warncolor}{HTML}{E67E22}
+
+\setbeamercolor{structure}{fg=headercolor}
+\setbeamercolor{palette primary}{bg=headercolor, fg=white}
+\setbeamercolor{palette secondary}{bg=accentblue, fg=white}
+\setbeamercolor{palette tertiary}{bg=headercolor, fg=white}
+\setbeamercolor{title}{bg=headercolor, fg=white}
+\setbeamercolor{frametitle}{bg=headercolor, fg=white}
+\setbeamercolor{block title}{bg=accentblue!20, fg=headercolor}
+\setbeamercolor{alerted text}{fg=dbtgreen}
+
+\setbeamertemplate{navigation symbols}{}
+
+% Bandeau en haut de chaque slide : section courante + numéro de slide
+\makeatletter
+\setbeamertemplate{headline}{%
+  \leavevmode
+  \begin{beamercolorbox}[wd=\paperwidth, ht=3ex, dp=1.5ex, leftskip=1em, rightskip=1em]{section in head/foot}%
+    \usebeamerfont{section in head/foot}\insertsectionhead
+    \hfill
+    \hyperlink{sommaire}{\beamerbutton{Sommaire}}\hspace{1em}%
+    \insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}%
+}
+\makeatother
+
+% ── Code ──────────────────────────────────────────────────────────────────────
+\usepackage{listings}
+\lstdefinelanguage{SQL}{
+  keywords={SELECT,FROM,WHERE,JOIN,LEFT,ON,AS,WITH,GROUP,BY,ORDER,HAVING,
+            DISTINCT,COUNT,SUM,AVG,MIN,MAX,CASE,WHEN,THEN,ELSE,END,INSERT,
+            UPDATE,SET,CREATE,TABLE,AND,OR,NOT,IN,NULL,COALESCE,ROUND,
+            EXTRACT,TRUE,FALSE,INTO,VALUES,OVER,ROW_NUMBER,MD5,CONCAT_WS},
+  keywordstyle=\color{accentblue}\bfseries,
+  morestring=[b]', stringstyle=\color{Mahogany},
+  morecomment=[l]{--}, commentstyle=\color{gray}\itshape, sensitive=false
+}
+\lstdefinelanguage{Python}{
+  keywords={import,from,def,class,return,if,else,for,try,except,finally,
+            with,as,in,not,and,or,True,False,None,print,len,str,int,float},
+  keywordstyle=\color{accentblue}\bfseries,
+  morestring=[b]', morestring=[b]", stringstyle=\color{Mahogany},
+  morecomment=[l]{\#}, commentstyle=\color{gray}\itshape, sensitive=true
+}
+\lstdefinelanguage{Jinja}{
+  keywords={config,ref,source,is_incremental,if,endif,macro,endmacro,
+            materialized,unique_key,post_hook},
+  keywordstyle=\color{dbtgreen}\bfseries,
+  morestring=[b]', stringstyle=\color{Mahogany},
+  morecomment=[l]{--}, commentstyle=\color{gray}\itshape, sensitive=false
+}
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  backgroundcolor=\color{codebg},
+  frame=single, rulecolor=\color{gray!40},
+  breaklines=true, showstringspaces=false,
+  tabsize=2
+}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing, overlay-beamer-styles}
+
+\newcommand{\dbt}{dbt}
+\newcommand{\sql}[1]{\texttt{\small #1}}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\title[Pipeline DVF]{Intégration des données immobilières\\dans un DataWareHouse}
+\subtitle{Pipeline ETL Python -- \dbt{} -- PostgreSQL -- Streamlit}
+\author{Reda Belarbi \and Delrive}
+\institute{IUT -- Université de Lille}
+\date{Juin 2026}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sommaire}
+  \hypertarget{sommaire}{}
+  \tableofcontents
+\end{frame}
+
+\AtBeginSection[]{
+  \begin{frame}{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Gestion de projet}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Organisation et méthodologie}
+  \begin{itemize}
+    \item<+-> Projet réalisé en \alert{binôme} (Belarbi \& Delrive)
+    \item<+-> Période : \alert{22 février -- 11 juin 2026}
+    \item<+-> Pas de répartition stricte des tâches
+    \item<+-> Chaque grande étape réalisée conjointement :
+    \begin{itemize}
+      \item Modélisation
+      \item Injection des données
+      \item Transformations \dbt{}
+      \item Dashboard
+      \item Rédaction du rapport
+    \end{itemize}
+    \item<+-> Points d'avancement réguliers pour synchroniser le travail
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Outils collaboratifs}
+  \begin{table}
+    \centering
+    \begin{tabularx}{\linewidth}{lX}
+      \toprule
+      \textbf{Outil} & \textbf{Usage} \\
+      \midrule
+      Git / GitHub    & Versionning du code, historique, sauvegarde collaborative \\
+      Trello / Notion & Suivi des tâches, backlog, planification \\
+      Overleaf        & Rédaction collaborative du rapport en \LaTeX{} \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Planning du projet}
+  \begin{table}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\linewidth}{lX}
+      \toprule
+      \textbf{Période} & \textbf{Étape} \\
+      \midrule
+      22 fév -- 14 mars   & Analyse du sujet, modélisation MCD/MLD, choix des outils \\
+      15 mars -- 11 avril & Script Python d'injection (DSA) \\
+      12 avril -- 16 mai  & Modèles \dbt{} (staging, intermédiaire, ODS, DWH) + SCD2 \\
+      17 mai -- 6 juin    & Dashboard Streamlit \\
+      7 -- 11 juin        & Rédaction et finalisation du rapport \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Introduction et architecture générale}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Contexte et objectif}
+  \begin{itemize}
+    \item<+-> Données publiques \alert{DVF} (Demandes de Valeurs Foncières), publiées par la DGFiP
+    \item<+-> Source : \texttt{data.gouv.fr}
+    \item<+-> Objectif : transformer un \alert{CSV brut dénormalisé} en un
+          \alert{entrepôt analytique} avec \alert{historisation SCD2 intégrale}
+    \item<+-> Pipeline complet : injection $\to$ \dbt{} (4 couches) $\to$ dashboard
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Architecture en couches}
+  \centering
+  \begin{tikzpicture}[
+    box/.style={rectangle, rounded corners, draw=headercolor, very thick,
+                 minimum width=2.6cm, minimum height=1.4cm, align=center, font=\footnotesize},
+    lbl/.style={font=\tiny, text=gray},
+    arrow/.style={-{Latex[length=2.5mm]}, thick, headercolor}
+    ]
+    \node[box, fill=gray!15]                          (csv)  {CSV brut\\DVF};
+    \node[box, right=0.9cm of csv, fill=accentblue!20] (dsa)  {Injection DSA\\(Python)};
+    \node[box, right=0.9cm of dsa, fill=accentblue!10] (stg)  {Staging\\(vues \dbt{})};
+    \node[box, right=0.9cm of stg, fill=accentblue!10] (int)  {Intermédiaire\\(tables \dbt{})};
+
+    \node[box, below=1.6cm of int, fill=dbtgreen!20]   (ods)  {ODS\\(SCD2 \dbt{})};
+    \node[box, left=0.9cm of ods, fill=dbtgreen!10]    (dwh)  {DWH Marts\\(étoile \dbt{})};
+    \node[box, left=0.9cm of dwh, fill=warncolor!20]   (dash) {Dashboard\\(Streamlit)};
+
+    \draw[arrow] (csv) -- (dsa);
+    \draw[arrow] (dsa) -- (stg);
+    \draw[arrow] (stg) -- (int);
+    \draw[arrow] (int) -- (ods);
+    \draw[arrow] (ods) -- (dwh);
+    \draw[arrow] (dwh) -- (dash);
+
+    \node[lbl, below=0.05cm of dsa]  {schéma \texttt{DSA}};
+    \node[lbl, below=0.05cm of int]  {schéma \texttt{DSA}};
+    \node[lbl, above=0.05cm of ods]  {schéma \texttt{Intermediate}};
+    \node[lbl, above=0.05cm of dwh]  {schéma \texttt{Datawarehouse}};
+  \end{tikzpicture}
+
+  \vspace{1em}
+  \small
+  Une normalisation initiale en Python, puis quatre couches \dbt{} successives,
+  jusqu'au tableau de bord interactif.
+\end{frame}
+
+\begin{frame}{Justification des outils}
+  \centering
+  \begin{tikzpicture}[
+    tool/.style={draw, rounded corners, minimum width=6.1cm, minimum height=2.2cm,
+                  align=center, font=\small, text width=5.8cm}
+    ]
+    \node[tool, fill=accentblue!15, visible on=<2->] (pg)
+      {\textbf{PostgreSQL} (VPS OVH)\\[3pt]\footnotesize
+       fonctions analytiques avancées (\sql{PERCENTILE\_CONT},
+       \sql{generate\_series}), hébergement collaboratif};
+    \node[tool, fill=dbtgreen!15, right=0.6cm of pg, visible on=<3->] (dbtbox)
+      {\textbf{\dbt{} v1.11}\\[3pt]\footnotesize
+       transformation SQL-first, DAG automatique, matérialisations,
+       tests de qualité intégrés};
+    \node[tool, fill=warncolor!15, below=0.6cm of pg, visible on=<4->] (py)
+      {\textbf{Python + pandas}\\[3pt]\footnotesize
+       lecture du CSV, dédoublonnage, génération des clés, insertion en lot};
+    \node[tool, fill=accentblue!10, below=0.6cm of dbtbox, visible on=<5->] (st)
+      {\textbf{Streamlit + Plotly}\\[3pt]\footnotesize
+       dashboard interactif sans frontend JS, choroplèthes, treemaps, heatmaps};
+  \end{tikzpicture}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Source de données DVF}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Format du fichier CSV -- une ligne dénormalisée}
+  \centering
+  \begin{tikzpicture}[
+    grp/.style={draw, minimum height=1.7cm, minimum width=2.05cm, align=center,
+                 font=\scriptsize, text width=1.95cm}
+    ]
+    \node[grp, fill=accentblue!25]                 (t) {\textbf{Transaction}\\id, date\\prix, nature};
+    \node[grp, fill=dbtgreen!20,   right=0pt of t] (p) {\textbf{Parcelle}\\réf.\ cadastrale\\nature sol};
+    \node[grp, fill=warncolor!20,  right=0pt of p] (b) {\textbf{Bâtiment}\\type, surface\\pièces};
+    \node[grp, fill=Mahogany!15,   right=0pt of b] (l) {\textbf{Lots}\\lot1\_* ...\\lot5\_*};
+    \node[grp, fill=accentblue!10, right=0pt of l] (a) {\textbf{Adresse}\\FANTOIR\\lat/long};
+    \node[grp, fill=gray!20,       right=0pt of a] (c) {\textbf{Commune}\\code INSEE\\nom};
+
+    \draw[decorate, decoration={brace, amplitude=8pt, mirror}, thick]
+      (t.south west) -- (c.south east)
+      node[midway, below=10pt, font=\footnotesize] {1 seule ligne du fichier CSV};
+  \end{tikzpicture}
+
+  \vspace{1.5em}
+  \small
+  Le fichier CSV est \alert{dénormalisé} : une ligne mélange transaction,
+  parcelle, bâtiment, lots, adresse et commune -- l'injection Python sépare
+  ces informations en \alert{13 tables} normalisées.
+\end{frame}
+
+\begin{frame}{Problèmes du format brut}
+  \centering
+  \begin{tikzpicture}[
+    pb/.style={draw, rounded corners, fill=warncolor!15, minimum width=3.7cm,
+               minimum height=2.4cm, align=center, font=\small, text width=3.5cm}
+    ]
+    \node[pb, visible on=<2->] (p1)
+      {\textbf{Redondance}\\[4pt]\footnotesize commune et département répétés
+       sur chaque ligne d'une même mutation};
+    \node[pb, right=0.6cm of p1, visible on=<3->] (p2)
+      {\textbf{Lots en colonnes larges}\\[4pt]\footnotesize \texttt{lot1\_*} à
+       \texttt{lot5\_*} au lieu d'une relation one-to-many};
+    \node[pb, right=0.6cm of p2, visible on=<4->] (p3)
+      {\textbf{Clés manquantes}\\[4pt]\footnotesize \texttt{id\_adresse} et
+       \texttt{id\_local} n'existent pas dans le CSV -- à générer};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Lots en colonnes larges -- pivot \textit{wide} $\to$ \textit{long}}
+  \centering
+  \begin{columns}[c]
+    \column{0.42\textwidth}
+      \centering
+      \footnotesize
+      \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{id\_mutation} & \textbf{lot1\_numero} & \textbf{lot1\_surface} \\
+        \hline
+        \multirow{4}{*}{12345} & lot2\_numero & lot2\_surface \\
+        \cline{2-3}
+        & lot3\_numero & lot3\_surface \\
+        \cline{2-3}
+        & ... & ... \\
+        \cline{2-3}
+        & lot5\_numero & lot5\_surface \\
+        \hline
+      \end{tabular}\\[0.8em]
+      \textit{format large : 5 $\times$ 2 colonnes par ligne}
+    \column{0.12\textwidth}
+      \centering
+      \Large $\Longrightarrow$
+    \column{0.42\textwidth}
+      \centering
+      \footnotesize
+      \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{id\_lot} & \textbf{id\_local} & \textbf{lot\_surface\_carrez} \\
+        \hline
+        12345\_1 & 12345\_0 & ... \\\hline
+        12345\_2 & 12345\_0 & ... \\\hline
+        12345\_3 & 12345\_0 & ... \\\hline
+        ... & ... & ... \\\hline
+      \end{tabular}\\[0.8em]
+      \textit{format long : 1 ligne par lot}
+  \end{columns}
+
+  \vspace{1em}
+  \small
+  Chaque lot devient une ligne de la table \texttt{lots}, reliée à son
+  \texttt{id\_local} -- relation one-to-many propre.
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Injection des données (ETL Python)}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Modèle logique de données (MLD)}
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{DSA.png}
+  \end{center}
+  \begin{itemize}
+    \item 13 tables relationnelles organisées autour de \texttt{mutations}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Lecture du CSV et nettoyage}
+  \begin{lstlisting}[language=Python]
+df = pd.read_csv("dvf.csv", dtype=str, sep=",")
+df = df.where(pd.notnull(df), None)  # NaN -> None
+  \end{lstlisting}
+  \begin{itemize}
+    \item<+-> Lecture intégrale en \texttt{dtype=str} pour éviter toute
+          inférence de type incorrecte (ex.\ code postal \texttt{"01000"})
+    \item<+-> Les casts sont délégués à la couche Staging \dbt{}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Normalisation en 13 tables}
+  \begin{lstlisting}[language=Python]
+# id_adresse : cle generee par concatenation
+df_loc["id_adresse"] = (
+    df_loc["code_commune"] + "_" +
+    df_loc["adresse_code_voie"] + "_" +
+    df_loc["adresse_numero"].fillna("0")
+)
+
+# Lots : pivot wide -> tall
+for i in range(1, 6):
+    tmp = df[[..., f"lot{i}_numero", f"lot{i}_surface_carrez"]]
+  \end{lstlisting}
+  \begin{itemize}
+    \item<+-> Découpage du DataFrame brut en 13 sous-tables (sélection,
+          dédoublonnage, renommage)
+    \item<+-> Génération des clés manquantes par concaténation ou numérotation
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Insertion en base PostgreSQL}
+  \begin{lstlisting}[language=Python]
+def inserer(cursor, table, df, colonnes):
+    donnees = [tuple(r) for r in df[colonnes].itertuples(index=False)]
+    execute_values(cursor,
+        f"INSERT INTO {table} (...) VALUES %s ON CONFLICT DO NOTHING",
+        donnees)
+
+conn.autocommit = False
+# ... insertion des 13 tables dans l'ordre des FK
+conn.commit()
+  \end{lstlisting}
+  \begin{itemize}
+    \item<+-> Une seule \alert{transaction globale} (\texttt{autocommit = False})
+    \item<+-> \texttt{ON CONFLICT DO NOTHING} $\to$ script \alert{idempotent}
+    \item<+-> \texttt{execute\_values} $\sim$100x plus rapide qu'un INSERT par ligne
+  \end{itemize}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Transformations dbt -- Staging et Intermédiaire}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}[fragile]{Configuration \texttt{dbt\_project.yml}}
+  \begin{lstlisting}[language=Jinja]
+models:
+  Data_Retro_Belarbi_Delrive:
+    staging:      {+materialized: view,        +schema: DSA}
+    intermediate: {+materialized: table,       +schema: DSA}
+    ods:          {+materialized: incremental, +schema: Intermediate}
+    marts:
+      dimensions: {+materialized: table,       +schema: Datawarehouse}
+      facts:      {+materialized: incremental, +schema: Datawarehouse}
+  \end{lstlisting}
+  \begin{itemize}
+    \item<+-> Un schéma PostgreSQL et un mode de matérialisation par couche
+    \item<+-> Macro \texttt{generate\_schema\_name} surchargée (pas de préfixe
+          automatique)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Staging -- typage et renommage (vues)}
+  \begin{lstlisting}[language=SQL]
+select id_mutation,
+       numero_mutation::int       as numero_mutation,
+       date_mutation::date        as date_mutation,
+       valeur_fonciere::bigint    as valeur_fonciere,
+       current_timestamp          as _loaded_at
+from {{ source('DSA', 'mutations') }}
+  \end{lstlisting}
+  \begin{itemize}
+    \item<+-> Cast de types, renommage, horodatage \sql{\_loaded\_at}
+    \item<+-> Matérialisé en \alert{vue} -- pas de duplication de données
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Intermédiaire -- logique métier (tables)}
+  \begin{lstlisting}[language=SQL]
+with mutations_brutes as (
+    select m.*, row_number() over (
+        partition by m.id_mutation
+        order by m.date_chargement desc
+    ) as rn
+    from {{ ref('stg_mutations') }} m
+)
+select id_mutation, valeur_fonciere,
+       md5(concat_ws('|', id_mutation, valeur_fonciere::text)) as hash_contenu
+from mutations_brutes where rn = 1
+  \end{lstlisting}
+  \begin{itemize}
+    \item<+-> Déduplication \alert{append-only} : seule la dernière version
+          d'une mutation est conservée
+    \item<+-> Calcul d'un \alert{hash de contenu} -- base de la détection de
+          changement pour l'ODS
+  \end{itemize}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Couche ODS -- Historisation SCD2}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Principe du SCD Type 2}
+  \centering
+  \begin{tikzpicture}[
+    ver/.style={draw, rounded corners, minimum width=4.6cm, minimum height=2.4cm,
+                 align=center, font=\scriptsize}
+    ]
+    \node[ver, fill=gray!15] (v1)
+      {\textbf{Version 1 -- fermée}\\[3pt]
+       \sql{ods\_sk} = 1\\
+       \sql{date\_debut} = 2023-01-01\\
+       \sql{date\_fin} = 2024-03-15\\
+       \sql{est\_courant} = false\\
+       valeur\_fonciere = 200\,000~€};
+    \node[ver, fill=dbtgreen!20, right=1.4cm of v1, visible on=<2->] (v2)
+      {\textbf{Version 2 -- courante}\\[3pt]
+       \sql{ods\_sk} = 2\\
+       \sql{date\_debut} = 2024-03-15\\
+       \sql{date\_fin} = 9999-12-31\\
+       \sql{est\_courant} = true\\
+       valeur\_fonciere = 215\,000~€};
+
+    \draw[-{Latex[length=3mm]}, thick, headercolor, visible on=<2->] (v1) --
+      node[above, font=\scriptsize, align=center] {\sql{hash\_contenu}\\différent}
+      (v2);
+  \end{tikzpicture}
+
+  \vspace{1em}
+  \small
+  L'ODS conserve \alert{toutes les versions} successives de chaque
+  enregistrement -- l'ancienne reste consultable, la nouvelle devient courante.
+\end{frame}
+
+\begin{frame}{Schéma de la couche ODS}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{ODS.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Macro \texttt{scd2\_close\_records}}
+  \begin{lstlisting}[language=Jinja]
+{% macro scd2_close_records(target_table, id_col, hash_col, statut_col) %}
+UPDATE {{ target_table }} AS cible
+SET date_fin = current_timestamp, est_courant = false,
+    {{ statut_col }} = 'EXPIRE'
+WHERE cible.est_courant = true
+AND EXISTS (
+    SELECT 1 FROM {{ target_table }} n
+    WHERE n.{{ id_col }} = cible.{{ id_col }}
+      AND n.{{ hash_col }} != cible.{{ hash_col }}
+      AND n.est_courant = true AND n.date_debut > cible.date_debut
+);
+{% endmacro %}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Fonctionnement en deux temps}
+  \centering
+  \begin{tikzpicture}[
+    step/.style={draw, rounded corners, minimum width=8.5cm, minimum height=1.5cm,
+                  align=center, font=\small}
+    ]
+    \node[step, fill=accentblue!20] (insert)
+      {\textbf{1. INSERT} -- nouvelle version\\[2pt]\footnotesize
+       \sql{est\_courant = true}, \sql{date\_fin = '9999-12-31'}};
+    \node[step, fill=dbtgreen!20, below=1.1cm of insert, visible on=<2->] (update)
+      {\textbf{2. UPDATE} (\texttt{post\_hook})\\[2pt]\footnotesize
+       \texttt{scd2\_close\_records} ferme l'ancienne version dès que deux
+       hash diffèrent};
+
+    \draw[-{Latex[length=3mm]}, thick, headercolor, visible on=<2->]
+      (insert) -- (update);
+  \end{tikzpicture}
+
+  \vspace{1em}
+  \small
+  Mécanisme générique, réutilisé pour les \alert{8 tables ODS} via une seule
+  macro \dbt{}.
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Couche DWH -- Entrepôt analytique}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Schéma en étoile}
+  \begin{center}
+    \includegraphics[width=0.85\textwidth]{DWH.png}
+  \end{center}
+  \begin{itemize}
+    \item \texttt{fact\_mutation} (table de faits) + 3 dimensions
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Modèles du DWH et volumes}
+  \begin{itemize}
+    \item<+-> \texttt{dim\_temps} -- généré via \sql{generate\_series}
+          (année, mois, trimestre)
+    \item<+-> \texttt{type\_mutation} et \texttt{localisation} -- propagent les
+          colonnes SCD2 depuis l'ODS
+    \item<+-> \texttt{fact\_mutation} -- synchronisé avec l'ODS via un
+          \texttt{post\_hook} de mise à jour
+  \end{itemize}
+  \begin{table}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\linewidth}{lrl}
+      \toprule
+      \textbf{Table} & \textbf{Lignes} & \textbf{Remarque} \\
+      \midrule
+      \texttt{fact\_mutation} & $\sim$7,2 M & Toutes versions SCD2 \\
+      \texttt{localisation}   & $\sim$5,3 M & Toutes versions SCD2 \\
+      \texttt{type\_mutation} & 8           & Référentiel \\
+      \texttt{dim\_temps}     & $\sim$9 000 & 2000 $\to$ aujourd'hui \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Tests de qualité des données}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Tests de qualité \dbt{}}
+  \begin{itemize}
+    \item<+-> Exécutés automatiquement à chaque run via \texttt{dbt test}
+    \item<+-> Combinent tests génériques \dbt{} et tests SCD2 personnalisés
+  \end{itemize}
+  \begin{table}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\linewidth}{lX}
+      \toprule
+      \textbf{Test} & \textbf{Invariant vérifié} \\
+      \midrule
+      \texttt{unique} + \texttt{not\_null} & Unicité et non-nullité des surrogate keys \\
+      \texttt{accepted\_values}            & \sql{est\_courant} $\in \{true, false\}$ \\
+      \texttt{scd2\_courant\_unique}       & 1 seule version courante par clé naturelle \\
+      \texttt{scd2\_dates\_coherentes}     & Cohérence \sql{date\_debut/date\_fin/est\_courant} \\
+      \texttt{scd2\_pas\_chevauchement}    & Pas de chevauchement de périodes \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Tableau de bord interactif}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Vue d'ensemble et filtres}
+  \begin{center}
+    \includegraphics[width=0.85\textwidth]{overview.png}
+  \end{center}
+  \begin{itemize}
+    \item<+-> Streamlit + Plotly, connecté au schéma \texttt{Datawarehouse}
+    \item<+-> Toutes les agrégations sont effectuées \alert{côté PostgreSQL}
+    \item<+-> 5 filtres (période, type, département, commune, valeur foncière)
+          + 6 KPIs recalculés en temps réel
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Onglets 1 à 3}
+  \begin{itemize}
+    \item<+-> \textbf{Temporel} -- évolution des mutations (mois/trimestre/année),
+          tendances et saisonnalité
+    \item<+-> \textbf{Carte choroplèthe} -- disparités géographiques par
+          département (4 métriques)
+    \item<+-> \textbf{Géographique} -- top N départements/communes, treemap
+          département $\to$ commune
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Onglets 4 à 6}
+  \begin{itemize}
+    \item<+-> \textbf{Prix au m²} -- comparaison départementale, scatter
+          surface vs valeur foncière
+    \item<+-> \textbf{Par type} -- répartition et évolution selon la nature de
+          mutation (vente, adjudication, échange...)
+    \item<+-> \textbf{Distributions} -- histogramme, quartiles, surfaces
+          moyennes par type
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Exemple -- Carte choroplèthe}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{carte.png}
+  \end{center}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Difficultés et perspectives}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Difficultés rencontrées}
+  \begin{itemize}
+    \item<+-> \textbf{Découverte de \dbt{}} -- outil inconnu de l'équipe :
+          phase de veille technique avant le développement des modèles
+    \item<+-> \textbf{Temps d'injection des données} -- CSV de plusieurs
+          millions de lignes, traitement long malgré l'insertion par lots
+    \item<+-> Dépendances DAG, gestion de l'historisation SCD2,
+          incompatibilités de types entre PostgreSQL et pandas
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Perspectives}
+  \begin{itemize}
+    \item<+-> \alert{Orchestrateur} (Kestra) -- automatiser et planifier
+          l'exécution complète du pipeline (injection, \dbt{}, tests)
+    \item<+-> \alert{Optimisation des requêtes} -- index supplémentaires, vues
+          matérialisées pour réduire les temps de traitement
+    \item<+-> Enrichissement \alert{INSEE} (revenus, démographie)
+    \item<+-> Géolocalisation \alert{PostGIS}
+  \end{itemize}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Conclusion}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{frame}{Conclusion}
+  Pipeline industriel complet en quatre grandes étapes :
+  \begin{enumerate}
+    \item<+-> \textbf{Injection Python} -- normalisation du CSV en 13 tables,
+          génération des clés, insertion idempotente
+    \item<+-> \textbf{Pipeline \dbt{} 4 couches} -- Staging, Intermédiaire,
+          ODS (SCD2), DWH Marts
+    \item<+-> \textbf{SCD2 généralisé} -- 8 tables ODS + table de faits
+          historisée
+    \item<+-> \textbf{Dashboard interactif} -- 7 onglets, carte choroplèthe,
+          requêtes agrégées côté PostgreSQL
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    {\Huge Merci de votre attention}\\[1.5em]
+    {\Large Questions ?}
+  \end{center}
+\end{frame}
+
+\end{document}
