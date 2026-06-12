@@ -122,4 +122,4 @@ par type de bien, distributions des prix et surfaces) connecté au schéma
 Projet réalisé en binôme dans le cadre de la SAE -- IUT de Lille (2026)
 
 - Reda Belarbi
-- Delrive
+- Quentin Delrive
